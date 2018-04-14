@@ -14,8 +14,6 @@
           <Property Name="APELLIDO" Type="varchar2" MaxLength="20" />
           <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'HOSTAL_BD.PRIVILEGIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="PRIVILEGIO">
           <Key>
             <PropertyRef Name="ID" />
@@ -63,18 +61,8 @@ advertencia 6002: La tabla o vista 'HOSTAL_BD.PRIVILEGIO' no tiene definida ning
         </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="HOSTAL_BD" store:Type="Tables" />
+          <EntitySet Name="PRIVILEGIO" EntityType="Self.PRIVILEGIO" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="HOSTAL_BD" store:Type="Tables" />
-          <EntitySet Name="PRIVILEGIO" EntityType="Self.PRIVILEGIO" store:Type="Tables" store:Schema="HOSTAL_BD">
-            <DefiningQuery>SELECT 
-"PRIVILEGIO"."ID" AS "ID", 
-"PRIVILEGIO"."MENU" AS "MENU", 
-"PRIVILEGIO"."CREATE" AS "CREATE", 
-"PRIVILEGIO"."READ" AS "READ", 
-"PRIVILEGIO"."UPDATE" AS "UPDATE", 
-"PRIVILEGIO"."DELETE" AS "DELETE", 
-"PRIVILEGIO"."USUARIO_ID" AS "USUARIO_ID"
-FROM "HOSTAL_BD"."PRIVILEGIO" "PRIVILEGIO"</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="EMPLEADO_FK" Association="Self.EMPLEADO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
@@ -88,32 +76,9 @@ FROM "HOSTAL_BD"."PRIVILEGIO" "PRIVILEGIO"</DefiningQuery>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="EMPLEADO">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="APELLIDO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="USUARIO" Relationship="Model.EMPLEADO_FK" FromRole="EMPLEADO" ToRole="USUARIO" />
-        </EntityType>
-        <EntityType Name="PRIVILEGIO">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="MENU" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CREATE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="READ" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="UPDATE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="DELETE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="USUARIO_ID" Type="Decimal" Precision="38" Scale="0" />
-          <NavigationProperty Name="USUARIO" Relationship="Model.PRIVILEGIO_FK" FromRole="PRIVILEGIO" ToRole="USUARIO" />
-        </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
-          <EntitySet Name="PRIVILEGIO" EntityType="Self.PRIVILEGIO" />
+          <EntitySet Name="EMPLEADO" EntityType="Model.EMPLEADO" />
+          <EntitySet Name="PRIVILEGIO" EntityType="Model.PRIVILEGIO" />
           <EntitySet Name="USUARIO" EntityType="Model.USUARIO" />
           <AssociationSet Name="EMPLEADO_FK" Association="Model.EMPLEADO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
@@ -123,7 +88,30 @@ FROM "HOSTAL_BD"."PRIVILEGIO" "PRIVILEGIO"</DefiningQuery>
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="PRIVILEGIO" EntitySet="PRIVILEGIO" />
           </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="USUARIO" Relationship="Model.EMPLEADO_FK" FromRole="EMPLEADO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="PRIVILEGIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="MENU" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="READ" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="UPDATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DELETE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="USUARIO_ID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="USUARIO" Relationship="Model.PRIVILEGIO_FK" FromRole="PRIVILEGIO" ToRole="USUARIO" />
+        </EntityType>
         <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="ID" />
@@ -159,7 +147,7 @@ FROM "HOSTAL_BD"."PRIVILEGIO" "PRIVILEGIO"</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -168,23 +156,23 @@ FROM "HOSTAL_BD"."PRIVILEGIO" "PRIVILEGIO"</DefiningQuery>
           <EntitySetMapping Name="EMPLEADO">
             <EntityTypeMapping TypeName="Model.EMPLEADO">
               <MappingFragment StoreEntitySet="EMPLEADO">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
                 <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRIVILEGIO">
             <EntityTypeMapping TypeName="Model.PRIVILEGIO">
               <MappingFragment StoreEntitySet="PRIVILEGIO">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MENU" ColumnName="MENU" />
-                <ScalarProperty Name="CREATE" ColumnName="CREATE" />
-                <ScalarProperty Name="READ" ColumnName="READ" />
-                <ScalarProperty Name="UPDATE" ColumnName="UPDATE" />
-                <ScalarProperty Name="DELETE" ColumnName="DELETE" />
                 <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+                <ScalarProperty Name="DELETE" ColumnName="DELETE" />
+                <ScalarProperty Name="UPDATE" ColumnName="UPDATE" />
+                <ScalarProperty Name="READ" ColumnName="READ" />
+                <ScalarProperty Name="CREATE" ColumnName="CREATE" />
+                <ScalarProperty Name="MENU" ColumnName="MENU" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
