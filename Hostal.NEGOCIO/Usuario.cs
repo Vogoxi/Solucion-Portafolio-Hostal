@@ -103,6 +103,7 @@ namespace Hostal.NEGOCIO
 
         public Usuario getUsuario()
         {
+            //holi
             try
             {
                 Hostal.DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.First(us => us.ID == this.Id);
