@@ -22,7 +22,7 @@ namespace Hostal.NEGOCIO
             _id = 0;
             _usuario = string.Empty;
             _contrasena = string.Empty;
-            _tipoUsuario = ' ';
+            _tipoUsuario = "";
         }
     }
 }
