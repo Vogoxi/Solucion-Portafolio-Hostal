@@ -13,7 +13,7 @@ namespace PruebaHostal
         {
             Usuario user = new Usuario();
 
-            user.User = "Poyokos";
+            user.User = "asd";
             user.TipoUsuario = "X";
             user.Contrasena = "22222222";
 
