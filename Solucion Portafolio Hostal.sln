@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostal.NEGOCIO", "Hostal.NE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaHostal", "PruebaHostal\PruebaHostal.csproj", "{7BE8FAFC-D438-4B60-94DC-DB0A21BDA33B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostal.DESKTOP", "Hostal.DESKTOP\Hostal.DESKTOP.csproj", "{2C735E71-576B-48D9-AFBA-26322D6753D7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{7BE8FAFC-D438-4B60-94DC-DB0A21BDA33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE8FAFC-D438-4B60-94DC-DB0A21BDA33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE8FAFC-D438-4B60-94DC-DB0A21BDA33B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C735E71-576B-48D9-AFBA-26322D6753D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C735E71-576B-48D9-AFBA-26322D6753D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C735E71-576B-48D9-AFBA-26322D6753D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C735E71-576B-48D9-AFBA-26322D6753D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

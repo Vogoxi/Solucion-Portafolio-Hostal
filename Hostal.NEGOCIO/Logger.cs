@@ -16,7 +16,7 @@ namespace Hostal.NEGOCIO
             string date;
             date = DateTime.Now.ToString();
             lines = "[" + date + "] - " + lines;
-            System.IO.StreamWriter file = new System.IO.StreamWriter("c:\\Descargas\\test.txt", true);
+            System.IO.StreamWriter file = new System.IO.StreamWriter("C:\\Logger\\test.txt", true);
             file.WriteLine(lines);
 
             file.Close();

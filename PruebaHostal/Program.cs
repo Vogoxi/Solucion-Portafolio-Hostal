@@ -13,11 +13,11 @@ namespace PruebaHostal
         {
             Usuario user = new Usuario();
 
-            user.User = "german";
+            user.User = "diego";
             user.TipoUsuario = "E";
             user.Contrasena = "123456";
 
-            user.agregarUsuario(user);
+            user.agregarUsuario();
 
 
 

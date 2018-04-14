@@ -121,15 +121,15 @@ namespace Hostal.NEGOCIO
             }
         }
 
-        public bool agregarUsuario(Usuario usuario)
+        public bool agregarUsuario()
         {
             try
             {
                 DALC.USUARIO user = new DALC.USUARIO();
                 user.ID = getUsuarioMaxId()+1;
-                user.USUARIO1 = usuario.User;
-                user.CONTRASENA = usuario.Contrasena;
-                user.TIPO_USUARIO = usuario.TipoUsuario;
+                user.USUARIO1 = this.User;
+                user.CONTRASENA = this.Contrasena;
+                user.TIPO_USUARIO = this.TipoUsuario;
 
                 CommonBC.Modelo.USUARIO.Add(user);
                 CommonBC.Modelo.SaveChanges();
@@ -142,7 +142,7 @@ namespace Hostal.NEGOCIO
             }
         }
 
-        
+
 
         
 
