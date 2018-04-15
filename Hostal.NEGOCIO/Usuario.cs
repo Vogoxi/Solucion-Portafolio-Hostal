@@ -126,7 +126,7 @@ namespace Hostal.NEGOCIO
         {
             try
             {
-                if (null == CommonBC.Modelo.USUARIO.First(us => us.USUARIO1 == nombre))
+                if (null == CommonBC.Modelo.USUARIO.FirstOrDefault(us => us.USUARIO1 == nombre))
                 {
                     DALC.USUARIO user = new DALC.USUARIO();
                     user.ID = getUsuarioMaxId() + 1;
@@ -136,6 +136,25 @@ namespace Hostal.NEGOCIO
 
                     CommonBC.Modelo.USUARIO.Add(user);
                     CommonBC.Modelo.SaveChanges();
+                    return true;
+                }else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return false;
+            }
+        }
+
+        public bool validarUsuario(string nombre, string password)
+        {
+            try
+            {
+                if (null != CommonBC.Modelo.USUARIO.FirstOrDefault(us => us.USUARIO1 == nombre && us.CONTRASENA == password))
+                {
                     return true;
                 }else
                 {

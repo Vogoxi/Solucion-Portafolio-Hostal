@@ -11,9 +11,11 @@ namespace PruebaHostal
     {
         static void Main(string[] args)
         {
+            
+             
             Usuario user = new Usuario();
 
-            user.User = "german";
+            user.User = "germanPrueba2";
             user.TipoUsuario = "E";
             user.Contrasena = "germ.123";
 
@@ -24,6 +26,25 @@ namespace PruebaHostal
             {
                 Console.Write("usuario agregado");
             }
+            
+            /*
+            Usuario user = new Usuario();
+
+            Console.WriteLine("Ingrese Usuario");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese Contraseña");
+            string password = Console.ReadLine();
+
+
+            if(user.validarUsuario(nombre, password))
+            {
+                Console.WriteLine("Logeado");
+            }else
+            {
+                Console.WriteLine("Usuario o contraseña incorrectos");
+            }
+            Console.ReadKey();
+            */
 
 
 
