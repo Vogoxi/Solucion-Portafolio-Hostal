@@ -94,14 +94,13 @@ namespace Hostal.NEGOCIO
                 int user = (int)CommonBC.Modelo.USUARIO.Max(us => us.ID);
                 return user;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Logger.Log(ex.Message);
                 return 0;
             }
         }
 
-        public Usuario getUsuario(string nombre)
+        public Usuario getUsuario()
         {
             try
             {
@@ -119,6 +118,27 @@ namespace Hostal.NEGOCIO
             {
                 Logger.Log(ex.Message);
                 return null;
+            }
+        }
+
+        public int getUsuarioIdByName(string nombre)
+        {
+            try
+            {
+                DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.FirstOrDefault(us => us.USUARIO1 == nombre);
+                if (usuario != null)
+                {
+                    return (int)usuario.ID;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return 0;
             }
         }
 
@@ -149,17 +169,54 @@ namespace Hostal.NEGOCIO
             }
         }
 
-        public bool validarUsuario(string nombre, string password)
+        public int validarUsuario(string nombre, string password)
         {
             try
             {
-                if (null != CommonBC.Modelo.USUARIO.FirstOrDefault(us => us.USUARIO1 == nombre && us.CONTRASENA == password))
+                DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.FirstOrDefault(us => us.USUARIO1 == nombre && us.CONTRASENA == password);
+
+                if (null != usuario)
                 {
-                    return true;
+                    return (int)usuario.ID;
                 }else
                 {
-                    return false;
+                    return 0;
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return 0;
+            }
+        }
+
+        public bool actualizarUsuario()
+        {
+            try
+            {
+                DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.FirstOrDefault(us => us.ID == this.Id);
+                usuario.USUARIO1 = this.User;
+                usuario.TIPO_USUARIO = this.TipoUsuario;
+                usuario.CONTRASENA = this.Contrasena;
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return false;
+            }
+        }
+
+        public bool borrarUsuario()
+        {
+            try
+            {
+                DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.FirstOrDefault(us => us.ID == this.Id);
+
+                CommonBC.Modelo.USUARIO.Remove(usuario);
+                CommonBC.Modelo.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
