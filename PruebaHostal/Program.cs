@@ -13,11 +13,17 @@ namespace PruebaHostal
         {
             Usuario user = new Usuario();
 
-            user.User = "asd";
-            user.TipoUsuario = "X";
-            user.Contrasena = "22222222";
+            user.User = "german";
+            user.TipoUsuario = "E";
+            user.Contrasena = "germ.123";
 
-            user.agregarUsuario();
+            if (!user.agregarUsuario(user.User))
+            {
+                Console.Write("usuario ya existe");
+            }else
+            {
+                Console.Write("usuario agregado");
+            }
 
 
 

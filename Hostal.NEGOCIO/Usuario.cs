@@ -101,18 +101,19 @@ namespace Hostal.NEGOCIO
             }
         }
 
-        public Usuario getUsuario()
+        public Usuario getUsuario(string nombre)
         {
             try
             {
                 Hostal.DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.First(us => us.ID == this.Id);
+                
                 Usuario user = new Usuario();
                 user.Id = (int)usuario.ID;
                 user.User = usuario.USUARIO1;
                 user.Contrasena = usuario.CONTRASENA;
                 user.TipoUsuario = usuario.TIPO_USUARIO;
-
                 return user;
+                
             }
             catch (Exception ex)
             {
@@ -121,19 +122,25 @@ namespace Hostal.NEGOCIO
             }
         }
 
-        public bool agregarUsuario()
+        public bool agregarUsuario(string nombre)
         {
             try
             {
-                DALC.USUARIO user = new DALC.USUARIO();
-                user.ID = getUsuarioMaxId()+1;
-                user.USUARIO1 = this.User;
-                user.CONTRASENA = this.Contrasena;
-                user.TIPO_USUARIO = this.TipoUsuario;
+                if (null == CommonBC.Modelo.USUARIO.First(us => us.USUARIO1 == nombre))
+                {
+                    DALC.USUARIO user = new DALC.USUARIO();
+                    user.ID = getUsuarioMaxId() + 1;
+                    user.USUARIO1 = this.User;
+                    user.CONTRASENA = this.Contrasena;
+                    user.TIPO_USUARIO = this.TipoUsuario;
 
-                CommonBC.Modelo.USUARIO.Add(user);
-                CommonBC.Modelo.SaveChanges();
-                return true;
+                    CommonBC.Modelo.USUARIO.Add(user);
+                    CommonBC.Modelo.SaveChanges();
+                    return true;
+                }else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -141,12 +148,6 @@ namespace Hostal.NEGOCIO
                 return false;
             }
         }
-
-
-
-        
-
-        
 
         #endregion
 
