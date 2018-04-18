@@ -11,13 +11,65 @@ namespace PruebaHostal
     {
         static void Main(string[] args)
         {
+
+            /*      agregar usuario
             Usuario user = new Usuario();
 
-            user.User = "asd";
-            user.TipoUsuario = "X";
-            user.Contrasena = "22222222";
+            user.User = "germanPrueba2";
+            user.TipoUsuario = "E";
+            user.Contrasena = "germ.123";
 
-            user.agregarUsuario();
+            if (!user.agregarUsuario(user.User))
+            {
+                Console.Write("usuario ya existe");
+            }else
+            {
+                Console.Write("usuario agregado");
+            }
+            */
+
+            /*       validar usuario
+            Usuario user = new Usuario();
+
+            Console.WriteLine("Ingrese Usuario");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese Contraseña");
+            string password = Console.ReadLine();
+
+
+            if(user.validarUsuario(nombre, password)>0)
+            {
+                Console.WriteLine("Logeado");
+            }else
+            {
+                Console.WriteLine("Usuario o contraseña incorrectos");
+            }
+            Console.ReadKey();
+            */
+
+            Usuario user = new Usuario();
+            Console.WriteLine("Ingrese usuario al que desea cambiar contraseña");
+            int valorId = user.getUsuarioIdByName(Console.ReadLine());
+            if (valorId != 0)
+            {
+                user.Id = valorId;
+                user = user.getUsuario();
+                Console.WriteLine("Ingrese nueva contraseña");
+                user.Contrasena = Console.ReadLine();
+                if (user.actualizarUsuario())
+                {
+                    string mensaje = "Contraseña del usuario " + user.User + " ha sido modificada exitosamente";
+                    Console.WriteLine(mensaje);
+                }else
+                {
+                    Console.WriteLine("Ha ocurrido un error al intentar cambiar la contraseña");
+                }
+            }else
+            {
+                Console.WriteLine("usuario no existe");
+            }
+            Console.ReadKey();
+            
 
 
 
