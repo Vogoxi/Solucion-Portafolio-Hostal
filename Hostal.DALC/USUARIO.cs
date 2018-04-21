@@ -17,9 +17,7 @@ namespace Hostal.DALC
         public USUARIO()
         {
             this.EMPLEADO = new HashSet<EMPLEADO>();
-            this.EMPRESA = new HashSet<EMPRESA>();
             this.PRIVILEGIO = new HashSet<PRIVILEGIO>();
-            this.PROVEEDOR = new HashSet<PROVEEDOR>();
         }
     
         public decimal ID { get; set; }
@@ -28,8 +26,6 @@ namespace Hostal.DALC
         public string TIPO_USUARIO { get; set; }
     
         public virtual ICollection<EMPLEADO> EMPLEADO { get; set; }
-        public virtual ICollection<EMPRESA> EMPRESA { get; set; }
         public virtual ICollection<PRIVILEGIO> PRIVILEGIO { get; set; }
-        public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
     }
 }
