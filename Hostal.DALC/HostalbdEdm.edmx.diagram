@@ -4,12 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="95f37d97589c4edb88d0a0c7b2ae6362" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.EMPLEADO" Width="1.5" PointX="3" PointY="4.375" />
-        <EntityTypeShape EntityType="Model.PRIVILEGIO" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="0.75" PointY="2.625" />
+      <Diagram DiagramId="95f37d97589c4edb88d0a0c7b2ae6362" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Model.EMPLEADO" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="Model.EMPRESA" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="Model.HUESPED" Width="1.5" PointX="5.25" PointY="10.375" />
+        <EntityTypeShape EntityType="Model.PRIVILEGIO" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="0.75" PointY="5.75" />
         <AssociationConnector Association="Model.EMPLEADO_FK" />
+        <AssociationConnector Association="Model.EMPRESA_FK" />
+        <AssociationConnector Association="Model.HUESPED_FK" />
         <AssociationConnector Association="Model.PRIVILEGIO_FK" />
+        <AssociationConnector Association="Model.PROVEEDOR_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

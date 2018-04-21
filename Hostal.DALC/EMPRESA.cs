@@ -12,16 +12,21 @@ namespace Hostal.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class PRIVILEGIO
+    public partial class EMPRESA
     {
-        public decimal ID { get; set; }
-        public string MENU { get; set; }
-        public Nullable<decimal> CREATE { get; set; }
-        public Nullable<decimal> READ { get; set; }
-        public Nullable<decimal> UPDATE { get; set; }
-        public Nullable<decimal> DELETE { get; set; }
-        public Nullable<decimal> USUARIO_ID { get; set; }
+        public EMPRESA()
+        {
+            this.HUESPED = new HashSet<HUESPED>();
+        }
+    
+        public string RUT { get; set; }
+        public string RAZON_SOCIAL { get; set; }
+        public string GIRO { get; set; }
+        public string DIRECCION { get; set; }
+        public string TELEFONO { get; set; }
+        public decimal USUARIO_ID { get; set; }
     
         public virtual USUARIO USUARIO { get; set; }
+        public virtual ICollection<HUESPED> HUESPED { get; set; }
     }
 }
