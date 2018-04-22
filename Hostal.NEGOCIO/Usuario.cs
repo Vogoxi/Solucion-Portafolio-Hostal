@@ -105,7 +105,7 @@ namespace Hostal.NEGOCIO
             try
             {
                 Hostal.DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.First(us => us.ID == this.Id);
-                
+
                 Usuario user = new Usuario();
                 user.Id = (int)usuario.ID;
                 user.User = usuario.USUARIO1;

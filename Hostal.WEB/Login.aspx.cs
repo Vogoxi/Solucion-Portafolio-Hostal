@@ -11,7 +11,18 @@ namespace Hostal.WEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+  
+        }
 
+        protected void LoginPanel_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+            NEGOCIO.Usuario usuario = new NEGOCIO.Usuario();
+            usuario.Id = usuario.validarUsuario(LoginPanel.UserName, LoginPanel.Password);
+            if (usuario.Id != 0)
+            {
+                usuario = usuario.getUsuario();
+                Session["usuario"] = usuario;
+            }
         }
     }
 }
