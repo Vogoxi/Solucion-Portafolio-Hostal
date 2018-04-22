@@ -22,7 +22,7 @@ namespace Hostal.WEB
             {
                 usuario = usuario.getUsuario();
                 Session["usuario"] = usuario;
-                
+                Response.Redirect("Index.aspx");
             }
         }
     }
