@@ -32,7 +32,7 @@
                                                         </tr>                                                    
                                                         <tr>
                                                             <td>
-                                                                <asp:TextBox ID="UserName" placeholder="Usuario" class="form-control" runat="server" Width="100%" Height="40%" required></asp:TextBox>                                                            
+                                                                <asp:TextBox ID="UserName" placeholder="Usuario" class="form-control" runat="server" Width="100%" Height="20%" required></asp:TextBox>                                                            
                                                             </td>
                                                         </tr>
                                                         <tr>

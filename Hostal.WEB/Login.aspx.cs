@@ -22,6 +22,7 @@ namespace Hostal.WEB
             {
                 usuario = usuario.getUsuario();
                 Session["usuario"] = usuario;
+                
             }
         }
     }

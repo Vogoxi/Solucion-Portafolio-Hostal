@@ -3,6 +3,13 @@
 	margin-bottom: 20px;
 }
 
+body {
+  background: url(https://www.eurotel.cl/img/01.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
 .form-signin {
   max-width: 420px;
   padding: 30px 38px 66px;
@@ -31,7 +38,7 @@ input[type="text"] {
   margin-bottom: 0px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-    top: -2px;
+    top: -4px;
     left: 0px;
     height: 30px;
     width: 150px;
