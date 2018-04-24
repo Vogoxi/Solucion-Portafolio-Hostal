@@ -48,8 +48,11 @@
   <ItemGroup>
     <Compile Include="CommonBC.cs" />
     <Compile Include="Empleado.cs" />
+    <Compile Include="EmpleadoCollection.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="EmpresaCollection.cs" />
+    <Compile Include="Huesped.cs" />
+    <Compile Include="HuespedCollection.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="ProveedorCollection.cs" />
