@@ -51,6 +51,9 @@
     <Compile Include="EMPLEADO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
+    <Compile Include="EMPRESA.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
     <Compile Include="HostalbdEdm.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,10 +69,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HostalbdEdm.edmx</DependentUpon>
     </Compile>
+    <Compile Include="HUESPED.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
     <Compile Include="PRIVILEGIO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PROVEEDOR.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
     <Compile Include="USUARIO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
