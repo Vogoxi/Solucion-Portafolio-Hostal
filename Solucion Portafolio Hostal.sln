@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaHostal", "PruebaHosta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostal.DESKTOP", "Hostal.DESKTOP\Hostal.DESKTOP.csproj", "{2C735E71-576B-48D9-AFBA-26322D6753D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostal.WEB", "Hostal.WEB\Hostal.WEB.csproj", "{0011BC39-7685-45C7-A3BB-373B57907274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2C735E71-576B-48D9-AFBA-26322D6753D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C735E71-576B-48D9-AFBA-26322D6753D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C735E71-576B-48D9-AFBA-26322D6753D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0011BC39-7685-45C7-A3BB-373B57907274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0011BC39-7685-45C7-A3BB-373B57907274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0011BC39-7685-45C7-A3BB-373B57907274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0011BC39-7685-45C7-A3BB-373B57907274}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
