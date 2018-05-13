@@ -31,8 +31,5 @@ namespace Hostal.DALC
         public DbSet<PRIVILEGIO> PRIVILEGIO { get; set; }
         public DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public DbSet<USUARIO> USUARIO { get; set; }
-        public DbSet<EMPRESA> EMPRESA { get; set; }
-        public DbSet<HUESPED> HUESPED { get; set; }
-        public DbSet<PROVEEDOR> PROVEEDOR { get; set; }
     }
 }

@@ -180,20 +180,6 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="PRIVILEGIO" EntitySet="PRIVILEGIO" />
           </AssociationSet>
-<<<<<<< HEAD
-=======
-          <EntitySet Name="EMPRESA" EntityType="Model.EMPRESA" />
-          <EntitySet Name="HUESPED" EntityType="Model.HUESPED" />
-          <EntitySet Name="PROVEEDOR" EntityType="Model.PROVEEDOR" />
-          <AssociationSet Name="EMPRESA_FK" Association="Model.EMPRESA_FK">
-            <End Role="USUARIO" EntitySet="USUARIO" />
-            <End Role="EMPRESA" EntitySet="EMPRESA" />
-          </AssociationSet>
-          <AssociationSet Name="HUESPED_FK" Association="Model.HUESPED_FK">
-            <End Role="EMPRESA" EntitySet="EMPRESA" />
-            <End Role="HUESPED" EntitySet="HUESPED" />
-          </AssociationSet>
->>>>>>> master
           <AssociationSet Name="PROVEEDOR_FK" Association="Model.PROVEEDOR_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
@@ -267,10 +253,6 @@
           <NavigationProperty Name="EMPLEADO" Relationship="Model.EMPLEADO_FK" FromRole="USUARIO" ToRole="EMPLEADO" />
           <NavigationProperty Name="EMPRESA" Relationship="Model.EMPRESA_FK" FromRole="USUARIO" ToRole="EMPRESA" />
           <NavigationProperty Name="PRIVILEGIO" Relationship="Model.PRIVILEGIO_FK" FromRole="USUARIO" ToRole="PRIVILEGIO" />
-<<<<<<< HEAD
-=======
-          <NavigationProperty Name="EMPRESA" Relationship="Model.EMPRESA_FK" FromRole="USUARIO" ToRole="EMPRESA" />
->>>>>>> master
           <NavigationProperty Name="PROVEEDOR" Relationship="Model.PROVEEDOR_FK" FromRole="USUARIO" ToRole="PROVEEDOR" />
         </EntityType>
         <Association Name="EMPLEADO_FK">
@@ -321,67 +303,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-<<<<<<< HEAD
-=======
-        <EntityType Name="EMPRESA">
-          <Key>
-            <PropertyRef Name="RUT" />
-          </Key>
-          <Property Name="RUT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="GIRO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_ID" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <NavigationProperty Name="USUARIO" Relationship="Model.EMPRESA_FK" FromRole="EMPRESA" ToRole="USUARIO" />
-          <NavigationProperty Name="HUESPED" Relationship="Model.HUESPED_FK" FromRole="EMPRESA" ToRole="HUESPED" />
-        </EntityType>
-        <EntityType Name="HUESPED">
-          <Key>
-            <PropertyRef Name="RUT" />
-          </Key>
-          <Property Name="RUT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="APELLIDO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="EMPRESA_RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EMPRESA" Relationship="Model.HUESPED_FK" FromRole="HUESPED" ToRole="EMPRESA" />
-        </EntityType>
-        <EntityType Name="PROVEEDOR">
-          <Key>
-            <PropertyRef Name="RUT" />
-          </Key>
-          <Property Name="RUT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="RUBRO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_ID" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <NavigationProperty Name="USUARIO" Relationship="Model.PROVEEDOR_FK" FromRole="PROVEEDOR" ToRole="USUARIO" />
-        </EntityType>
-        <Association Name="EMPRESA_FK">
-          <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1" />
-          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EMPRESA">
-              <PropertyRef Name="USUARIO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="HUESPED_FK">
-          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
-          <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPRESA">
-              <PropertyRef Name="RUT" />
-            </Principal>
-            <Dependent Role="HUESPED">
-              <PropertyRef Name="EMPRESA_RUT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
->>>>>>> master
         <Association Name="PROVEEDOR_FK">
           <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1" />
           <End Type="Model.PROVEEDOR" Role="PROVEEDOR" Multiplicity="*" />
@@ -463,39 +384,6 @@
                 <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
                 <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EMPRESA">
-            <EntityTypeMapping TypeName="Model.EMPRESA">
-              <MappingFragment StoreEntitySet="EMPRESA">
-                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="GIRO" ColumnName="GIRO" />
-                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
-                <ScalarProperty Name="RUT" ColumnName="RUT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HUESPED">
-            <EntityTypeMapping TypeName="Model.HUESPED">
-              <MappingFragment StoreEntitySet="HUESPED">
-                <ScalarProperty Name="EMPRESA_RUT" ColumnName="EMPRESA_RUT" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="RUT" ColumnName="RUT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PROVEEDOR">
-            <EntityTypeMapping TypeName="Model.PROVEEDOR">
-              <MappingFragment StoreEntitySet="PROVEEDOR">
-                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
-                <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="RUT" ColumnName="RUT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

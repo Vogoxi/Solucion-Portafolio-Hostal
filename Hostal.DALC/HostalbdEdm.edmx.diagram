@@ -15,14 +15,6 @@
         <AssociationConnector Association="Model.EMPRESA_FK" />
         <AssociationConnector Association="Model.HUESPED_FK" />
         <AssociationConnector Association="Model.PRIVILEGIO_FK" />
-<<<<<<< HEAD
-=======
-        <EntityTypeShape EntityType="Model.EMPRESA" Width="1.5" PointX="3" PointY="7.25" />
-        <EntityTypeShape EntityType="Model.HUESPED" Width="1.5" PointX="5.25" PointY="7.5" />
-        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="3" PointY="10.625" />
-        <AssociationConnector Association="Model.EMPRESA_FK" />
-        <AssociationConnector Association="Model.HUESPED_FK" />
->>>>>>> master
         <AssociationConnector Association="Model.PROVEEDOR_FK" />
       </Diagram>
     </edmx:Diagrams>
