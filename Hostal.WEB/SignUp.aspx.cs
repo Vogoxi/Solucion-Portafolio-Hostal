@@ -13,5 +13,10 @@ namespace Hostal.WEB
         {
 
         }
+
+        protected void btnCrear_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
