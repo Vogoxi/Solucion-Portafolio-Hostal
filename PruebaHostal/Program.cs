@@ -11,11 +11,9 @@ namespace PruebaHostal
     {
         static void Main(string[] args)
         {
-
-            /*      agregar usuario
             Usuario user = new Usuario();
 
-            user.User = "germanPrueba2";
+            user.User = "german";
             user.TipoUsuario = "E";
             user.Contrasena = "germ.123";
 
@@ -26,8 +24,21 @@ namespace PruebaHostal
             {
                 Console.Write("usuario agregado");
             }
-            */
 
+            user = new Usuario();
+
+            user.Id = 3;
+            user.User = "germanx";
+            user.TipoUsuario = "E";
+            user.Contrasena = "1234";
+
+            user.actualizarUsuario();
+
+            Console.WriteLine("actualizado");
+
+            user = new Usuario();
+
+            user.Id = 3;
             /*       validar usuario
             Usuario user = new Usuario();
 
@@ -45,7 +56,7 @@ namespace PruebaHostal
                 Console.WriteLine("Usuario o contraseña incorrectos");
             }
             Console.ReadKey();
-            */
+            
 
             Usuario user = new Usuario();
             Console.WriteLine("Ingrese usuario al que desea cambiar contraseña");
@@ -68,6 +79,7 @@ namespace PruebaHostal
             {
                 Console.WriteLine("usuario no existe");
             }
+            */
             Console.ReadKey();
             
 
