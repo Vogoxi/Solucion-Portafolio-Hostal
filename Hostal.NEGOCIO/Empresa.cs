@@ -129,9 +129,9 @@ namespace Hostal.NEGOCIO
 
         public bool agregarEmpresa()
         {
+            DALC.EMPRESA emp = new DALC.EMPRESA();
             try
             {
-                DALC.EMPRESA emp = new DALC.EMPRESA();
                 emp.RUT = this.Rut;
                 emp.RAZON_SOCIAL = this.RazonSocial;
                 emp.GIRO = this.Giro;
@@ -145,6 +145,7 @@ namespace Hostal.NEGOCIO
             }
             catch (Exception ex)
             {
+                CommonBC.Modelo.EMPRESA.Remove(emp);
                 Logger.Log(ex.Message);
                 return false;
             }
