@@ -12,16 +12,19 @@ namespace Hostal.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class PRIVILEGIO
+    public partial class HABITACION
     {
-        public decimal ID { get; set; }
-        public string MENU { get; set; }
-        public Nullable<decimal> CREATE { get; set; }
-        public Nullable<decimal> READ { get; set; }
-        public Nullable<decimal> UPDATE { get; set; }
-        public Nullable<decimal> DELETE { get; set; }
-        public Nullable<decimal> USUARIO_ID { get; set; }
+        public HABITACION()
+        {
+            this.DETALLE_FACTURA = new HashSet<DETALLE_FACTURA>();
+        }
     
-        public virtual USUARIO USUARIO { get; set; }
+        public long NUMERO { get; set; }
+        public string TIPO { get; set; }
+        public Nullable<long> CAMAS { get; set; }
+        public Nullable<long> PRECIO { get; set; }
+        public Nullable<short> DISPONIBLE { get; set; }
+    
+        public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
     }
 }
