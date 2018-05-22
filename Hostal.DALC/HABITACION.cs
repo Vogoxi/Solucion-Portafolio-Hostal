@@ -23,7 +23,7 @@ namespace Hostal.DALC
         public string TIPO { get; set; }
         public Nullable<long> CAMAS { get; set; }
         public Nullable<long> PRECIO { get; set; }
-        public Nullable<short> DISPONIBLE { get; set; }
+        public Nullable<long> DISPONIBLE { get; set; }
     
         public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
     }

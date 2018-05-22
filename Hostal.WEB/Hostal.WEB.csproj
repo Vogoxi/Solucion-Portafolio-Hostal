@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Arriendo.aspx" />
     <Content Include="css\StyleSheet.css" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
@@ -116,6 +117,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arriendo.aspx.cs">
+      <DependentUpon>Arriendo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Arriendo.aspx.designer.cs">
+      <DependentUpon>Arriendo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
