@@ -82,9 +82,10 @@ namespace PruebaHostal
             */
             Usuario user = new Usuario();
             user.Id = 5;
-            user = user.getUsuario();
 
-            user.borrarUsuario();
+            Empresa empresa = new Empresa();
+            empresa = empresa.getEmpresaByUserId(user);
+
             Console.ReadKey();
             
 

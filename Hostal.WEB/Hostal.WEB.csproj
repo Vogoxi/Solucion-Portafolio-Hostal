@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarHuesped.aspx" />
     <Content Include="Arriendo.aspx" />
     <Content Include="css\StyleSheet.css" />
     <Content Include="Index.aspx" />
@@ -114,9 +115,18 @@
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="SignUp.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarHuesped.aspx.cs">
+      <DependentUpon>AgregarHuesped.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarHuesped.aspx.designer.cs">
+      <DependentUpon>AgregarHuesped.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Arriendo.aspx.cs">
       <DependentUpon>Arriendo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -127,6 +127,29 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public Empresa getEmpresaByUserId(Usuario usuario)
+        {
+            try
+            {
+                Hostal.DALC.EMPRESA empresa = CommonBC.Modelo.EMPRESA.FirstOrDefault(us => us.USUARIO_ID == usuario.Id);
+
+                Empresa emp = new Empresa();
+                emp.Rut = empresa.RUT;
+                emp.RazonSocial = empresa.RAZON_SOCIAL;
+                emp.Giro = empresa.GIRO;
+                emp.Direccion = empresa.DIRECCION;
+                emp.Telefono = empresa.TELEFONO;
+                emp.UsuarioId = (int)empresa.USUARIO_ID;
+                return emp;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return null;
+            }
+        }
+
         public bool agregarEmpresa()
         {
             DALC.EMPRESA emp = new DALC.EMPRESA();
