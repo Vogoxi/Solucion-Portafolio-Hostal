@@ -80,12 +80,16 @@ namespace PruebaHostal
                 Console.WriteLine("usuario no existe");
             }
             */
-            Usuario user = new Usuario();
-            user.Id = 5;
+            //Usuario user = new Usuario();
+            //user.Id = 5;
 
-            Empresa empresa = new Empresa();
-            empresa = empresa.getEmpresaByUserId(user);
+            //Empresa empresa = new Empresa();
+            //empresa = empresa.getEmpresaByUserId(user);
 
+            HuespedCollection huespedes = new HuespedCollection();
+            List<Huesped> lista = new List<Huesped>();
+            lista = huespedes.ReadAll();
+            
             Console.ReadKey();
             
 

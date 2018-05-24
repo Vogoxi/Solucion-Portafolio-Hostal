@@ -11,7 +11,15 @@ namespace Hostal.WEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            NEGOCIO.HuespedCollection huespedes = new NEGOCIO.HuespedCollection();
+            List<NEGOCIO.Huesped> lista = huespedes.ReadAll();
+            foreach (NEGOCIO.Huesped huesped in lista)
+            {
+                ddlHuespedes.DataSource = huesped;
+                ddlHuespedes.DataTextField = huesped.Nombre +" "+ huesped.Apellido;
+                ddlHuespedes.DataValueField = huesped.Rut;
+                ddlHuespedes.DataBind();
+            } 
         }
     }
 }
