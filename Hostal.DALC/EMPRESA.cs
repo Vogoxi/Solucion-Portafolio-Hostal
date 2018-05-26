@@ -16,6 +16,7 @@ namespace Hostal.DALC
     {
         public EMPRESA()
         {
+            this.FACTURA = new HashSet<FACTURA>();
             this.HUESPED = new HashSet<HUESPED>();
         }
     
@@ -27,6 +28,7 @@ namespace Hostal.DALC
         public decimal USUARIO_ID { get; set; }
     
         public virtual USUARIO USUARIO { get; set; }
+        public virtual ICollection<FACTURA> FACTURA { get; set; }
         public virtual ICollection<HUESPED> HUESPED { get; set; }
     }
 }

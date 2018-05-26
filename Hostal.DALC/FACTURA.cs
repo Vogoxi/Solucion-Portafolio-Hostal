@@ -12,18 +12,17 @@ namespace Hostal.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class HUESPED
+    public partial class FACTURA
     {
-        public HUESPED()
+        public FACTURA()
         {
             this.DETALLE_FACTURA = new HashSet<DETALLE_FACTURA>();
         }
     
-        public string RUT { get; set; }
-        public string NOMBRE { get; set; }
-        public string APELLIDO { get; set; }
-        public string TELEFONO { get; set; }
-        public string EMPRESA_RUT { get; set; }
+        public long ID { get; set; }
+        public string TOTAL { get; set; }
+        public string ID_EMPRESA { get; set; }
+        public Nullable<System.DateTime> FECHA_FACTURACION { get; set; }
     
         public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
         public virtual EMPRESA EMPRESA { get; set; }
