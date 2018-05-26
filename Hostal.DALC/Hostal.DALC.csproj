@@ -48,10 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DETALLE_FACTURA.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
     <Compile Include="EMPLEADO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPRESA.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACTURA.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HABITACION.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
     <Compile Include="HostalbdEdm.Context.cs">
@@ -70,9 +79,6 @@
       <DependentUpon>HostalbdEdm.edmx</DependentUpon>
     </Compile>
     <Compile Include="HUESPED.cs">
-      <DependentUpon>HostalbdEdm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PRIVILEGIO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

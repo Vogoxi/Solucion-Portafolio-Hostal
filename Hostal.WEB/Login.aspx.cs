@@ -22,6 +22,8 @@ namespace Hostal.WEB
             {
                 usuario = usuario.getUsuario();
                 Session["usuario"] = usuario;
+                NEGOCIO.Empresa empresa = new NEGOCIO.Empresa();
+                Session["empresa"] = empresa.getEmpresaByUserId(usuario);
                 Response.Redirect("Index.aspx");
             }
         }
