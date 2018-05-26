@@ -127,11 +127,34 @@ namespace Hostal.NEGOCIO
             }
         }
 
-        public bool agregarEmpresa()
+        public Empresa getEmpresaByUserId(Usuario usuario)
         {
             try
             {
-                DALC.EMPRESA emp = new DALC.EMPRESA();
+                Hostal.DALC.EMPRESA empresa = CommonBC.Modelo.EMPRESA.FirstOrDefault(us => us.USUARIO_ID == usuario.Id);
+
+                Empresa emp = new Empresa();
+                emp.Rut = empresa.RUT;
+                emp.RazonSocial = empresa.RAZON_SOCIAL;
+                emp.Giro = empresa.GIRO;
+                emp.Direccion = empresa.DIRECCION;
+                emp.Telefono = empresa.TELEFONO;
+                emp.UsuarioId = (int)empresa.USUARIO_ID;
+                return emp;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return null;
+            }
+        }
+
+        public bool agregarEmpresa()
+        {
+            DALC.EMPRESA emp = new DALC.EMPRESA();
+            try
+            {
                 emp.RUT = this.Rut;
                 emp.RAZON_SOCIAL = this.RazonSocial;
                 emp.GIRO = this.Giro;
@@ -145,6 +168,7 @@ namespace Hostal.NEGOCIO
             }
             catch (Exception ex)
             {
+                CommonBC.Modelo.EMPRESA.Remove(emp);
                 Logger.Log(ex.Message);
                 return false;
             }

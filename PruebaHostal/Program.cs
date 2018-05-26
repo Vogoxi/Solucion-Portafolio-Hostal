@@ -11,34 +11,34 @@ namespace PruebaHostal
     {
         static void Main(string[] args)
         {
-            Usuario user = new Usuario();
+            //Usuario user = new Usuario();
 
-            user.User = "german";
-            user.TipoUsuario = "E";
-            user.Contrasena = "germ.123";
+            //user.User = "german";
+            //user.TipoUsuario = "E";
+            //user.Contrasena = "germ.123";
 
-            if (!user.agregarUsuario(user.User))
-            {
-                Console.Write("usuario ya existe");
-            }else
-            {
-                Console.Write("usuario agregado");
-            }
+            //if (!user.agregarUsuario(user.User))
+            //{
+            //    Console.Write("usuario ya existe");
+            //}else
+            //{
+            //    Console.Write("usuario agregado");
+            //}
 
-            user = new Usuario();
+            //user = new Usuario();
 
-            user.Id = 3;
-            user.User = "germanx";
-            user.TipoUsuario = "E";
-            user.Contrasena = "1234";
+            //user.Id = 3;
+            //user.User = "germanx";
+            //user.TipoUsuario = "E";
+            //user.Contrasena = "1234";
 
-            user.actualizarUsuario();
+            //user.actualizarUsuario();
 
-            Console.WriteLine("actualizado");
+            //Console.WriteLine("actualizado");
 
-            user = new Usuario();
+            //user = new Usuario();
 
-            user.Id = 3;
+            //user.Id = 3;
             /*       validar usuario
             Usuario user = new Usuario();
 
@@ -80,6 +80,16 @@ namespace PruebaHostal
                 Console.WriteLine("usuario no existe");
             }
             */
+            //Usuario user = new Usuario();
+            //user.Id = 5;
+
+            //Empresa empresa = new Empresa();
+            //empresa = empresa.getEmpresaByUserId(user);
+
+            HuespedCollection huespedes = new HuespedCollection();
+            List<Huesped> lista = new List<Huesped>();
+            lista = huespedes.ReadAll();
+            
             Console.ReadKey();
             
 
