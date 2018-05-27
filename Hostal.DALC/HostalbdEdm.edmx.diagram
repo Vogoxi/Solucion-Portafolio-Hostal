@@ -8,19 +8,19 @@
         <EntityTypeShape EntityType="Model.DETALLE_FACTURA" Width="1.5" PointX="7.5" PointY="8.375" />
         <EntityTypeShape EntityType="Model.EMPLEADO" Width="1.5" PointX="3" PointY="4.375" />
         <EntityTypeShape EntityType="Model.EMPRESA" Width="1.5" PointX="3" PointY="8.375" />
-        <EntityTypeShape EntityType="Model.FACTURA" Width="1.5" PointX="5.25" PointY="10.25" />
         <EntityTypeShape EntityType="Model.HUESPED" Width="1.5" PointX="5.25" PointY="7.125" />
         <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="3" PointY="1.625" />
         <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="0.75" PointY="5.875" />
         <AssociationConnector Association="Model.DETALLE_FACTURA_FK1" />
-        <AssociationConnector Association="Model.DETALLE_FACTURA_FK2" />
         <AssociationConnector Association="Model.EMPLEADO_FK" />
         <AssociationConnector Association="Model.EMPRESA_FK" />
-        <AssociationConnector Association="Model.FACTURA_FK" />
         <AssociationConnector Association="Model.HUESPED_FK" />
         <AssociationConnector Association="Model.PROVEEDOR_FK" />
         <EntityTypeShape EntityType="Model.HABITACION" Width="1.5" PointX="6.375" PointY="4.5" />
         <AssociationConnector Association="Model.DETALLE_FACTURA_FK" />
+        <EntityTypeShape EntityType="Model.FACTURA" Width="1.5" PointX="5.25" PointY="10.625" />
+        <AssociationConnector Association="Model.DETALLE_FACTURA_FK2" />
+        <AssociationConnector Association="Model.FACTURA_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

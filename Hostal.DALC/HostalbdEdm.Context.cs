@@ -28,10 +28,10 @@ namespace Hostal.DALC
         public DbSet<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
         public DbSet<EMPLEADO> EMPLEADO { get; set; }
         public DbSet<EMPRESA> EMPRESA { get; set; }
-        public DbSet<FACTURA> FACTURA { get; set; }
         public DbSet<HUESPED> HUESPED { get; set; }
         public DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public DbSet<USUARIO> USUARIO { get; set; }
         public DbSet<HABITACION> HABITACION { get; set; }
+        public DbSet<FACTURA> FACTURA { get; set; }
     }
 }

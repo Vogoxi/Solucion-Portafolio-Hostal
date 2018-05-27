@@ -137,16 +137,21 @@ namespace Hostal.NEGOCIO
             {
                 habit = CommonBC.Modelo.HABITACION.FirstOrDefault(r => r.NUMERO == this.Numero);
 
-                Habitacion hab = new Habitacion();
+                if (habit != null)
+                {
+                    Habitacion hab = new Habitacion();
 
-                hab.Numero = (int)habit.NUMERO;
-                hab.Precio = (int)habit.PRECIO;
-                hab.Camas = (int)habit.CAMAS;
-                hab.Mantencion = (int)habit.MANTENCION;
-                hab.Tipo = habit.TIPO;
+                    hab.Numero = (int)habit.NUMERO;
+                    hab.Precio = (int)habit.PRECIO;
+                    hab.Camas = (int)habit.CAMAS;
+                    hab.Mantencion = (int)habit.MANTENCION;
+                    hab.Tipo = habit.TIPO;
 
-                return hab;
-
+                    return hab;
+                }else
+                {
+                    return null;
+                }
             }
             catch (Exception ex)
             {

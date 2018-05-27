@@ -47,11 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonBC.cs" />
+    <Compile Include="DetalleFactura.cs" />
+    <Compile Include="DetalleFacturaCollection.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoCollection.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="EmpresaCollection.cs" />
     <Compile Include="Factura.cs" />
+    <Compile Include="FacturaCollection.cs" />
     <Compile Include="Habitacion.cs" />
     <Compile Include="HabitacionCollection.cs" />
     <Compile Include="Huesped.cs" />
