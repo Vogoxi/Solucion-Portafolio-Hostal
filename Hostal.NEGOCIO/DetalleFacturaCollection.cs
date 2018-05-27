@@ -18,7 +18,7 @@ namespace Hostal.NEGOCIO
             (List<DALC.DETALLE_FACTURA> DetalleFacturaDALC)
         {
             List<NEGOCIO.DetalleFactura> Detalles =
-                new List<NEGOCIO.DetalleFactura();
+                new List<NEGOCIO.DetalleFactura>();
 
             foreach (DALC.DETALLE_FACTURA item in DetalleFacturaDALC)
             {
