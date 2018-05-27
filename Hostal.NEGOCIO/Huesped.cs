@@ -10,6 +10,14 @@ namespace Hostal.NEGOCIO
     {
         private string _rut,_nombre,_apellido,_telefono,_EmpresaRut;
 
+        public string NomApe
+        {
+            get
+            {
+                return Nombre + " " + Apellido;
+            }
+        }
+
         public string Apellido
         {
             get

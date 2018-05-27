@@ -11,15 +11,36 @@ namespace Hostal.WEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            NEGOCIO.HuespedCollection huespedes = new NEGOCIO.HuespedCollection();
-            List<NEGOCIO.Huesped> lista = huespedes.ReadAll();
-            foreach (NEGOCIO.Huesped huesped in lista)
+
+            if (!IsPostBack)
             {
-                ddlHuespedes.DataSource = huesped;
-                ddlHuespedes.DataTextField = huesped.Nombre +" "+ huesped.Apellido;
-                ddlHuespedes.DataValueField = huesped.Rut;
-                ddlHuespedes.DataBind();
-            } 
+                CargarHuesped();
+            }
+
+        }
+
+
+        private void CargarHuesped()
+        {
+            NEGOCIO.HuespedCollection hue = new NEGOCIO.HuespedCollection();
+            List<NEGOCIO.Huesped> listaHue = new List<NEGOCIO.Huesped>();
+            NEGOCIO.Huesped huesped = new NEGOCIO.Huesped();
+            huesped.Rut = "";
+            huesped.Nombre = "Seleccione Huesped";
+            listaHue.Add(huesped);
+            foreach (NEGOCIO.Huesped item in hue.ReadAll())
+            {
+                huesped = new NEGOCIO.Huesped();
+                huesped.Rut = item.Rut;
+                huesped.Nombre = item.Nombre;
+                huesped.Apellido = item.Apellido;
+                listaHue.Add(huesped);
+            }
+
+            ddlHuespedes.DataSource = listaHue;
+            ddlHuespedes.DataTextField = "NomApe";
+            ddlHuespedes.DataValueField = "Rut";
+            ddlHuespedes.DataBind();
         }
     }
 }

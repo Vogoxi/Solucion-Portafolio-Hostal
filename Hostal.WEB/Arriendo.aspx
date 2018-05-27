@@ -6,6 +6,9 @@
         <asp:Panel ID="Panel2" runat="server">
             <asp:DropDownList ID="ddlHuespedes" runat="server">
             </asp:DropDownList>
+            <br />
+            <br />
+            <br />
         </asp:Panel>
     </asp:Panel>
 </asp:Content>

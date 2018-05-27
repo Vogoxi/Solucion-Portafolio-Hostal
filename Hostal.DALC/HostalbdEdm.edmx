@@ -41,9 +41,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="TOTAL" Type="varchar2" MaxLength="20" />
           <Property Name="ID_EMPRESA" Type="varchar2" MaxLength="20" />
           <Property Name="FECHA_FACTURACION" Type="date" />
+          <Property Name="TOTAL" Type="number" Precision="11" Scale="0" />
         </EntityType>
         <EntityType Name="HABITACION">
           <Key>
@@ -53,6 +53,7 @@
           <Property Name="TIPO" Type="varchar2" MaxLength="20" />
           <Property Name="CAMAS" Type="number" Precision="11" Scale="0" />
           <Property Name="PRECIO" Type="number" Precision="11" Scale="0" />
+          <Property Name="MANTENCION" Type="number" Precision="11" Scale="0" />
         </EntityType>
         <EntityType Name="HUESPED">
           <Key>
@@ -228,21 +229,11 @@
           <EntitySet Name="DETALLE_FACTURA" EntityType="Model.DETALLE_FACTURA" />
           <EntitySet Name="EMPLEADO" EntityType="Model.EMPLEADO" />
           <EntitySet Name="EMPRESA" EntityType="Model.EMPRESA" />
-          <EntitySet Name="FACTURA" EntityType="Model.FACTURA" />
-          <EntitySet Name="HABITACION" EntityType="Model.HABITACION" />
           <EntitySet Name="HUESPED" EntityType="Model.HUESPED" />
           <EntitySet Name="PROVEEDOR" EntityType="Model.PROVEEDOR" />
           <EntitySet Name="USUARIO" EntityType="Model.USUARIO" />
-          <AssociationSet Name="DETALLE_FACTURA_FK" Association="Model.DETALLE_FACTURA_FK">
-            <End Role="HABITACION" EntitySet="HABITACION" />
-            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
-          </AssociationSet>
           <AssociationSet Name="DETALLE_FACTURA_FK1" Association="Model.DETALLE_FACTURA_FK1">
             <End Role="HUESPED" EntitySet="HUESPED" />
-            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
-          </AssociationSet>
-          <AssociationSet Name="DETALLE_FACTURA_FK2" Association="Model.DETALLE_FACTURA_FK2">
-            <End Role="FACTURA" EntitySet="FACTURA" />
             <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
           </AssociationSet>
           <AssociationSet Name="EMPLEADO_FK" Association="Model.EMPLEADO_FK">
@@ -253,10 +244,6 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="EMPRESA" EntitySet="EMPRESA" />
           </AssociationSet>
-          <AssociationSet Name="FACTURA_FK" Association="Model.FACTURA_FK">
-            <End Role="EMPRESA" EntitySet="EMPRESA" />
-            <End Role="FACTURA" EntitySet="FACTURA" />
-          </AssociationSet>
           <AssociationSet Name="HUESPED_FK" Association="Model.HUESPED_FK">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="HUESPED" EntitySet="HUESPED" />
@@ -264,6 +251,20 @@
           <AssociationSet Name="PROVEEDOR_FK" Association="Model.PROVEEDOR_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+          </AssociationSet>
+          <EntitySet Name="HABITACION" EntityType="Model.HABITACION" />
+          <AssociationSet Name="DETALLE_FACTURA_FK" Association="Model.DETALLE_FACTURA_FK">
+            <End Role="HABITACION" EntitySet="HABITACION" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <EntitySet Name="FACTURA" EntityType="Model.FACTURA" />
+          <AssociationSet Name="DETALLE_FACTURA_FK2" Association="Model.DETALLE_FACTURA_FK2">
+            <End Role="FACTURA" EntitySet="FACTURA" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_FK" Association="Model.FACTURA_FK">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="DETALLE_FACTURA">
@@ -276,8 +277,8 @@
           <Property Name="HABITACION_ID" Type="Int64" />
           <Property Name="FECHA_INGRESO" Type="DateTime" />
           <Property Name="FECHA_SALIDA" Type="DateTime" />
-          <NavigationProperty Name="HABITACION" Relationship="Model.DETALLE_FACTURA_FK" FromRole="DETALLE_FACTURA" ToRole="HABITACION" />
           <NavigationProperty Name="HUESPED" Relationship="Model.DETALLE_FACTURA_FK1" FromRole="DETALLE_FACTURA" ToRole="HUESPED" />
+          <NavigationProperty Name="HABITACION" Relationship="Model.DETALLE_FACTURA_FK" FromRole="DETALLE_FACTURA" ToRole="HABITACION" />
           <NavigationProperty Name="FACTURA" Relationship="Model.DETALLE_FACTURA_FK2" FromRole="DETALLE_FACTURA" ToRole="FACTURA" />
         </EntityType>
         <EntityType Name="EMPLEADO">
@@ -301,29 +302,8 @@
           <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="USUARIO_ID" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
           <NavigationProperty Name="USUARIO" Relationship="Model.EMPRESA_FK" FromRole="EMPRESA" ToRole="USUARIO" />
-          <NavigationProperty Name="FACTURA" Relationship="Model.FACTURA_FK" FromRole="EMPRESA" ToRole="FACTURA" />
           <NavigationProperty Name="HUESPED" Relationship="Model.HUESPED_FK" FromRole="EMPRESA" ToRole="HUESPED" />
-        </EntityType>
-        <EntityType Name="FACTURA">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="TOTAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ID_EMPRESA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="FECHA_FACTURACION" Type="DateTime" />
-          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.DETALLE_FACTURA_FK2" FromRole="FACTURA" ToRole="DETALLE_FACTURA" />
-          <NavigationProperty Name="EMPRESA" Relationship="Model.FACTURA_FK" FromRole="FACTURA" ToRole="EMPRESA" />
-        </EntityType>
-        <EntityType Name="HABITACION">
-          <Key>
-            <PropertyRef Name="NUMERO" />
-          </Key>
-          <Property Name="NUMERO" Type="Int64" Nullable="false" />
-          <Property Name="TIPO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CAMAS" Type="Int64" />
-          <Property Name="PRECIO" Type="Int64" />
-          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.DETALLE_FACTURA_FK" FromRole="HABITACION" ToRole="DETALLE_FACTURA" />
+          <NavigationProperty Name="FACTURA" Relationship="Model.FACTURA_FK" FromRole="EMPRESA" ToRole="FACTURA" />
         </EntityType>
         <EntityType Name="HUESPED">
           <Key>
@@ -359,18 +339,6 @@
           <NavigationProperty Name="EMPRESA" Relationship="Model.EMPRESA_FK" FromRole="USUARIO" ToRole="EMPRESA" />
           <NavigationProperty Name="PROVEEDOR" Relationship="Model.PROVEEDOR_FK" FromRole="USUARIO" ToRole="PROVEEDOR" />
         </EntityType>
-        <Association Name="DETALLE_FACTURA_FK">
-          <End Type="Model.HABITACION" Role="HABITACION" Multiplicity="0..1" />
-          <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HABITACION">
-              <PropertyRef Name="NUMERO" />
-            </Principal>
-            <Dependent Role="DETALLE_FACTURA">
-              <PropertyRef Name="HABITACION_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="DETALLE_FACTURA_FK1">
           <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="0..1" />
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
@@ -380,18 +348,6 @@
             </Principal>
             <Dependent Role="DETALLE_FACTURA">
               <PropertyRef Name="HUESPED_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DETALLE_FACTURA_FK2">
-          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="0..1" />
-          <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FACTURA">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="DETALLE_FACTURA">
-              <PropertyRef Name="FACTURA_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -419,18 +375,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FACTURA_FK">
-          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
-          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPRESA">
-              <PropertyRef Name="RUT" />
-            </Principal>
-            <Dependent Role="FACTURA">
-              <PropertyRef Name="ID_EMPRESA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="HUESPED_FK">
           <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
           <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="*" />
@@ -452,6 +396,64 @@
             </Principal>
             <Dependent Role="PROVEEDOR">
               <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HABITACION">
+          <Key>
+            <PropertyRef Name="NUMERO" />
+          </Key>
+          <Property Name="NUMERO" Type="Int64" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CAMAS" Type="Int64" />
+          <Property Name="PRECIO" Type="Int64" />
+          <Property Name="MANTENCION" Type="Int64" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.DETALLE_FACTURA_FK" FromRole="HABITACION" ToRole="DETALLE_FACTURA" />
+        </EntityType>
+        <Association Name="DETALLE_FACTURA_FK">
+          <End Type="Model.HABITACION" Role="HABITACION" Multiplicity="0..1" />
+          <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HABITACION">
+              <PropertyRef Name="NUMERO" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="HABITACION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ID_EMPRESA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_FACTURACION" Type="DateTime" />
+          <Property Name="TOTAL" Type="Int64" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.DETALLE_FACTURA_FK2" FromRole="FACTURA" ToRole="DETALLE_FACTURA" />
+          <NavigationProperty Name="EMPRESA" Relationship="Model.FACTURA_FK" FromRole="FACTURA" ToRole="EMPRESA" />
+        </EntityType>
+        <Association Name="DETALLE_FACTURA_FK2">
+          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="0..1" />
+          <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="FACTURA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_FK">
+          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
+          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="RUT" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_EMPRESA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -495,26 +497,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FACTURA">
-            <EntityTypeMapping TypeName="Model.FACTURA">
-              <MappingFragment StoreEntitySet="FACTURA">
-                <ScalarProperty Name="FECHA_FACTURACION" ColumnName="FECHA_FACTURACION" />
-                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
-                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HABITACION">
-            <EntityTypeMapping TypeName="Model.HABITACION">
-              <MappingFragment StoreEntitySet="HABITACION">
-                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
-                <ScalarProperty Name="CAMAS" ColumnName="CAMAS" />
-                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="HUESPED">
             <EntityTypeMapping TypeName="Model.HUESPED">
               <MappingFragment StoreEntitySet="HUESPED">
@@ -542,6 +524,27 @@
                 <ScalarProperty Name="TIPO_USUARIO" ColumnName="TIPO_USUARIO" />
                 <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
                 <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HABITACION">
+            <EntityTypeMapping TypeName="Model.HABITACION">
+              <MappingFragment StoreEntitySet="HABITACION">
+                <ScalarProperty Name="MANTENCION" ColumnName="MANTENCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="CAMAS" ColumnName="CAMAS" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACTURA">
+            <EntityTypeMapping TypeName="Model.FACTURA">
+              <MappingFragment StoreEntitySet="FACTURA">
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="FECHA_FACTURACION" ColumnName="FECHA_FACTURACION" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
