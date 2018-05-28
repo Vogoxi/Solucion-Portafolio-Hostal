@@ -13,5 +13,12 @@ namespace Hostal.WEB
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session["empresa"] = null;
+            Session["usuario"] = null;
+            Response.Redirect("Login.aspx");
+        }
     }
 }

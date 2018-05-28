@@ -10,69 +10,69 @@
 namespace Hostal.WEB {
     
     
-    public partial class MasterPage {
+    public partial class Perfil {
         
         /// <summary>
-        /// head control.
+        /// txtRut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.TextBox txtRut;
         
         /// <summary>
-        /// form1 control.
+        /// txtRazonSocial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtRazonSocial;
         
         /// <summary>
-        /// Menu1 control.
+        /// txtGiro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
+        protected global::System.Web.UI.WebControls.TextBox txtGiro;
         
         /// <summary>
-        /// SiteMapDataSource1 control.
+        /// txtDireccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource1;
+        protected global::System.Web.UI.WebControls.TextBox txtDireccion;
         
         /// <summary>
-        /// Button1 control.
+        /// txtTelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// lblStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
         
         /// <summary>
-        /// Panel1 control.
+        /// btnCrear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Button btnCrear;
     }
 }

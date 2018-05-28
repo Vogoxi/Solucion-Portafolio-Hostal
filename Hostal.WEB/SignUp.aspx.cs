@@ -20,7 +20,7 @@ namespace Hostal.WEB
         public static string VerificarUser(string user)
         {
             NEGOCIO.Usuario usuario = new NEGOCIO.Usuario();
-            if (usuario.getUsuarioIdByName(user) != 0)
+            if (usuario.getUsuarioIdByName(user.ToLower()) != 0)
             {
                 return "1";
             }else
@@ -63,7 +63,7 @@ namespace Hostal.WEB
                 empresa.Telefono = txtTelefono.Text;
                 empresa.Direccion = txtDireccion.Text;
                 empresa.UsuarioId = usuario.Id;
-
+                
                 if (empresa.agregarEmpresa())
                 {
                     lblStatus.Text = "Empresa creada con exito";

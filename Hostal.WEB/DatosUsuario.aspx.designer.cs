@@ -10,69 +10,51 @@
 namespace Hostal.WEB {
     
     
-    public partial class MasterPage {
+    public partial class DatosUsuario {
         
         /// <summary>
-        /// head control.
+        /// txtUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
         
         /// <summary>
-        /// form1 control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// Menu1 control.
+        /// txtRepPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
+        protected global::System.Web.UI.WebControls.TextBox txtRepPassword;
         
         /// <summary>
-        /// SiteMapDataSource1 control.
+        /// lblStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource1;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
         
         /// <summary>
-        /// Button1 control.
+        /// btnCrear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-        
-        /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Button btnCrear;
     }
 }
