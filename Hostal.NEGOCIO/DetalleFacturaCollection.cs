@@ -42,5 +42,21 @@ namespace Hostal.NEGOCIO
             var reconversions = CommonBC.Modelo.DETALLE_FACTURA;
             return GenerarListado(reconversions.ToList());
         }
+
+
+        public bool Consulta(DateTime llegada, DateTime salida)
+        {
+            List<DALC.DETALLE_FACTURA> detalles = new List<DALC.DETALLE_FACTURA>();
+
+            detalles = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.FECHA_SALIDA > llegada 
+            /*&& salida < r.FECHA_INGRESO
+                                                               && (llegada<r.FECHA_INGRESO || llegada> r.FECHA_INGRESO)
+                                                               && (salida <r.FECHA_INGRESO || salida > r.FECHA_SALIDA)
+                                                               */
+                                                               ).ToList();
+
+
+            return false;
+        }
     }
 }

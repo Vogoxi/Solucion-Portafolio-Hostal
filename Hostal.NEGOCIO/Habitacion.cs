@@ -8,24 +8,24 @@ namespace Hostal.NEGOCIO
 {
     public class Habitacion
     {
-        private int _numero, _camas, _precio, _mantencion;
-        private string _tipo;
+        private int _numero, _precio, _mantencion;
+        private string _tipo, _tipoCama;
 
         public Habitacion()
         {
             this.Init();
         }
 
-        public int Camas
+        public string TipoCama
         {
             get
             {
-                return _camas;
+                return _tipoCama;
             }
 
             set
             {
-                _camas = value;
+                _tipoCama = value;
             }
         }
 
@@ -84,7 +84,7 @@ namespace Hostal.NEGOCIO
         private void Init()
         {
             Numero = 0;
-            Camas = 0;
+            _tipoCama = string.Empty;
             Precio = 0;
             Mantencion = 0;
             Tipo = string.Empty;
@@ -103,7 +103,7 @@ namespace Hostal.NEGOCIO
                 {
                     habit.NUMERO = this.Numero;
                     habit.PRECIO = this.Precio;
-                    habit.CAMAS = this.Camas;
+                    habit.TIPO_CAMA = this._tipoCama;
                     habit.MANTENCION = this.Mantencion;
                     habit.TIPO = this.Tipo;
 
@@ -143,7 +143,7 @@ namespace Hostal.NEGOCIO
 
                     hab.Numero = (int)habit.NUMERO;
                     hab.Precio = (int)habit.PRECIO;
-                    hab.Camas = (int)habit.CAMAS;
+                    hab.TipoCama = habit.TIPO_CAMA;
                     hab.Mantencion = (int)habit.MANTENCION;
                     hab.Tipo = habit.TIPO;
 
@@ -177,7 +177,7 @@ namespace Hostal.NEGOCIO
                 habit.NUMERO = this.Numero;
                 habit.MANTENCION = this.Mantencion;
                 habit.TIPO = this.Tipo;
-
+                habit.TIPO_CAMA = this.TipoCama;
                 CommonBC.Modelo.SaveChanges();
                 return true;
             }

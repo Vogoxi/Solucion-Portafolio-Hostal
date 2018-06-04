@@ -21,8 +21,8 @@ namespace Hostal.DALC
         public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
         public Nullable<System.DateTime> FECHA_SALIDA { get; set; }
     
-        public virtual HUESPED HUESPED { get; set; }
         public virtual HABITACION HABITACION { get; set; }
+        public virtual HUESPED HUESPED { get; set; }
         public virtual FACTURA FACTURA { get; set; }
     }
 }
