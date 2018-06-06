@@ -79,7 +79,7 @@ namespace PruebaHostal
             {
                 Console.WriteLine("usuario no existe");
             }
-            */
+            
             //Usuario user = new Usuario();
             //user.Id = 5;
 
@@ -91,7 +91,15 @@ namespace PruebaHostal
             lista = huespedes.ReadAll();
             
             Console.ReadKey();
-            
+            */
+
+            HabitacionCollection hab = new HabitacionCollection();
+            DateTime ingreso = Convert.ToDateTime("01/06/2018");
+            DateTime salida = Convert.ToDateTime("15/06/2018");
+
+            var hola = hab.HabitacionesDisponibles(ingreso, salida);
+
+            var resultado = hola;
 
 
 

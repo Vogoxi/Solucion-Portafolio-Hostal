@@ -63,7 +63,7 @@ namespace Hostal.NEGOCIO
 
             foreach (var item in Habitaciones)
             {
-                var detalles = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.HABITACION_ID == item.NUMERO && (r.FECHA_INGRESO > ingreso && r.FECHA_INGRESO > r.FECHA_SALIDA) || (r.FECHA_SALIDA < ingreso && r.FECHA_SALIDA < salida)).ToList();
+                var detalles = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.HABITACION_ID == item.NUMERO && ((r.FECHA_INGRESO > ingreso && r.FECHA_INGRESO > salida) || (r.FECHA_SALIDA < ingreso && r.FECHA_SALIDA < salida))).ToList();
 
                 var detallescount = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.HABITACION_ID == item.NUMERO).ToList();
 

@@ -81,11 +81,17 @@
     <Compile Include="HUESPED.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
+    <Compile Include="PLATO.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
     <Compile Include="PRIVILEGIO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PROVEEDOR.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SERVICIO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
     <Compile Include="USUARIO.cs">

@@ -12,19 +12,12 @@ namespace Hostal.WEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DetalleFacturaCollection det = new DetalleFacturaCollection();
-
-            det.Consulta(DateTime.Today, Convert.ToDateTime("09-06-2018"));
-
-
+        
             if (!IsPostBack)
             {
                 DateTime fecha = DateTime.Today;
                 TxtFechaInicio.Value = DateTime.Today.ToString();
-                
-
                 CargarHuesped();
-                CreaTabla();
             }
 
         }
@@ -58,9 +51,9 @@ namespace Hostal.WEB
             ddlHuespedes.DataBind();
         }
 
-        private void CreaTabla()
+        private void CreaTabla(List<Habitacion> habitaciones)
         {
-            NEGOCIO.HabitacionCollection habitaciones = new NEGOCIO.HabitacionCollection();
+            
             string tabla = "<table class='table table-hover' id='Tabla'>";
             tabla = tabla + "<thead>";
             tabla = tabla + "<tr>";
@@ -73,7 +66,7 @@ namespace Hostal.WEB
             tabla = tabla + "</tr>";
             tabla = tabla + "</thead>";
             tabla = tabla + "<tbody>";
-            foreach (NEGOCIO.Habitacion item in habitaciones.ReadAll())
+            foreach (NEGOCIO.Habitacion item in habitaciones)
             {
                 tabla = tabla + "<tr>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.Numero + "</td>";
@@ -96,20 +89,11 @@ namespace Hostal.WEB
 
         protected void Consultar_Click(object sender, EventArgs e)
         {
-
-            DetalleFacturaCollection detalles = new DetalleFacturaCollection();
             HabitacionCollection habitacion = new HabitacionCollection();
+            DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
+            DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
 
-            foreach (var item in detalles.ReadAll())
-            {
-                DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
-                DateTime Salida = Convert.ToDateTime(TxtFechaFinal.Value);
-
-                if ( llegada > item.FechaIngreso && llegada > item.FechaIngreso )
-                {
-
-                }
-            }
+            CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida));
 
         }
     }
