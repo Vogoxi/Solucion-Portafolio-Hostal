@@ -53,5 +53,38 @@ namespace Hostal.NEGOCIO
             }
             
         }
+
+
+        public List<Habitacion> HabitacionesDisponibles(DateTime ingreso, DateTime salida)
+        {
+            var Habitaciones = CommonBC.Modelo.HABITACION.ToList();
+
+            List<Habitacion> Allhabitaciones = new List<Habitacion>();
+
+            foreach (var item in Habitaciones)
+            {
+                var detalles = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.HABITACION_ID == item.NUMERO && (r.FECHA_INGRESO > ingreso && r.FECHA_INGRESO > r.FECHA_SALIDA) || (r.FECHA_SALIDA < ingreso && r.FECHA_SALIDA < salida)).ToList();
+
+                var detallescount = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.HABITACION_ID == item.NUMERO).ToList();
+
+                if (detalles.Count() == detallescount.Count())
+                {
+                    Habitacion hab = new Habitacion();
+
+                    hab.Numero = (int)item.NUMERO;
+                    hab.Precio = (int)item.PRECIO;
+                    hab.Mantencion = (int)item.MANTENCION;
+                    hab.Tipo = item.TIPO;
+                    hab.TipoCama = item.TIPO_CAMA;
+
+                    Allhabitaciones.Add(hab);
+                }
+                
+            }
+
+            return Allhabitaciones;
+        }
+
+
     }
 }
