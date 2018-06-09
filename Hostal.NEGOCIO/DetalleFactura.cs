@@ -8,7 +8,7 @@ namespace Hostal.NEGOCIO
 {
     public class DetalleFactura
     {
-        private int _id, _idFactura, _idHabitacion;
+        private int _id, _idFactura, _idHabitacion, _idServicio;
         private DateTime _fechaIngreso, _fechaSalida;
         private string _idHuesped;
 
@@ -19,9 +19,10 @@ namespace Hostal.NEGOCIO
 
         private void Init()
         {
-            _id = 0;
-            _idFactura = 0;
-            _idHabitacion = 0;
+            Id1 = 0;
+            IdFactura1 = 0;
+            IdHabitacion1 = 0;
+            IdServicio = 0;
             _fechaIngreso = DateTime.Today;
             _fechaSalida = DateTime.Today;
             _idHuesped = string.Empty;
@@ -31,12 +32,12 @@ namespace Hostal.NEGOCIO
         {
             get
             {
-                return _id;
+                return Id1;
             }
 
             set
             {
-                _id = value;
+                Id1 = value;
             }
         }
 
@@ -44,12 +45,12 @@ namespace Hostal.NEGOCIO
         {
             get
             {
-                return _idFactura;
+                return IdFactura1;
             }
 
             set
             {
-                _idFactura = value;
+                IdFactura1 = value;
             }
         }
 
@@ -57,12 +58,12 @@ namespace Hostal.NEGOCIO
         {
             get
             {
-                return _idHabitacion;
+                return IdHabitacion1;
             }
 
             set
             {
-                _idHabitacion = value;
+                IdHabitacion1 = value;
             }
         }
 
@@ -105,6 +106,58 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public int Id1
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
+
+        public int IdFactura1
+        {
+            get
+            {
+                return _idFactura;
+            }
+
+            set
+            {
+                _idFactura = value;
+            }
+        }
+
+        public int IdHabitacion1
+        {
+            get
+            {
+                return _idHabitacion;
+            }
+
+            set
+            {
+                _idHabitacion = value;
+            }
+        }
+
+        public int IdServicio
+        {
+            get
+            {
+                return _idServicio;
+            }
+
+            set
+            {
+                _idServicio = value;
+            }
+        }
+
         public bool AgregarDetalleFactura()
         {
             DALC.DETALLE_FACTURA detFactura = new DALC.DETALLE_FACTURA();
@@ -115,6 +168,7 @@ namespace Hostal.NEGOCIO
                 detFactura.FACTURA_ID = this.IdFactura;
                 detFactura.HABITACION_ID = this.IdHabitacion;
                 detFactura.HUESPED_ID = this.IdHuesped;
+                detFactura.SERVICIO_ID = this.IdServicio;
                 detFactura.FECHA_INGRESO = this.FechaIngreso;
                 detFactura.FECHA_SALIDA = this.FechaSalida;
 
@@ -152,7 +206,8 @@ namespace Hostal.NEGOCIO
                     this.Id = (int)detFactura.ID;
                     this.IdFactura = (int)detFactura.FACTURA_ID;
                     this.IdHabitacion = (int)detFactura.HABITACION_ID;
-                    this.IdHuesped = this.IdHuesped;
+                    this.IdHuesped = detFactura.HUESPED_ID;
+                    this.IdServicio = (int)detFactura.SERVICIO_ID;
                     this.FechaIngreso = (DateTime)detFactura.FECHA_INGRESO;
                     this.FechaSalida = (DateTime)detFactura.FECHA_SALIDA;
 
@@ -188,6 +243,7 @@ namespace Hostal.NEGOCIO
                 detFactura.FACTURA_ID = this.IdFactura;
                 detFactura.HABITACION_ID = this.IdHabitacion;
                 detFactura.HUESPED_ID = this.IdHuesped;
+                detFactura.SERVICIO_ID = this.IdServicio;
                 detFactura.FECHA_INGRESO = this.FechaIngreso;
                 detFactura.FECHA_SALIDA = this.FechaSalida;
 

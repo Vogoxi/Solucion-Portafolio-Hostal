@@ -29,6 +29,7 @@ namespace Hostal.NEGOCIO
                 DetTemp.IdHuesped = item.HUESPED_ID;
                 DetTemp.FechaIngreso = (DateTime)item.FECHA_INGRESO;
                 DetTemp.FechaSalida = (DateTime)item.FECHA_SALIDA;
+                DetTemp.IdServicio = (int)item.SERVICIO_ID;
 
                 Detalles.Add(DetTemp);
 
