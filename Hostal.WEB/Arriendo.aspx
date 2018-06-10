@@ -63,7 +63,8 @@
                                         </div>
                                      
                                         <div class="hidden"><input type="hidden" id="IdHidden" runat="server" /></div>
-                                        <div class="hidden"><asp:Button ID="reservar" Visible ="false" runat="server" OnClick="Reservar_Click" /></div>
+                                         <input type="button"  id="reservar"  runat="server" OnClick="Reservar_Click"/>
+                                        
   
                                     </ContentTemplate>
                                         </asp:UpdatePanel>
