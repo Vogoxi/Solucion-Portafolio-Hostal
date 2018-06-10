@@ -64,6 +64,7 @@
     <Compile Include="PlatoCollection.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="ProveedorCollection.cs" />
+    <Compile Include="Reserva.cs" />
     <Compile Include="Servicio.cs" />
     <Compile Include="ServicioCollection.cs" />
     <Compile Include="Usuario.cs" />

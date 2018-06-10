@@ -45,6 +45,8 @@
                                         <asp:Button ID="Consultar" runat="server" Text="Consultar" class='btn' style='background-color: #4286f4; color: white;' OnClick="Consultar_Click"/>
 
                                     </div>
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                     <ContentTemplate>
 
                                         <br />
                                         <div class="form-group row">
@@ -63,7 +65,17 @@
                                         <div class="hidden"><input type="hidden" id="IdHidden" runat="server" /></div>
                                         <div class="hidden"><asp:Button ID="reservar" Visible ="false" runat="server" OnClick="Reservar_Click" /></div>
   
-                                    
+                                    </ContentTemplate>
+                                        </asp:UpdatePanel>
+
+                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                    <ContentTemplate>
+
+                                          <div class="table-responsive" id="tablaHtmlRes" runat="server">
+                                          </div>
+
+                                       </ContentTemplate>
+                                    </asp:UpdatePanel>
                                      
                                 </div>
                                 
