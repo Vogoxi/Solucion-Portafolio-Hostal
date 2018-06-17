@@ -7,17 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Hostal.WEB
 {
-    public partial class MasterPage : System.Web.UI.MasterPage
+    public partial class Pedido : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Response.Redirect("Login.aspx");
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Hostal.NEGOCIO
                 HabTemp.Numero = (int)item.NUMERO;
                 HabTemp.Precio = (int)item.PRECIO;
                 HabTemp.Mantencion = (int)item.MANTENCION;
-                HabTemp.Camas = (int)item.CAMAS;
+                HabTemp.Camas = item.TIPO_CAMA;
                 HabTemp.Tipo = item.TIPO;
 
                 Habitaciones.Add(HabTemp);

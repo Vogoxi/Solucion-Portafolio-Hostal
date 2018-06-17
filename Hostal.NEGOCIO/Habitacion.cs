@@ -8,15 +8,15 @@ namespace Hostal.NEGOCIO
 {
     public class Habitacion
     {
-        private int _numero, _camas, _precio, _mantencion;
-        private string _tipo;
+        private int _numero, _precio, _mantencion;
+        private string _tipo, _camas;
 
         public Habitacion()
         {
             this.Init();
         }
 
-        public int Camas
+        public string Camas
         {
             get
             {
@@ -84,7 +84,7 @@ namespace Hostal.NEGOCIO
         private void Init()
         {
             Numero = 0;
-            Camas = 0;
+            Camas = string.Empty;
             Precio = 0;
             Mantencion = 0;
             Tipo = string.Empty;
@@ -103,7 +103,7 @@ namespace Hostal.NEGOCIO
                 {
                     habit.NUMERO = this.Numero;
                     habit.PRECIO = this.Precio;
-                    habit.CAMAS = this.Camas;
+                    habit.TIPO_CAMA = this.Camas;
                     habit.MANTENCION = this.Mantencion;
                     habit.TIPO = this.Tipo;
 
@@ -143,7 +143,7 @@ namespace Hostal.NEGOCIO
 
                     hab.Numero = (int)habit.NUMERO;
                     hab.Precio = (int)habit.PRECIO;
-                    hab.Camas = (int)habit.CAMAS;
+                    hab.Camas = habit.TIPO_CAMA;
                     hab.Mantencion = (int)habit.MANTENCION;
                     hab.Tipo = habit.TIPO;
 

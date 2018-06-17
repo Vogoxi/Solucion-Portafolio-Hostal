@@ -51,6 +51,9 @@
     <Compile Include="DETALLE_FACTURA.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
+    <Compile Include="DETALLE_PEDIDO.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
     <Compile Include="EMPLEADO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
@@ -79,6 +82,9 @@
       <DependentUpon>HostalbdEdm.edmx</DependentUpon>
     </Compile>
     <Compile Include="HUESPED.cs">
+      <DependentUpon>HostalbdEdm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PEDIDO.cs">
       <DependentUpon>HostalbdEdm.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
