@@ -135,6 +135,8 @@ namespace Hostal.WEB
 
                     Session["Reserva"] = Reserva;
 
+                    GuardarComida(Reserva);
+
   
                     CargarHuesped();
 
@@ -150,22 +152,7 @@ namespace Hostal.WEB
                     
                     CreaTablaRes(Reserva);
 
-                    string script = @"$(document).ready(function () {
-                $('#Tabla').DataTable({
-                    ""fnDrawCallback"": function (oSettings) {
-                        $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
-                    },
-                    ""bLengthChange"": false
-                });
-                $('#TablaRes').DataTable({
-                    ""fnDrawCallback"": function (oSettings) {
-                        $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
-                    },
-                    ""bLengthChange"": false
-                });
-
-            });";
-
+              
                     
                     //ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
                     //ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "test", "tablaInit();", true);
@@ -202,7 +189,7 @@ namespace Hostal.WEB
                 tabla = tabla + "<th style='text-align: center;'>Nombre</th>";
                 tabla = tabla + "<th style='text-align: center;'>Fecha llegada</th>";
                 tabla = tabla + "<th style='text-align: center;'>Fecha salida</th>";
-                tabla = tabla + "<th style='text-align: center;'></th>";
+                tabla = tabla + "<th style='text-align: center;'>Servicio Comedor</th>";
                 tabla = tabla + "<th style='text-align: center;'>Opciones</th>";
                 tabla = tabla + "</tr>";
                 tabla = tabla + "</thead>";
@@ -232,11 +219,32 @@ namespace Hostal.WEB
                 tabla = tabla + "<td style='text-align: center;'>" + hues.NomApe + "</td>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.FechaInicio.ToShortDateString() + "</td>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.FechaTermino.ToShortDateString() + "</td>";
-                tabla = tabla + "<td style='text-align: center;'>" + "</td>";
+
+                ServicioCollection servicios = new ServicioCollection();
+                
+                tabla = tabla + "<td style='text-align: center;'> <select runat='server' name='Select" + item.Numero + "' id='Select" + item.Numero + "'>";
+                
+                tabla = tabla + "<option>Seleccione Servicio</option>";
+
+                foreach (var food in servicios.ReadAll())
+                {
+                    if(item.Servicio == food.Id)
+                    {
+                        tabla = tabla + "<option value='" + food.Id + "' selected>" + food.Nombre + "</option>";
+                        
+                    }else
+                    {
+                        tabla = tabla + "<option value='" + food.Id + "'>" + food.Nombre + "</option>";
+                    }
+                    
+                    
+                }
+                tabla = tabla +"</ select > ";
                 tabla = tabla + "<td style='text-align: center;'>" + "</td>";
 
+                
 
-                tabla = tabla + "</tr>";
+                 tabla = tabla + "</tr>";
             }
             tabla = tabla + "</tbody>";
             tabla = tabla + "</table>";
@@ -261,5 +269,45 @@ namespace Hostal.WEB
             CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida,Reserva));
 
         }
+
+        protected void GenerarFactura_Click(object sender, EventArgs e)
+        {
+            Reserva = new List<NEGOCIO.Reserva>();
+
+            if (Session["Reserva"] != null)
+            {
+                Reserva = (List<Reserva>)Session["Reserva"];
+            }
+
+            string control = "";
+
+            foreach (var item in Reserva)
+            {
+                control = Request.Form["Select" + item.Numero];
+            }
+
+
+
+        }
+
+        private void GuardarComida(List<Reserva> reserva)
+        {
+            int id = 0;
+             
+            foreach (var item in reserva)
+            {
+                if (Request.Form["Select"+item.Numero] != null)
+                {
+                    int.TryParse(Request.Form["Select" + item.Numero], out id);
+                    item.Servicio = id;
+                }else
+                {
+                    item.Servicio = 0;
+                }
+                
+            }
+        }
+
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hostal.NEGOCIO
 {
-    public class ServicioCollection
+    public class ServicioCollection : List<Servicio>
     {
         public ServicioCollection()
         {

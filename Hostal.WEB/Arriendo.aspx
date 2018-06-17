@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
 
-                                       
+                                         
 
                                     </ContentTemplate>
                                         </asp:UpdatePanel>
@@ -90,6 +90,9 @@
 
                                       </ContentTemplate>
                                     </asp:UpdatePanel>
+
+                                <asp:Button ID="BtnFactura"  runat="server" Text="Button" OnClick="GenerarFactura_Click"/>
+
                                 </div>
                                 
                                 </div>

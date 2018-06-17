@@ -9,11 +9,13 @@ namespace Hostal.NEGOCIO
     public class Reserva
     {
         private int _numero;
+        private int _servicio;
         private string _rut;
         private DateTime _fechaInicio,_fechaTermino;
 
         public Reserva()
         {
+            this.Servicio = 0;
             this._numero = 0;
             this._rut = "";
             this.FechaInicio = DateTime.Today;
@@ -69,6 +71,19 @@ namespace Hostal.NEGOCIO
             set
             {
                 _fechaTermino = value;
+            }
+        }
+
+        public int Servicio
+        {
+            get
+            {
+                return _servicio;
+            }
+
+            set
+            {
+                _servicio = value;
             }
         }
     }
