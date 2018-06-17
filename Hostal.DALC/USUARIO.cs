@@ -21,7 +21,7 @@ namespace Hostal.DALC
             this.PROVEEDOR = new HashSet<PROVEEDOR>();
         }
     
-        public decimal ID { get; set; }
+        public long ID { get; set; }
         public string USUARIO1 { get; set; }
         public string CONTRASENA { get; set; }
         public string TIPO_USUARIO { get; set; }

@@ -14,11 +14,17 @@ namespace Hostal.DALC
     
     public partial class PROVEEDOR
     {
+        public PROVEEDOR()
+        {
+            this.PEDIDO = new HashSet<PEDIDO>();
+        }
+    
         public string RUT { get; set; }
         public string NOMBRE { get; set; }
         public string RUBRO { get; set; }
-        public decimal USUARIO_ID { get; set; }
+        public long USUARIO_ID { get; set; }
     
+        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
         public virtual USUARIO USUARIO { get; set; }
     }
 }

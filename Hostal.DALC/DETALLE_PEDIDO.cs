@@ -12,19 +12,13 @@ namespace Hostal.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class HABITACION
+    public partial class DETALLE_PEDIDO
     {
-        public HABITACION()
-        {
-            this.DETALLE_FACTURA = new HashSet<DETALLE_FACTURA>();
-        }
+        public long ID { get; set; }
+        public string PRODUCTO { get; set; }
+        public Nullable<long> CANTIDAD { get; set; }
+        public Nullable<long> ID_PEDIDO { get; set; }
     
-        public long NUMERO { get; set; }
-        public string TIPO { get; set; }
-        public string TIPO_CAMA { get; set; }
-        public Nullable<long> PRECIO { get; set; }
-        public Nullable<long> MANTENCION { get; set; }
-    
-        public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
+        public virtual PEDIDO PEDIDO { get; set; }
     }
 }

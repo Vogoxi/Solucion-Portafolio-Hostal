@@ -20,9 +20,9 @@ namespace Hostal.DALC
         }
     
         public long ID { get; set; }
+        public Nullable<long> TOTAL { get; set; }
         public string ID_EMPRESA { get; set; }
         public Nullable<System.DateTime> FECHA_FACTURACION { get; set; }
-        public Nullable<long> TOTAL { get; set; }
     
         public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
         public virtual EMPRESA EMPRESA { get; set; }

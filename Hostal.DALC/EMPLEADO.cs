@@ -14,11 +14,17 @@ namespace Hostal.DALC
     
     public partial class EMPLEADO
     {
-        public decimal ID { get; set; }
+        public EMPLEADO()
+        {
+            this.PEDIDO = new HashSet<PEDIDO>();
+        }
+    
+        public long ID { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
-        public decimal USUARIO_ID { get; set; }
+        public long USUARIO_ID { get; set; }
     
         public virtual USUARIO USUARIO { get; set; }
+        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }
 }
