@@ -43,6 +43,24 @@ namespace Hostal.NEGOCIO
             return GenerarListado(reconversions.ToList(), rut);
         }
 
+        public List<NEGOCIO.Huesped> ReadAllRes(string rut,List<Reserva> reserva)
+        {
+            if (reserva.Count != 0)
+            {
+                List<string> listRut = new List<string>();
+                foreach (var item in reserva)
+                {
+                    listRut.Add(item.Rut);
+                }
+                var reconversions = CommonBC.Modelo.HUESPED.Where(r => !listRut.Contains(r.RUT)).ToList();
+                return GenerarListado(reconversions.ToList(), rut);
+            }else
+            {
+                var reconversions = CommonBC.Modelo.HUESPED;
+                return GenerarListado(reconversions.ToList(), rut);
+            }
+           
+        }
 
     }
 }

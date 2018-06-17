@@ -55,15 +55,22 @@ namespace Hostal.NEGOCIO
         }
 
 
-        public List<Habitacion> HabitacionesDisponibles(DateTime ingreso, DateTime salida)
+        public List<Habitacion> HabitacionesDisponibles(DateTime ingreso, DateTime salida, List<Reserva> Reserva)
         {
-            var Habitaciones = CommonBC.Modelo.HABITACION.ToList();
+            List<long> idHab = new List<long>();
+
+            foreach (var item in Reserva)
+            {
+                idHab.Add(item.Numero);
+            }
+
+            var Habitaciones = CommonBC.Modelo.HABITACION.Where(r =>  !idHab.Contains(r.NUMERO)).ToList();
 
             List<Habitacion> Allhabitaciones = new List<Habitacion>();
 
             foreach (var item in Habitaciones)
             {
-                var detalles = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.HABITACION_ID == item.NUMERO && ((r.FECHA_INGRESO > ingreso && r.FECHA_INGRESO > salida) || (r.FECHA_SALIDA < ingreso && r.FECHA_SALIDA < salida))).ToList();
+                var detalles = CommonBC.Modelo.DETALLE_FACTURA.Where(r =>  r.HABITACION_ID == item.NUMERO && ((r.FECHA_INGRESO > ingreso && r.FECHA_INGRESO > salida) || (r.FECHA_SALIDA < ingreso && r.FECHA_SALIDA < salida))).ToList();
 
                 var detallescount = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.HABITACION_ID == item.NUMERO).ToList();
 

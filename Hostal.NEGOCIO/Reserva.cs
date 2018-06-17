@@ -10,11 +10,14 @@ namespace Hostal.NEGOCIO
     {
         private int _numero;
         private string _rut;
+        private DateTime _fechaInicio,_fechaTermino;
 
         public Reserva()
         {
             this._numero = 0;
             this._rut = "";
+            this.FechaInicio = DateTime.Today;
+            this.FechaTermino = DateTime.Today;
         }
 
         public int Numero
@@ -40,6 +43,32 @@ namespace Hostal.NEGOCIO
             set
             {
                 _rut = value;
+            }
+        }
+
+        public DateTime FechaInicio
+        {
+            get
+            {
+                return _fechaInicio;
+            }
+
+            set
+            {
+                _fechaInicio = value;
+            }
+        }
+
+        public DateTime FechaTermino
+        {
+            get
+            {
+                return _fechaTermino;
+            }
+
+            set
+            {
+                _fechaTermino = value;
             }
         }
     }

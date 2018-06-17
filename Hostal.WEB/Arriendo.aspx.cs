@@ -22,6 +22,8 @@ namespace Hostal.WEB
                 CargarHuesped();
             }
 
+           
+
         }
 
 
@@ -37,33 +39,25 @@ namespace Hostal.WEB
             Empresa emp = new Empresa();
             emp = (Empresa)Session["empresa"];
 
-            foreach (NEGOCIO.Huesped item in hue.ReadAll(/*emp.Rut*/"18.465.104-1"))
+            Reserva = new List<NEGOCIO.Reserva>();
+
+            if (Session["Reserva"] != null)
+            {
+                Reserva = (List<Reserva>)Session["Reserva"];
+            }
+
+            foreach (NEGOCIO.Huesped item in hue.ReadAllRes(/*emp.Rut*/"18.465.104-1",Reserva))
             {
                 huesped = new NEGOCIO.Huesped();
                 huesped.Rut = item.Rut;
                 huesped.Nombre = item.Nombre;
                 huesped.Apellido = item.Apellido;
+                huesped.Telefono = item.Telefono;
+                huesped.EmpresaRut = item.EmpresaRut;
+
                 listaHue.Add(huesped);
             }
-
-            if (Session["reserva"] != null)
-            {
-                Reserva = (List<Reserva>)Session["Reserva"];
-                Huesped hues = new Huesped();
-
-                foreach (var item in Reserva)
-                {
-                    hues = new Huesped();
-                    hues.Rut = item.Rut;
-                    hues.getHuesped();
-
-                    if (hues != null)
-                    {
-                        listaHue.Remove(hues);
-                    }
-                }
-            }
-
+          
             ddlHuespedes.DataSource = listaHue;
             ddlHuespedes.DataTextField = "NomApe";
             ddlHuespedes.DataValueField = "Rut";
@@ -72,27 +66,9 @@ namespace Hostal.WEB
 
         private void CreaTabla(List<Habitacion> habitaciones)
         {
+            tablaHtml.InnerHtml = null;
 
-            if (Session["Reserva"] != null)
-            {
-                Reserva = (List<Reserva>)Session["Reserva"];
-                Habitacion hab = new Habitacion();
-
-                foreach (var item in Reserva)
-                {
-                    hab = new Habitacion();
-                    hab.Numero = item.Numero;
-                    hab.GetHabitacion();
-
-                    if (hab != null)
-                    {
-                        habitaciones.Remove(hab);
-                    }
-                }
-            }
-
-
-                string tabla = "<table class='table table-hover' id='Tabla'>";
+                string tabla = "<table  class='table table-hover' id='Tabla'>";
                 tabla = tabla + "<thead>";
                 tabla = tabla + "<tr>";
                 tabla = tabla + "<th style='text-align: center;'>Número</th>";
@@ -117,6 +93,7 @@ namespace Hostal.WEB
                 }
                 tabla = tabla + "</tbody>";
                 tabla = tabla + "</table>";
+                
                 tablaHtml.InnerHtml = tabla;
         }
 
@@ -136,11 +113,12 @@ namespace Hostal.WEB
 
             if (ddlHuespedes.SelectedIndex != 0 || ddlHuespedes.SelectedIndex != -1)
             {
-                idHabitacion = ddlHuespedes.SelectedValue;
+                idhuesped = ddlHuespedes.SelectedValue;
+               
 
                 if (IdHidden.Value != null || IdHidden.Value != "")
                 {
-                    idhuesped = IdHidden.Value;
+                    idHabitacion = IdHidden.Value;
 
                     Reserva reserva = new Reserva();
 
@@ -150,22 +128,47 @@ namespace Hostal.WEB
 
                     reserva.Numero = id;
                     reserva.Rut = idhuesped;
+                    reserva.FechaInicio = Convert.ToDateTime(TxtFechaInicio.Value);
+                    reserva.FechaTermino = Convert.ToDateTime(TxtFechaFinal.Value);
 
                     Reserva.Add(reserva);
 
                     Session["Reserva"] = Reserva;
 
+  
                     CargarHuesped();
 
                     HabitacionCollection habitacion = new HabitacionCollection();
                     DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
                     DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
 
-                    CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida));
+                    List<Habitacion> habitaciones = new List<Habitacion>();
 
+                    habitaciones = habitacion.HabitacionesDisponibles(llegada, salida, Reserva);
+
+                    CreaTabla(habitaciones);
+                    
                     CreaTablaRes(Reserva);
 
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, this.GetType(), "test", "tablaInit();", true);
+                    string script = @"$(document).ready(function () {
+                $('#Tabla').DataTable({
+                    ""fnDrawCallback"": function (oSettings) {
+                        $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
+                    },
+                    ""bLengthChange"": false
+                });
+                $('#TablaRes').DataTable({
+                    ""fnDrawCallback"": function (oSettings) {
+                        $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
+                    },
+                    ""bLengthChange"": false
+                });
+
+            });";
+
+                    
+                    //ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
+                    //ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "test", "tablaInit();", true);
 
                 }
                 else
@@ -187,6 +190,8 @@ namespace Hostal.WEB
         {
             string tabla = "<table class='table table-hover' id='TablaRes'>";
 
+            tablaHtmlRes.InnerHtml = null;
+
             if (Session["Reserva"] != null)
             {
                 
@@ -195,6 +200,10 @@ namespace Hostal.WEB
                 tabla = tabla + "<th style='text-align: center;'>Número</th>";
                 tabla = tabla + "<th style='text-align: center;'>Rut</th>";
                 tabla = tabla + "<th style='text-align: center;'>Nombre</th>";
+                tabla = tabla + "<th style='text-align: center;'>Fecha llegada</th>";
+                tabla = tabla + "<th style='text-align: center;'>Fecha salida</th>";
+                tabla = tabla + "<th style='text-align: center;'></th>";
+                tabla = tabla + "<th style='text-align: center;'>Opciones</th>";
                 tabla = tabla + "</tr>";
                 tabla = tabla + "</thead>";
                 tabla = tabla + "<tbody>";
@@ -214,18 +223,25 @@ namespace Hostal.WEB
 
                 hab.Numero = item.Numero;
                 hues.Rut = item.Rut;
-                hab.GetHabitacion();
-                hues.getHuesped();
+                hab = hab.GetHabitacion();
+                hues = hues.getHuesped();
 
                 tabla = tabla + "<tr>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.Numero + "</td>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.Rut + "</td>";
-                tabla = tabla + "<td style='text-align: center;'>" + hues.Nombre + "</td>";
+                tabla = tabla + "<td style='text-align: center;'>" + hues.NomApe + "</td>";
+                tabla = tabla + "<td style='text-align: center;'>" + item.FechaInicio.ToShortDateString() + "</td>";
+                tabla = tabla + "<td style='text-align: center;'>" + item.FechaTermino.ToShortDateString() + "</td>";
+                tabla = tabla + "<td style='text-align: center;'>" + "</td>";
+                tabla = tabla + "<td style='text-align: center;'>" + "</td>";
+
+
                 tabla = tabla + "</tr>";
             }
             tabla = tabla + "</tbody>";
             tabla = tabla + "</table>";
-            tablaHtml.InnerHtml = tabla;
+            
+            tablaHtmlRes.InnerHtml = tabla;
         }
 
 
@@ -235,7 +251,14 @@ namespace Hostal.WEB
             DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
             DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
 
-            CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida));
+            Reserva = new List<NEGOCIO.Reserva>();
+
+            if (Session["Reserva"] != null)
+            {
+                Reserva = (List<Reserva>)Session["Reserva"];
+            }
+
+            CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida,Reserva));
 
         }
     }

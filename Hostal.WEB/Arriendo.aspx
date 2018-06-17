@@ -56,44 +56,61 @@
                                             </div>
                                         </div>
 
-                                        <div class ="form-group row">
-                                              <div class="table-responsive" id="tablaHtml" runat="server">
-                                    
-                                              </div>
-                                        </div>
-                                     
-                                        <div class="hidden"><input type="hidden" id="IdHidden" runat="server" /></div>
-                                         <input type="button"  id="reservar"  runat="server" OnClick="Reservar_Click"/>
-                                        
-  
+                                       
+
                                     </ContentTemplate>
                                         </asp:UpdatePanel>
 
+
+                                     <div class="hidden"><input type="hidden" id="IdHidden" runat="server" /></div>
+                                        <div class="text-hide"></div> <asp:Button ID="reservar"  runat="server" Text="Button" OnClick="Reservar_Click"/></div>
+
+                                         
+                                       
+
                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
-
-                                          <div class="table-responsive" id="tablaHtmlRes" runat="server">
-                                          </div>
-
-                                       </ContentTemplate>
+                                        
+                                              <div class="table-responsive" id="tablaHtml" runat="server">
+                                    
+                                              </div>
+                                        
+                                       
+                                    </ContentTemplate>
                                     </asp:UpdatePanel>
-                                     
+
+                                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                    <ContentTemplate>
+
+                                         
+                                            <div class="table-responsive" id="tablaHtmlRes" runat="server">
+
+                                            </div>
+                                        
+
+                                      </ContentTemplate>
+                                    </asp:UpdatePanel>
                                 </div>
                                 
                                 </div>
                             </div>
 
                    </div> <!-- /form user info -->
-                </div>
         
     </asp:Panel>
 
     <script src="../js/Datatables/jquery.dataTables.min.js"></script>
-    
+    <script src="//cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"></script>
 
     <script>
             $(document).ready(function () {
                 $('#Tabla').DataTable({
+                    "fnDrawCallback": function (oSettings) {
+                        $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
+                    },
+                    "bLengthChange": false
+                });
+                $('#TablaRes').DataTable({
                     "fnDrawCallback": function (oSettings) {
                         $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
                     },
