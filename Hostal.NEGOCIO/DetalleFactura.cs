@@ -12,32 +12,16 @@ namespace Hostal.NEGOCIO
         private DateTime _fechaIngreso, _fechaSalida;
         private string _idHuesped;
 
-        public DetalleFactura()
-        {
-            Init();
-        }
-
-        private void Init()
-        {
-            Id1 = 0;
-            IdFactura1 = 0;
-            IdHabitacion1 = 0;
-            IdServicio = 0;
-            _fechaIngreso = DateTime.Today;
-            _fechaSalida = DateTime.Today;
-            _idHuesped = string.Empty;
-        }
-
         public int Id
         {
             get
             {
-                return Id1;
+                return _id;
             }
 
             set
             {
-                Id1 = value;
+                _id = value;
             }
         }
 
@@ -45,12 +29,12 @@ namespace Hostal.NEGOCIO
         {
             get
             {
-                return IdFactura1;
+                return _idFactura;
             }
 
             set
             {
-                IdFactura1 = value;
+                _idFactura = value;
             }
         }
 
@@ -58,12 +42,25 @@ namespace Hostal.NEGOCIO
         {
             get
             {
-                return IdHabitacion1;
+                return _idHabitacion;
             }
 
             set
             {
-                IdHabitacion1 = value;
+                _idHabitacion = value;
+            }
+        }
+
+        public int IdServicio
+        {
+            get
+            {
+                return _idServicio;
+            }
+
+            set
+            {
+                _idServicio = value;
             }
         }
 
@@ -106,57 +103,23 @@ namespace Hostal.NEGOCIO
             }
         }
 
-        public int Id1
+        public DetalleFactura()
         {
-            get
-            {
-                return _id;
-            }
-
-            set
-            {
-                _id = value;
-            }
+            Init();
         }
 
-        public int IdFactura1
+        private void Init()
         {
-            get
-            {
-                return _idFactura;
-            }
-
-            set
-            {
-                _idFactura = value;
-            }
+            Id = 0;
+            IdFactura = 0;
+            IdHabitacion = 0;
+            IdServicio = 0;
+            FechaIngreso = DateTime.Today;
+            FechaSalida = DateTime.Today;
+            IdHuesped = string.Empty;
         }
 
-        public int IdHabitacion1
-        {
-            get
-            {
-                return _idHabitacion;
-            }
-
-            set
-            {
-                _idHabitacion = value;
-            }
-        }
-
-        public int IdServicio
-        {
-            get
-            {
-                return _idServicio;
-            }
-
-            set
-            {
-                _idServicio = value;
-            }
-        }
+       
 
         public bool AgregarDetalleFactura()
         {

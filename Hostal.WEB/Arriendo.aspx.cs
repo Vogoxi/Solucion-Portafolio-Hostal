@@ -277,14 +277,59 @@ namespace Hostal.WEB
             if (Session["Reserva"] != null)
             {
                 Reserva = (List<Reserva>)Session["Reserva"];
+
+                GuardarComida(Reserva);
+
+                Factura factura = new Factura();
+
+                factura.FechaFacturacion = DateTime.Today;
+                factura.IdEmpresa = "18.465.104-1";
+                factura.Total = 0;
+                bool estado = true;
+
+                if (factura.AgregarFactura())
+                {
+                    foreach (var item in Reserva)
+                    {
+                        DetalleFactura detFac = new DetalleFactura();
+
+                        detFac.FechaIngreso = item.FechaInicio;
+                        detFac.FechaSalida = item.FechaTermino;
+                        detFac.IdFactura = factura.Id;
+                        detFac.IdHabitacion = item.Numero;
+                        detFac.IdHuesped = item.Rut;
+                        detFac.IdServicio = item.Servicio;
+
+                        if (!detFac.AgregarDetalleFactura())
+                        {
+                            estado = false;
+                            break;
+                            //borrar detalles
+                            //facturas
+                        }
+                    }
+                }
+
+                if (estado)
+                {
+                    //generarcupon
+                }
+                else
+                {
+                    //Error
+                }
+                
+
+                
+
+
             }
-
-            string control = "";
-
-            foreach (var item in Reserva)
+            else
             {
-                control = Request.Form["Select" + item.Numero];
+                //Error
             }
+
+            
 
 
 
