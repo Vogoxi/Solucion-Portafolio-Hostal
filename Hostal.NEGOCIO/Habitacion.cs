@@ -9,23 +9,31 @@ namespace Hostal.NEGOCIO
     public class Habitacion
     {
         private int _numero, _precio, _mantencion;
+<<<<<<< HEAD
         private string _tipo, _camas;
+=======
+        private string _tipo, _tipoCama;
+>>>>>>> German2
 
         public Habitacion()
         {
             this.Init();
         }
 
+<<<<<<< HEAD
         public string Camas
+=======
+        public string TipoCama
+>>>>>>> German2
         {
             get
             {
-                return _camas;
+                return _tipoCama;
             }
 
             set
             {
-                _camas = value;
+                _tipoCama = value;
             }
         }
 
@@ -84,7 +92,11 @@ namespace Hostal.NEGOCIO
         private void Init()
         {
             Numero = 0;
+<<<<<<< HEAD
             Camas = string.Empty;
+=======
+            _tipoCama = string.Empty;
+>>>>>>> German2
             Precio = 0;
             Mantencion = 0;
             Tipo = string.Empty;
@@ -103,7 +115,11 @@ namespace Hostal.NEGOCIO
                 {
                     habit.NUMERO = this.Numero;
                     habit.PRECIO = this.Precio;
+<<<<<<< HEAD
                     habit.TIPO_CAMA = this.Camas;
+=======
+                    habit.TIPO_CAMA = this._tipoCama;
+>>>>>>> German2
                     habit.MANTENCION = this.Mantencion;
                     habit.TIPO = this.Tipo;
 
@@ -143,7 +159,11 @@ namespace Hostal.NEGOCIO
 
                     hab.Numero = (int)habit.NUMERO;
                     hab.Precio = (int)habit.PRECIO;
+<<<<<<< HEAD
                     hab.Camas = habit.TIPO_CAMA;
+=======
+                    hab.TipoCama = habit.TIPO_CAMA;
+>>>>>>> German2
                     hab.Mantencion = (int)habit.MANTENCION;
                     hab.Tipo = habit.TIPO;
 
@@ -177,7 +197,7 @@ namespace Hostal.NEGOCIO
                 habit.NUMERO = this.Numero;
                 habit.MANTENCION = this.Mantencion;
                 habit.TIPO = this.Tipo;
-
+                habit.TIPO_CAMA = this.TipoCama;
                 CommonBC.Modelo.SaveChanges();
                 return true;
             }

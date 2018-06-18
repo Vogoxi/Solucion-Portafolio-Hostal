@@ -49,7 +49,7 @@
                                             <asp:Label ID="lblStatus1" runat="server" required></asp:Label>
                                             <div class="col-lg-9">
                                                 <a href="login.php" class="btn btn-secondary">Cancelar</a>
-                                                <input type="submit" class="btn btn-success" value="Agregar">
+                                                <input type="submit" class="btn btn-success" value="Agregar" />
                                             </div>
                                         </div>
                                     </form>

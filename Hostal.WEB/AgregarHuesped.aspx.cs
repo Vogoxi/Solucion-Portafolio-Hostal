@@ -26,9 +26,9 @@ namespace Hostal.WEB
 
             if (huesped.agregarHuesped())
             {
-                lblStatus.Text = "Huesped Agregado";
+                //lblStatus.Text = "Huesped Agregado";
             }else{
-                lblStatus.Text = "No se pudo agregar el huesped";
+                //lblStatus.Text = "No se pudo agregar el huesped";
             }
      
         }

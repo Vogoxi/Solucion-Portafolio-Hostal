@@ -8,24 +8,9 @@ namespace Hostal.NEGOCIO
 {
     public class DetalleFactura
     {
-        private int _id, _idFactura, _idHabitacion;
+        private int _id, _idFactura, _idHabitacion, _idServicio;
         private DateTime _fechaIngreso, _fechaSalida;
         private string _idHuesped;
-
-        public DetalleFactura()
-        {
-            Init();
-        }
-
-        private void Init()
-        {
-            _id = 0;
-            _idFactura = 0;
-            _idHabitacion = 0;
-            _fechaIngreso = DateTime.Today;
-            _fechaSalida = DateTime.Today;
-            _idHuesped = string.Empty;
-        }
 
         public int Id
         {
@@ -63,6 +48,19 @@ namespace Hostal.NEGOCIO
             set
             {
                 _idHabitacion = value;
+            }
+        }
+
+        public int IdServicio
+        {
+            get
+            {
+                return _idServicio;
+            }
+
+            set
+            {
+                _idServicio = value;
             }
         }
 
@@ -105,6 +103,24 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public DetalleFactura()
+        {
+            Init();
+        }
+
+        private void Init()
+        {
+            Id = 0;
+            IdFactura = 0;
+            IdHabitacion = 0;
+            IdServicio = 0;
+            FechaIngreso = DateTime.Today;
+            FechaSalida = DateTime.Today;
+            IdHuesped = string.Empty;
+        }
+
+       
+
         public bool AgregarDetalleFactura()
         {
             DALC.DETALLE_FACTURA detFactura = new DALC.DETALLE_FACTURA();
@@ -115,6 +131,7 @@ namespace Hostal.NEGOCIO
                 detFactura.FACTURA_ID = this.IdFactura;
                 detFactura.HABITACION_ID = this.IdHabitacion;
                 detFactura.HUESPED_ID = this.IdHuesped;
+                detFactura.SERVICIO_ID = this.IdServicio;
                 detFactura.FECHA_INGRESO = this.FechaIngreso;
                 detFactura.FECHA_SALIDA = this.FechaSalida;
 
@@ -152,7 +169,8 @@ namespace Hostal.NEGOCIO
                     this.Id = (int)detFactura.ID;
                     this.IdFactura = (int)detFactura.FACTURA_ID;
                     this.IdHabitacion = (int)detFactura.HABITACION_ID;
-                    this.IdHuesped = this.IdHuesped;
+                    this.IdHuesped = detFactura.HUESPED_ID;
+                    this.IdServicio = (int)detFactura.SERVICIO_ID;
                     this.FechaIngreso = (DateTime)detFactura.FECHA_INGRESO;
                     this.FechaSalida = (DateTime)detFactura.FECHA_SALIDA;
 
@@ -188,6 +206,7 @@ namespace Hostal.NEGOCIO
                 detFactura.FACTURA_ID = this.IdFactura;
                 detFactura.HABITACION_ID = this.IdHabitacion;
                 detFactura.HUESPED_ID = this.IdHuesped;
+                detFactura.SERVICIO_ID = this.IdServicio;
                 detFactura.FECHA_INGRESO = this.FechaIngreso;
                 detFactura.FECHA_SALIDA = this.FechaSalida;
 
