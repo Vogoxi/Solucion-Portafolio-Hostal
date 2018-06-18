@@ -12,19 +12,12 @@ namespace Hostal.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class DETALLE_FACTURA
+    public partial class PLATO
     {
         public long ID { get; set; }
-        public long FACTURA_ID { get; set; }
-        public string HUESPED_ID { get; set; }
-        public long HABITACION_ID { get; set; }
-        public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
-        public Nullable<System.DateTime> FECHA_SALIDA { get; set; }
-        public long SERVICIO_ID { get; set; }
+        public string NOMBRE { get; set; }
+        public long ID_SERVICIO { get; set; }
     
-        public virtual HABITACION HABITACION { get; set; }
-        public virtual HUESPED HUESPED { get; set; }
-        public virtual FACTURA FACTURA { get; set; }
         public virtual SERVICIO SERVICIO { get; set; }
     }
 }

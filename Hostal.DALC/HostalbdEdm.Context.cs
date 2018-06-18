@@ -33,7 +33,9 @@ namespace Hostal.DALC
         public DbSet<HABITACION> HABITACION { get; set; }
         public DbSet<HUESPED> HUESPED { get; set; }
         public DbSet<PEDIDO> PEDIDO { get; set; }
+        public DbSet<PLATO> PLATO { get; set; }
         public DbSet<PROVEEDOR> PROVEEDOR { get; set; }
+        public DbSet<SERVICIO> SERVICIO { get; set; }
         public DbSet<USUARIO> USUARIO { get; set; }
     }
 }
