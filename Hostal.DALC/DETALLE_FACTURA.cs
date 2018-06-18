@@ -15,12 +15,12 @@ namespace Hostal.DALC
     public partial class DETALLE_FACTURA
     {
         public long ID { get; set; }
-        public Nullable<long> FACTURA_ID { get; set; }
+        public long FACTURA_ID { get; set; }
         public string HUESPED_ID { get; set; }
-        public Nullable<long> HABITACION_ID { get; set; }
+        public long HABITACION_ID { get; set; }
         public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
         public Nullable<System.DateTime> FECHA_SALIDA { get; set; }
-        public Nullable<long> SERVICIO_ID { get; set; }
+        public long SERVICIO_ID { get; set; }
     
         public virtual HABITACION HABITACION { get; set; }
         public virtual HUESPED HUESPED { get; set; }

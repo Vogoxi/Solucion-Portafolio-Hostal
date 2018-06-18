@@ -16,7 +16,7 @@ namespace Hostal.DALC
     {
         public long ID { get; set; }
         public string NOMBRE { get; set; }
-        public Nullable<long> ID_SERVICIO { get; set; }
+        public long ID_SERVICIO { get; set; }
     
         public virtual SERVICIO SERVICIO { get; set; }
     }

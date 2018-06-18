@@ -21,9 +21,9 @@ namespace Hostal.DALC
     
         public long NUMERO { get; set; }
         public string TIPO { get; set; }
+        public string TIPO_CAMA { get; set; }
         public Nullable<long> PRECIO { get; set; }
         public Nullable<long> MANTENCION { get; set; }
-        public string TIPO_CAMA { get; set; }
     
         public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
     }

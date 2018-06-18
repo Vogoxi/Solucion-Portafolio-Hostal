@@ -25,7 +25,7 @@ namespace Hostal.DALC
         public string GIRO { get; set; }
         public string DIRECCION { get; set; }
         public string TELEFONO { get; set; }
-        public decimal USUARIO_ID { get; set; }
+        public long USUARIO_ID { get; set; }
     
         public virtual USUARIO USUARIO { get; set; }
         public virtual ICollection<FACTURA> FACTURA { get; set; }

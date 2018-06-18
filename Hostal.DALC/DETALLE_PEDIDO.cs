@@ -12,16 +12,13 @@ namespace Hostal.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class PRIVILEGIO
+    public partial class DETALLE_PEDIDO
     {
-        public decimal ID { get; set; }
-        public string MENU { get; set; }
-        public Nullable<decimal> CREATE { get; set; }
-        public Nullable<decimal> READ { get; set; }
-        public Nullable<decimal> UPDATE { get; set; }
-        public Nullable<decimal> DELETE { get; set; }
-        public Nullable<decimal> USUARIO_ID { get; set; }
+        public long ID { get; set; }
+        public string PRODUCTO { get; set; }
+        public Nullable<long> CANTIDAD { get; set; }
+        public Nullable<long> ID_PEDIDO { get; set; }
     
-        public virtual USUARIO USUARIO { get; set; }
+        public virtual PEDIDO PEDIDO { get; set; }
     }
 }

@@ -18,18 +18,16 @@ namespace Hostal.DALC
         {
             this.EMPLEADO = new HashSet<EMPLEADO>();
             this.EMPRESA = new HashSet<EMPRESA>();
-            this.PRIVILEGIO = new HashSet<PRIVILEGIO>();
             this.PROVEEDOR = new HashSet<PROVEEDOR>();
         }
     
-        public decimal ID { get; set; }
+        public long ID { get; set; }
         public string USUARIO1 { get; set; }
         public string CONTRASENA { get; set; }
         public string TIPO_USUARIO { get; set; }
     
         public virtual ICollection<EMPLEADO> EMPLEADO { get; set; }
         public virtual ICollection<EMPRESA> EMPRESA { get; set; }
-        public virtual ICollection<PRIVILEGIO> PRIVILEGIO { get; set; }
         public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
     }
 }
