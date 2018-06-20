@@ -49,6 +49,8 @@
     <Compile Include="CommonBC.cs" />
     <Compile Include="DetalleFactura.cs" />
     <Compile Include="DetalleFacturaCollection.cs" />
+    <Compile Include="DetallePedido.cs" />
+    <Compile Include="DetallePedidoCollection.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoCollection.cs" />
     <Compile Include="Empresa.cs" />
@@ -60,6 +62,8 @@
     <Compile Include="Huesped.cs" />
     <Compile Include="HuespedCollection.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoCollection.cs" />
     <Compile Include="Plato.cs" />
     <Compile Include="PlatoCollection.cs" />
     <Compile Include="Proveedor.cs" />
