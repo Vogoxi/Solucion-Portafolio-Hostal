@@ -46,7 +46,7 @@ namespace Hostal.WEB
                 Reserva = (List<Reserva>)Session["Reserva"];
             }
 
-            foreach (NEGOCIO.Huesped item in hue.ReadAllRes(/*emp.Rut*/"18.465.104-1",Reserva))
+            foreach (NEGOCIO.Huesped item in hue.ReadAllRes(/*emp.Rut*/emp.Rut,Reserva))
             {
                 huesped = new NEGOCIO.Huesped();
                 huesped.Rut = item.Rut;
