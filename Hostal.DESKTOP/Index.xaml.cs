@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 namespace Hostal.DESKTOP
 {
     /// <summary>
-    /// Lógica de interacción para Index.xaml
+    /// Interaction logic for Index.xaml
     /// </summary>
     public partial class Index : Window
     {
-        public Index()
+        public Index(NEGOCIO.Usuario user)
         {
             InitializeComponent();
+            lbl_user.Content = String.Format("Bienvenido:{0}",user.User);
         }
     }
 }
