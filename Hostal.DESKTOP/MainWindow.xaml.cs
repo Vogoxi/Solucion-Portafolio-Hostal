@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Hostal.DESKTOP
 {
     /// <summary>
@@ -42,6 +43,9 @@ namespace Hostal.DESKTOP
                 {
                     lbl_status.Content = "Acceso Denegado"; 
                 }
+            }else
+            {
+                lbl_status.Content = "Usuario o contraseña incorrectos";
             }
         }
     }
