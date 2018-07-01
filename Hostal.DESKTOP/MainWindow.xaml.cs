@@ -29,7 +29,7 @@ namespace Hostal.DESKTOP
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NEGOCIO.Usuario usuario = new NEGOCIO.Usuario();
-            usuario.Id = usuario.validarUsuario(txt_user.Text.Trim(), txt_pass.Text.Trim());
+            usuario.Id = usuario.validarUsuario(txt_user.Text.Trim(), txt_pass.Password.Trim());
             if (usuario.Id != 0)
             {
                 usuario = usuario.getUsuario();
