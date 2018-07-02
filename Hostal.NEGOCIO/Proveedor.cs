@@ -157,7 +157,7 @@ namespace Hostal.NEGOCIO
 
         public override string ToString()
         {
-            return this.Nombre;
+            return Auxiliar.UppercaseWords(this.Nombre);
         }
 
     }

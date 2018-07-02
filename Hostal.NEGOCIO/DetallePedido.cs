@@ -71,6 +71,19 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public int getPedidoMaxId()
+        {
+            try
+            {
+                int max = (int)CommonBC.Modelo.DETALLE_PEDIDO.Max(us => us.ID);
+                return max;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
         public bool AgregarDetalle()
         {
             DALC.DETALLE_PEDIDO detpedido = new DALC.DETALLE_PEDIDO();
@@ -78,6 +91,7 @@ namespace Hostal.NEGOCIO
             try
             {
                 // ID por trigger
+                detpedido.ID = getPedidoMaxId() + 1;
                 detpedido.ID_PEDIDO = this.Idpedido;
                 detpedido.PRODUCTO = this.Producto;
                 detpedido.CANTIDAD = this.Cantidad;

@@ -75,19 +75,19 @@
                 <ListView x:Name="ListViewMenu" Foreground="#FFFAFAFA" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
                     <ListViewItem x:Name="ItemPedidos" Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10"/>
+                            <materialDesign:PackIcon Kind="Basket" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Pedidos" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ItemCreate" Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Pencil" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Create" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="FileDocumentBox" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Facturas" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Ticket" Height="25" Width="25" Margin="10"/>
+                            <materialDesign:PackIcon Kind="TicketAccount" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Tickets" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>

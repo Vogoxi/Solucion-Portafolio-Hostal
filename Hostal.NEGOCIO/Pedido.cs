@@ -105,6 +105,7 @@ namespace Hostal.NEGOCIO
             try
             {
                 pedido.N_PEDIDO = getPedidoMaxId() + 1;
+                this.NPedido = (int)pedido.N_PEDIDO;
                 // ID por trigger
                 pedido.FECHA_EMISION = this.FechaEmision;
                 pedido.FECHA_ENTREGA = this.FechaEntrega;

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auxiliar.cs" />
     <Compile Include="CommonBC.cs" />
     <Compile Include="DetalleFactura.cs" />
     <Compile Include="DetalleFacturaCollection.cs" />

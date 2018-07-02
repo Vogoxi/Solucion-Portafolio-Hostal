@@ -47,13 +47,6 @@ namespace Hostal.DESKTOP
 
                 cmb_proveedores.Items.Add(proveedor);
             }
-
-            
-
-            //ddlHuespedes.DataSource = listaHue;
-            //ddlHuespedes.DataTextField = "NomApe";
-            //ddlHuespedes.DataValueField = "Rut";
-            //ddlHuespedes.DataBind();
         }
 
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
@@ -90,9 +83,13 @@ namespace Hostal.DESKTOP
             pedido.IdEmpleado = User.Id;
             if (pedido.AgregarPedido())
             {
-                foreach (var item in dataGrid.Items)
+                foreach (Producto producto in dataGrid.Items)
                 {
-                    string a = "";
+                    NEGOCIO.DetallePedido detalle = new NEGOCIO.DetallePedido();
+                    detalle.Producto = producto.Nombre.ToLower();
+                    detalle.Cantidad = producto.Cantidad;
+                    detalle.Idpedido = pedido.NPedido;
+                    detalle.AgregarDetalle();
                 }
             }     
         }
