@@ -155,5 +155,10 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public override string ToString()
+        {
+            return this.Nombre;
+        }
+
     }
 }

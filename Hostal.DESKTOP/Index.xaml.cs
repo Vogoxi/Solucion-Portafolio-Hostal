@@ -19,8 +19,10 @@ namespace Hostal.DESKTOP
     /// </summary>
     public partial class Index : Window
     {
+        
         public Index(NEGOCIO.Usuario user)
         {
+            User.Id = user.Id;
             InitializeComponent();
             CargarPerfil(user);
         }
@@ -60,6 +62,18 @@ namespace Hostal.DESKTOP
                     //default:
                     //    break;
             }
+        }
+
+        private void btn_salir_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btn_cerrar_sesion_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            MainWindow login = new MainWindow();
+            login.Show();
         }
     }
 }

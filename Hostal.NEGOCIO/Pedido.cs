@@ -18,7 +18,7 @@ namespace Hostal.NEGOCIO
             IdEmpleado = 0;
             IdProveedor = "";
             FechaEmision = DateTime.Today;
-            FechaEntrega = DateTime.Today;
+            //FechaEntrega = DateTime.Today;
         }
         public int NPedido
         {
@@ -85,12 +85,26 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public int getPedidoMaxId()
+        {
+            try
+            {
+                int user = (int)CommonBC.Modelo.PEDIDO.Max(us => us.N_PEDIDO);
+                return user;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
         public bool AgregarPedido()
         {
             DALC.PEDIDO pedido = new DALC.PEDIDO();
 
             try
             {
+                pedido.N_PEDIDO = getPedidoMaxId() + 1;
                 // ID por trigger
                 pedido.FECHA_EMISION = this.FechaEmision;
                 pedido.FECHA_ENTREGA = this.FechaEntrega;

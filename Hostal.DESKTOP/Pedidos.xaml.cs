@@ -28,8 +28,8 @@ namespace Hostal.DESKTOP
 
         public class Producto
         {
-            public string nombre { get; set; }
-            public int cantidad { get; set; }
+            public string Nombre { get; set; }
+            public int Cantidad { get; set; }
         }
 
         private void CargarProveedores()
@@ -37,10 +37,7 @@ namespace Hostal.DESKTOP
             NEGOCIO.ProveedorCollection CollectionProveedor = new NEGOCIO.ProveedorCollection();
             List<NEGOCIO.Proveedor> listaProveedores = new List<NEGOCIO.Proveedor>();
             NEGOCIO.Proveedor proveedor = new NEGOCIO.Proveedor();
-            proveedor.Rut = "";
-            proveedor.Nombre = "Seleccione Proveedor";
             listaProveedores.Add(proveedor);
-            cmb_proveedores.Items.Add("Seleccione...");
 
             foreach (NEGOCIO.Proveedor item in CollectionProveedor.ReadAll())
             {
@@ -61,24 +58,43 @@ namespace Hostal.DESKTOP
 
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
         {
-            Producto producto = new Producto();
-            producto.nombre = txt_producto.Text;
-            int cantidad;
-            if (int.TryParse(txt_cantidad.Text,out cantidad))
+            if (txt_cantidad.Text != String.Empty || txt_producto.Text != String.Empty)
             {
-                producto.cantidad = cantidad;
-                dataGrid.Items.Add(producto);
-                txt_producto.Text = String.Empty;
-                txt_cantidad.Text = String.Empty;
-            }
-            else
+                Producto producto = new Producto();
+                producto.Nombre = txt_producto.Text;
+                int cantidad;
+                if (int.TryParse(txt_cantidad.Text, out cantidad))
+                {
+                    producto.Cantidad = cantidad;
+                    dataGrid.Items.Add(producto);
+                    txt_producto.Text = String.Empty;
+                    txt_cantidad.Text = String.Empty;
+                    lbl_error.Content = String.Empty;
+                }
+                else
+                {
+                    lbl_error.Content = "La cantidad debe ser un numero";
+                    txt_cantidad.Text = String.Empty;
+                }
+            }else
             {
-                lbl_error.Content = "La cantidad debe ser un numero";
-                txt_cantidad.Text = String.Empty;
-            }     
-                 
+                lbl_error.Content = "Falta por ingresar datos del producto";
+            }          
         }
-         
-        
+
+        private void btn_hacer_pedido_Click(object sender, RoutedEventArgs e)
+        {
+            NEGOCIO.Pedido pedido = new NEGOCIO.Pedido();
+            NEGOCIO.Proveedor proveedor = (NEGOCIO.Proveedor)cmb_proveedores.SelectedItem;
+            pedido.IdProveedor = proveedor.Rut;
+            pedido.IdEmpleado = User.Id;
+            if (pedido.AgregarPedido())
+            {
+                foreach (var item in dataGrid.Items)
+                {
+                    string a = "";
+                }
+            }     
+        }
     }
 }

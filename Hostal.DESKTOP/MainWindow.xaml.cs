@@ -38,8 +38,9 @@ namespace Hostal.DESKTOP
                     this.Hide();
                     Index index = new Index(usuario);
                     index.Show();
-                    
-                }else
+
+                }
+                else
                 {
                     lbl_status.Content = "Acceso Denegado"; 
                 }

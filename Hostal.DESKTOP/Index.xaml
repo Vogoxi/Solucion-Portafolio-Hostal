@@ -42,8 +42,8 @@
                         <Button Content="Account"/>
                         <Button Content="Help"/>
                         <Separator/>
-                        <Button Content="Cerrar Sesión"/>
-                        <Button Content="Salir"/>
+                        <Button x:Name="btn_cerrar_sesion" Content="Cerrar Sesión" Click="btn_cerrar_sesion_Click"/>
+                        <Button x:Name="btn_salir" Content="Salir" Click="btn_salir_Click"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
