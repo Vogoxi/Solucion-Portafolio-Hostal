@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Hostal.DESKTOP"
         mc:Ignorable="d">
     <Grid Height="540" Width="1020" Background="White">
-        <DataGrid AutoGenerateColumns="False" x:Name="dta_Facturas" HorizontalAlignment="Left" Background="White" Foreground="#DD000000" Margin="50,150,0,0" BorderBrush="Black" VerticalAlignment="Top" Height="194" Width="400" BorderThickness="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="dta_Facturas" HorizontalAlignment="Left" Background="White" Foreground="#DD000000" Margin="50,150,0,0" BorderBrush="Black" VerticalAlignment="Top" Height="194" Width="400" BorderThickness="1" SelectionChanged="dta_Facturas_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="N° Factura"  Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Empresa"  Binding="{Binding NomEmpresa}"/>
