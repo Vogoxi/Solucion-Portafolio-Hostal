@@ -79,7 +79,7 @@
                             <TextBlock Text="Pedidos" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="ItemCreate" Height="60">
+                    <ListViewItem x:Name="ItemFacturas" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FileDocumentBox" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Facturas" VerticalAlignment="Center" Margin="20 10"/>

@@ -63,7 +63,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Facturas.xaml.cs">
+      <DependentUpon>Facturas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="VerFacturas.xaml.cs">
+      <DependentUpon>VerFacturas.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Facturas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Index.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +94,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pedidos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VerFacturas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

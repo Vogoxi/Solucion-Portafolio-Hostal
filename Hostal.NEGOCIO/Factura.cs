@@ -9,8 +9,19 @@ namespace Hostal.NEGOCIO
     public class Factura
     {
         private int _id, _total;
-        private string _idEmpresa;
+        private string _idEmpresa,_nomEmpresa;
         private DateTime _fechaFacturacion;
+
+        public string NomEmpresa
+        {
+            get
+            {
+                DALC.EMPRESA EMPRESA = CommonBC.Modelo.EMPRESA.FirstOrDefault(e => e.RUT == this.IdEmpresa);
+
+                return Auxiliar.UppercaseWords(EMPRESA.RAZON_SOCIAL);
+            }
+
+        }
 
         public int Id
         {

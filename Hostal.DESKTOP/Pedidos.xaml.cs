@@ -91,6 +91,7 @@ namespace Hostal.DESKTOP
                     detalle.Idpedido = pedido.NPedido;
                     detalle.AgregarDetalle();
                 }
+                dataGrid.Items.Clear();
             }     
         }
     }

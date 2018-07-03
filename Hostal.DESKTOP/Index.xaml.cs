@@ -55,6 +55,10 @@ namespace Hostal.DESKTOP
                     usc = new Pedidos();
                     GridMain.Children.Add(usc);
                     break;
+                case "ItemFacturas":
+                    usc = new Facturas();
+                    GridMain.Children.Add(usc);
+                    break;
                     //case "ItemCreate":
                     //    usc = new UserControlCreate();
                     //    GridMain.Children.Add(usc);
