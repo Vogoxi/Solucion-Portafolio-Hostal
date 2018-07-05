@@ -22,6 +22,13 @@ namespace Hostal.WEB
                 CargarHuesped();
             }
 
+            if (Session["Reserva"]==null)
+            {
+                BtnFactura.Enabled = true;
+            }else
+            {
+                BtnFactura.Enabled = false;
+            }
            
 
         }
@@ -46,7 +53,7 @@ namespace Hostal.WEB
                 Reserva = (List<Reserva>)Session["Reserva"];
             }
 
-            foreach (NEGOCIO.Huesped item in hue.ReadAllRes(/*emp.Rut*/emp.Rut,Reserva))
+            foreach (NEGOCIO.Huesped item in hue.ReadAllRes(emp.Rut,Reserva))
             {
                 huesped = new NEGOCIO.Huesped();
                 huesped.Rut = item.Rut;
@@ -67,7 +74,7 @@ namespace Hostal.WEB
         private void CreaTabla(List<Habitacion> habitaciones)
         {
             tablaHtml.InnerHtml = null;
-
+            
                 string tabla = "<table  class='table table-hover' id='Tabla'>";
                 tabla = tabla + "<thead>";
                 tabla = tabla + "<tr>";
@@ -88,7 +95,7 @@ namespace Hostal.WEB
                     tabla = tabla + "<td style='text-align: center;'>" + item.Precio + "</td>";
                     tabla = tabla + "<td style='text-align: center;'>" + item.Tipo + "</td>";
                     tabla = tabla + "<td style='text-align: center;'>" + item.TipoCama + "</td>";
-                    tabla = tabla + "<td style='text-align: center;'><input type='button' id='" + item.Numero + "' class='btn' value='Reservar' style='background-color: #4286f4; color: white;'/></td>";
+                    tabla = tabla + "<td style='text-align: center;'><input type='button' id='"+item.Numero+"' ' class='btn' value='Reservar' style='background-color: #4286f4; color: white;'/></td>";
                     tabla = tabla + "</tr>";
                 }
                 tabla = tabla + "</tbody>";
@@ -100,6 +107,7 @@ namespace Hostal.WEB
 
         protected void Reservar_Click(object sender, EventArgs e)
         {
+
             if (Session["Reserva"] != null)
             {
                 Reserva = (List<Reserva>)Session["Reserva"];
@@ -152,10 +160,11 @@ namespace Hostal.WEB
                     
                     CreaTablaRes(Reserva);
 
-              
+                    IdHidden.Value = "";
                     
-                    //ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
-                    //ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "test", "tablaInit();", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "test", "tablaInit();", true);
+
 
                 }
                 else
@@ -219,6 +228,8 @@ namespace Hostal.WEB
                 tabla = tabla + "<td style='text-align: center;'>" + hues.NomApe + "</td>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.FechaInicio.ToShortDateString() + "</td>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.FechaTermino.ToShortDateString() + "</td>";
+                tabla = tabla + "<td style='text-align: center;'><input type='button' id='" + item.Numero + "' value='Borrar' style='background-color: #4286f4; color: white;'/></td>";
+
 
                 ServicioCollection servicios = new ServicioCollection();
                 
@@ -282,8 +293,11 @@ namespace Hostal.WEB
 
                 Factura factura = new Factura();
 
+                Empresa emp = new Empresa();
+                emp = (Empresa)Session["Empresa"];
+
                 factura.FechaFacturacion = DateTime.Today;
-                factura.IdEmpresa = "18.465.104-1";
+                factura.IdEmpresa = emp.Rut;
                 factura.Total = 0;
                 bool estado = true;
 
@@ -350,6 +364,43 @@ namespace Hostal.WEB
                     item.Servicio = 0;
                 }
                 
+            }
+        }
+
+
+        protected void BorraReserva_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["Reserva"] != null)
+                {
+                    Reserva = (List<Reserva>) Session["Reserva"];
+
+                    foreach (var item in Reserva)
+                    {
+                        if (item.Numero == int.Parse(IdHidden2.Value))
+                        {
+                            Reserva.Remove(item);
+                            //Se borro reserva mensaje
+                            break;
+                        }
+                    }
+                }
+
+                Session["Reserva"] = Reserva;
+
+                ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Log("hostal.Web.borrarReserva.aspx");
+                Logger.Log(ex.Message);
+                if (ex.InnerException != null)
+                {
+                    Logger.Log(ex.InnerException.ToString());
+                }
+                return;
             }
         }
 

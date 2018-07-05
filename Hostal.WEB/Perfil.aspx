@@ -42,7 +42,7 @@
                                                     <asp:TextBox ID="txtTelefono" class="form-control" runat="server" MaxLength="9" placeholder="Ej: 912345678" onKeyPress="return soloNumeros(event)" required></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div clas="form-group row">
+                                        <div class="form-group row">
                                             <div class="col-lg-9">
                                                     <asp:Label ID="lblStatus" runat="server" required></asp:Label>
                                             </div>     

@@ -2,7 +2,35 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        function confirmar(idBol) {
+            bootbox.confirm({
+                title: "¿Borrar Reserva?",
+                message: "¿Está seguro que quiere borrar esta reserva?",
+                buttons: {
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Cancelar',
+                        className: 'btn-danger'
+                    },
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Borrar',
+                        className: 'btn-default'
+                    }
+                },
+                callback: function (result) {
+                    if (result === true) {
+                        var button = document.getElementById("BorraReserva");
+                        var id = document.getElementById("IdHidden2");
+                        id.value = idBol;
+                        button.click();
+                    }
+                    if (result === false) {
 
+                    }
+                }
+            });
+        }
+    </script>
     <asp:Panel ID="Panel1" runat="server">
         <asp:ScriptManager EnablePageMethods="True" runat="server"></asp:ScriptManager>
         <div class="container py-3">
@@ -62,10 +90,17 @@
                                         </asp:UpdatePanel>
 
 
-                                     <div class="hidden"><input type="hidden" id="IdHidden" runat="server" /></div>
-                                        <div class="text-hide"></div> <asp:Button ID="reservar"  runat="server" Text="Button" OnClick="Reservar_Click"/></div>
-
-                                         
+                                       <div class="hidden"><input type="hidden" id="IdHidden" runat="server" /></div>
+                                        <div class="hidden"><input type="hidden" id="IdHidden2" runat="server" /></div>
+                                          <div>
+                                                <asp:Button ID="reservar" runat="server" Text="esconder" OnClick="Reservar_Click"/>
+                                          </div>
+                                          <div>
+                                                <asp:Button ID="BorraReserva" runat="server" Text="esconder" OnClick="BorraReserva_Click" />
+                                              
+                                          </div>
+                                      </div>
+                                          
                                        
 
                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -90,9 +125,9 @@
 
                                       </ContentTemplate>
                                     </asp:UpdatePanel>
-
-                                <asp:Button ID="BtnFactura"  runat="server" Text="Button" OnClick="GenerarFactura_Click"/>
-
+                              <div class="form-group row col-lg-12">
+                                     <asp:Button ID="BtnFactura"  runat="server" Enabled="false"  Text="Hacer Reservación" OnClick="GenerarFactura_Click"/>
+                             </div>
                                 </div>
                                 
                                 </div>
@@ -103,7 +138,7 @@
     </asp:Panel>
 
     <script src="../js/Datatables/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"></script>
+    <script src="cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"></script>
 
     <script>
             $(document).ready(function () {
@@ -121,6 +156,8 @@
                 });
 
             });
+
+            
             $(":button").click(function () {
                 var idhabitacion = $(this).attr("id");
                 console.log(idhabitacion);

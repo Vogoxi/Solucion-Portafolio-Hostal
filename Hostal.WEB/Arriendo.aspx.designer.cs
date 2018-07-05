@@ -76,6 +76,15 @@ namespace Hostal.WEB {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden IdHidden;
         
         /// <summary>
+        /// Control IdHidden2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden IdHidden2;
+        
+        /// <summary>
         /// Control reservar.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace Hostal.WEB {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button reservar;
+        
+        /// <summary>
+        /// Control BorraReserva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BorraReserva;
         
         /// <summary>
         /// Control UpdatePanel2.
