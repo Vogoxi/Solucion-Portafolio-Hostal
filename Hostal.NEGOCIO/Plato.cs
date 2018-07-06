@@ -57,6 +57,19 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public int getPlatoMaxId()
+        {
+            try
+            {
+                int user = (int)CommonBC.Modelo.PLATO.Max(us => us.ID);
+                return user;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
         public bool AgregarPlato()
         {
 

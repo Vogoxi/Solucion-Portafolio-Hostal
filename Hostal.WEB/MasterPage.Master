@@ -25,11 +25,11 @@
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="Perfil.aspx">Perfil</a>
-                                <a class="dropdown-item" href="DatosUsuario.aspx">Datos Usuarios</a>
-                                <a class="dropdown-item" href="AgregarHuesped.aspx">Agregar Huesped</a>
-                                <a class="dropdown-item" href="Arriendo.aspx">Arrendar</a>
+                            <div id="menu" runat="server" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="perfilmenu" runat="server" class="dropdown-item" href="Perfil.aspx">Perfil</a>
+                                <a id="usuariomenu" runat="server" class="dropdown-item" href="DatosUsuario.aspx">Datos Usuarios</a>
+                                <a id="huespedmenu" runat="server" class="dropdown-item" href="AgregarHuesped.aspx">Agregar Huesped</a>
+                                <a id="arrendarmenu" runat="server" class="dropdown-item" href="Arriendo.aspx">Arrendar</a>
                             </div>
                         </li>
                         <li class="nav-item active">
@@ -39,7 +39,7 @@
                       <asp:Button ID="Button1" class="btn btn-danger" runat="server" Text="Cerrar Sesión" ValidationGroup="novalidation" CausesValidation="False" OnClick="Button1_Click" />
                     </div>
                 </nav>            
-        </nav>
+        
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
         </asp:ContentPlaceHolder>

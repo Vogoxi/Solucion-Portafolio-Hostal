@@ -119,7 +119,18 @@ namespace Hostal.NEGOCIO
             IdHuesped = string.Empty;
         }
 
-       
+        public int getDetalleFacturaMaxId()
+        {
+            try
+            {
+                int user = (int)CommonBC.Modelo.SERVICIO.Max(us => us.ID);
+                return user;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
 
         public bool AgregarDetalleFactura()
         {
@@ -127,7 +138,7 @@ namespace Hostal.NEGOCIO
 
             try
             {
-                //SE ASUME QUE ACA EL ID SE GENERA EN BASE DE DATOS CON UN TRIGGER.
+                detFactura.ID = getDetalleFacturaMaxId() + 1;
                 detFactura.FACTURA_ID = this.IdFactura;
                 detFactura.HABITACION_ID = this.IdHabitacion;
                 detFactura.HUESPED_ID = this.IdHuesped;
