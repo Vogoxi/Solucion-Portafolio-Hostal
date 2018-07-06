@@ -16,13 +16,24 @@ using System.Windows.Shapes;
 namespace Hostal.DESKTOP
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Factura.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Facturas : UserControl
     {
-        public MainWindow()
+        public Facturas()
         {
             InitializeComponent();
+        }
+
+        
+
+        private void btn_verFacturas_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl usc = null;
+            GridMain.Children.Clear();
+            usc = new VerFacturas();
+            GridMain.Children.Add(usc);
+
         }
     }
 }
