@@ -76,15 +76,6 @@ namespace Hostal.WEB {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden IdHidden;
         
         /// <summary>
-        /// Control IdHidden2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden IdHidden2;
-        
-        /// <summary>
         /// Control reservar.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,15 @@ namespace Hostal.WEB {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button reservar;
+        
+        /// <summary>
+        /// Control IdHidden2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden IdHidden2;
         
         /// <summary>
         /// Control BorraReserva.
@@ -121,15 +121,6 @@ namespace Hostal.WEB {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablaHtml;
         
         /// <summary>
-        /// Control UpdatePanel3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
-        /// <summary>
         /// Control tablaHtmlRes.
         /// </summary>
         /// <remarks>
@@ -137,6 +128,15 @@ namespace Hostal.WEB {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablaHtmlRes;
+        
+        /// <summary>
+        /// Control UpdatePanel3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
         /// Control BtnFactura.

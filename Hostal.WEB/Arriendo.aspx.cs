@@ -22,15 +22,6 @@ namespace Hostal.WEB
                 CargarHuesped();
             }
 
-            if (Session["Reserva"]==null)
-            {
-                BtnFactura.Enabled = true;
-            }else
-            {
-                BtnFactura.Enabled = false;
-            }
-           
-
         }
 
 
@@ -95,7 +86,7 @@ namespace Hostal.WEB
                     tabla = tabla + "<td style='text-align: center;'>" + item.Precio + "</td>";
                     tabla = tabla + "<td style='text-align: center;'>" + item.Tipo + "</td>";
                     tabla = tabla + "<td style='text-align: center;'>" + item.TipoCama + "</td>";
-                    tabla = tabla + "<td style='text-align: center;'><input type='button' id='"+item.Numero+"' ' class='btn' value='Reservar' style='background-color: #4286f4; color: white;'/></td>";
+                    tabla = tabla + "<td style='text-align: center;'><input type='button' class='btn' data-res='reserva' id='"+item.Numero+ "' ' value='Reservar' style='background-color: #4286f4; color: white;' class='btn'/></td>";
                     tabla = tabla + "</tr>";
                 }
                 tabla = tabla + "</tbody>";
@@ -160,10 +151,41 @@ namespace Hostal.WEB
                     
                     CreaTablaRes(Reserva);
 
-                    IdHidden.Value = "";
-                    
+                    string script = @"$(document).ready(function(){
+                                    $('#Tabla').DataTable({
+                                     ""fnDrawCallback"": function(oSettings) {
+                                     $('div.dataTables_filter input').attr('placeholder','Filtro por Campo...');
+                                          },
+                                     ""bLengthChange"": false
+                                      });
+                                     });
+                                     $("":button"").click(function () {
+                                     var idhabitacion = $(this).attr(""id"");
+                                    var reserva = $(this).data(""res"");
+                                    if (reserva == ""reserva"")
+                                    {
+                                    $(""#ContentPlaceHolder1_IdHidden"").val(reserva);
+                                    $(""#ContentPlaceHolder1_reservar"").trigger(""click"");
+                                     }
+                                     });$('#TablaRes').DataTable({
+                                     ""fnDrawCallback"": function(oSettings) {
+                                     $('div.dataTables_filter input').attr('placeholder','Filtro por Campo...');
+                                          },
+                                     ""bLengthChange"": false
+                                      });
+                                     });
+                                     $("":button"").click(function () {
+                                     var idborrar = $(this).attr(""id"");
+                                    var reserva = $(this).data(""tai"");
+                                    if (reserva == ""BorraReserva"")
+                                    {
+                                    $(""#ContentPlaceHolder1_IdHidden2"").val(reserva);
+                                    $(""#ContentPlaceHolder1_BorraReserva"").trigger(""click"");
+                                     }
+                                     });";
+
                     ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
-                    ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "test", "tablaInit();", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", script, true);
 
 
                 }
@@ -199,7 +221,7 @@ namespace Hostal.WEB
                 tabla = tabla + "<th style='text-align: center;'>Fecha llegada</th>";
                 tabla = tabla + "<th style='text-align: center;'>Fecha salida</th>";
                 tabla = tabla + "<th style='text-align: center;'>Servicio Comedor</th>";
-                tabla = tabla + "<th style='text-align: center;'>Opciones</th>";
+                tabla = tabla + "<th style='text-align: center;'>Opcion</th>";
                 tabla = tabla + "</tr>";
                 tabla = tabla + "</thead>";
                 tabla = tabla + "<tbody>";
@@ -228,8 +250,6 @@ namespace Hostal.WEB
                 tabla = tabla + "<td style='text-align: center;'>" + hues.NomApe + "</td>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.FechaInicio.ToShortDateString() + "</td>";
                 tabla = tabla + "<td style='text-align: center;'>" + item.FechaTermino.ToShortDateString() + "</td>";
-                tabla = tabla + "<td style='text-align: center;'><input type='button' id='" + item.Numero + "' value='Borrar' style='background-color: #4286f4; color: white;'/></td>";
-
 
                 ServicioCollection servicios = new ServicioCollection();
                 
@@ -250,12 +270,11 @@ namespace Hostal.WEB
                     
                     
                 }
-                tabla = tabla +"</ select > ";
-                tabla = tabla + "<td style='text-align: center;'>" + "</td>";
+                tabla = tabla + "</ select > </td>";
+                tabla = tabla + "<td style='text-align: center;'><input type='button' data-tai='BorraReserva' style='background-color: #4286f4; color: white;' class='btn' id='" + item.Numero + "' value='Borrar'/></td>";
 
-                
 
-                 tabla = tabla + "</tr>";
+                tabla = tabla + "</tr>";
             }
             tabla = tabla + "</tbody>";
             tabla = tabla + "</table>";
@@ -266,19 +285,24 @@ namespace Hostal.WEB
 
         protected void Consultar_Click(object sender, EventArgs e)
         {
-            HabitacionCollection habitacion = new HabitacionCollection();
-            DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
-            DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
-
-            Reserva = new List<NEGOCIO.Reserva>();
-
-            if (Session["Reserva"] != null)
+            if (TxtFechaInicio.Value != "" && TxtFechaFinal.Value!= "")
             {
-                Reserva = (List<Reserva>)Session["Reserva"];
+                HabitacionCollection habitacion = new HabitacionCollection();
+                DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
+                DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
+
+                Reserva = new List<NEGOCIO.Reserva>();
+
+                if (Session["Reserva"] != null)
+                {
+                    Reserva = (List<Reserva>)Session["Reserva"];
+                }
+
+                CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida, Reserva));
+            }else
+            {
+                //Error
             }
-
-            CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida,Reserva));
-
         }
 
         protected void GenerarFactura_Click(object sender, EventArgs e)
@@ -303,6 +327,9 @@ namespace Hostal.WEB
 
                 if (factura.AgregarFactura())
                 {
+
+                    factura.Id = factura.getFacturaMaxId();
+                    
                     foreach (var item in Reserva)
                     {
                         DetalleFactura detFac = new DetalleFactura();
@@ -314,18 +341,26 @@ namespace Hostal.WEB
                         detFac.IdHuesped = item.Rut;
                         detFac.IdServicio = item.Servicio;
 
-                        if (!detFac.AgregarDetalleFactura())
-                        {
-                            estado = false;
-                            break;
-                            //borrar detalles
-                            //facturas
-                        }
+                        int serv = factura.getPrecioById(item.Servicio);
+                        int hab = factura.Total + factura.getPrecioHabById(item.Numero);
+
+                        int restaFechas = (int)item.FechaTermino.Subtract(item.FechaInicio).TotalDays;
+
+                        restaFechas = restaFechas + 1;
+
+                        int total = (serv + hab) * restaFechas;
+
+                        factura.Total = factura.Total + total;
+
+                        detFac.AgregarDetalleFactura();
                     }
                 }
 
                 if (estado)
                 {
+
+
+                    factura.ActualizarFactura();
                     //generarcupon
                 }
                 else
@@ -389,7 +424,62 @@ namespace Hostal.WEB
 
                 Session["Reserva"] = Reserva;
 
-                ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
+                CargarHuesped();
+
+                HabitacionCollection habitacion = new HabitacionCollection();
+                DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
+                DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
+
+                List<Habitacion> habitaciones = new List<Habitacion>();
+
+                habitaciones = habitacion.HabitacionesDisponibles(llegada, salida, Reserva);
+
+                CreaTabla(habitaciones);
+
+                if (Reserva.Count != 0)
+                {
+                    CreaTablaRes(Reserva);
+                }else
+                {
+                    tablaHtmlRes.InnerHtml = "";
+                }
+
+
+                string script = @"$(document).ready(function(){
+                                    $('#Tabla').DataTable({
+                                     ""fnDrawCallback"": function(oSettings) {
+                                     $('div.dataTables_filter input').attr('placeholder','Filtro por Campo...');
+                                          },
+                                     ""bLengthChange"": false
+                                      });
+                                     });
+                                     $("":button"").click(function () {
+                                     var idhabitacion = $(this).attr(""id"");
+                                    var reserva = $(this).data(""res"");
+                                    if (reserva == ""reserva"")
+                                    {
+                                    $(""#ContentPlaceHolder1_IdHidden"").val(reserva);
+                                    $(""#ContentPlaceHolder1_reservar"").trigger(""click"");
+                                     }
+                                     });$('#TablaRes').DataTable({
+                                     ""fnDrawCallback"": function(oSettings) {
+                                     $('div.dataTables_filter input').attr('placeholder','Filtro por Campo...');
+                                          },
+                                     ""bLengthChange"": false
+                                      });
+                                     });
+                                     $("":button"").click(function () {
+                                     var idborrar = $(this).attr(""id"");
+                                    var reserva = $(this).data(""tai"");
+                                    if (reserva == ""BorraReserva"")
+                                    {
+                                    $(""#ContentPlaceHolder1_IdHidden2"").val(reserva);
+                                    $(""#ContentPlaceHolder1_BorraReserva"").trigger(""click"");
+                                     }
+                                     });";
+
+                ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test1", "tablaInit();", true);
+                ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test2", script, true);
 
             }
             catch (Exception ex)

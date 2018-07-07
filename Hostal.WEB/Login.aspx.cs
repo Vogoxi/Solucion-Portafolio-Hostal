@@ -22,8 +22,23 @@ namespace Hostal.WEB
             {
                 usuario = usuario.getUsuario();
                 Session["usuario"] = usuario;
-                NEGOCIO.Empresa empresa = new NEGOCIO.Empresa();
-                Session["empresa"] = empresa.getEmpresaByUserId(usuario);
+
+                if(usuario.TipoUsuario=="empresa")
+                {
+                    NEGOCIO.Empresa empresa = new NEGOCIO.Empresa();
+                    Session["empresa"] = empresa.getEmpresaByUserId(usuario);
+                }else if (usuario.TipoUsuario == "administrador")
+                {
+                    NEGOCIO.Empleado empleado = new NEGOCIO.Empleado();
+                    Session["empleado"] = empleado.getEmpleadoByUserId(usuario);
+                }
+                else if(usuario.TipoUsuario == "proveedor")
+                {
+                    NEGOCIO.Proveedor proveedor = new NEGOCIO.Proveedor();
+                    Session["proveedor"] = proveedor.getProveedorByUserId(usuario);
+                }
+
+                
                 Response.Redirect("Index.aspx");
             }
         }

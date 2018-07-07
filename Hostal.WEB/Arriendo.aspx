@@ -35,7 +35,7 @@
         <asp:ScriptManager EnablePageMethods="True" runat="server"></asp:ScriptManager>
         <div class="container py-3">
             <div class="row">
-                <div class="mx-auto col-sm-6">
+                <div class="mx-auto col-sm-12">
                             <!-- form user info -->
                             <div class="card">
                                 <div class="card-header">
@@ -48,7 +48,7 @@
                                     <br />
 
 
-                                    <div class="form-group row col-lg-12">
+                                    <div class="form-group row col-lg-10">
                                         <div class="col-lg-3">
                                             <label>Inicio</label>
                                         </div>
@@ -70,7 +70,7 @@
                                     <div class="form-group row col-lg-12">
 
                                         <div class="col-lg-5"></div>
-                                        <asp:Button ID="Consultar" runat="server" Text="Consultar" class='btn' style='background-color: #4286f4; color: white;' OnClick="Consultar_Click"/>
+                                        <asp:Button ID="Consultar" runat="server" Text="Consultar" class='btn btn-lg' style='background-color: #4286f4; color: white;' OnClick="Consultar_Click"/>
 
                                     </div>
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -91,23 +91,27 @@
 
 
                                        <div class="hidden"><input type="hidden" id="IdHidden" runat="server" /></div>
-                                        <div class="hidden"><input type="hidden" id="IdHidden2" runat="server" /></div>
-                                          <div>
-                                                <asp:Button ID="reservar" runat="server" Text="esconder" OnClick="Reservar_Click"/>
+                                        
+                                          <div class="d-none">
+                                                <asp:Button  ID="reservar" runat="server" Text="esconder" OnClick="Reservar_Click"/>
                                           </div>
-                                          <div>
-                                                <asp:Button ID="BorraReserva" runat="server" Text="esconder" OnClick="BorraReserva_Click" />
-                                              
-                                          </div>
-                                      </div>
                                           
-                                       
+                                       <div ><input type="hidden" id="IdHidden2" runat="server" /></div>
+                                        <div class="d-none">
+                                                <asp:Button ID="BorraReserva" runat="server" Text="esconder" OnClick="BorraReserva_Click" />
+                                          </div>
 
                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
                                         
                                               <div class="table-responsive" id="tablaHtml" runat="server">
                                     
+                                              </div>
+
+                                              
+                                        
+                                        <div class="table-responsive" id="tablaHtmlRes" runat="server">
+
                                               </div>
                                         
                                        
@@ -118,15 +122,12 @@
                                     <ContentTemplate>
 
                                          
-                                            <div class="table-responsive" id="tablaHtmlRes" runat="server">
-
-                                            </div>
-                                        
+                                            
 
                                       </ContentTemplate>
                                     </asp:UpdatePanel>
                               <div class="form-group row col-lg-12">
-                                     <asp:Button ID="BtnFactura"  runat="server" Enabled="false"  Text="Hacer Reservación" OnClick="GenerarFactura_Click"/>
+                                     <asp:Button ID="BtnFactura"  runat="server" Text="Hacer Reservación" class="btn btn-lg" style="background-color: #4286f4; color: white;" OnClick="GenerarFactura_Click"/>
                              </div>
                                 </div>
                                 
@@ -141,30 +142,39 @@
     <script src="cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"></script>
 
     <script>
-            $(document).ready(function () {
-                $('#Tabla').DataTable({
-                    "fnDrawCallback": function (oSettings) {
-                        $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
-                    },
-                    "bLengthChange": false
-                });
+        $(document).ready(function () {
+            $('#Tabla').DataTable({
+                "fnDrawCallback": function (oSettings) {
+                    $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
+                },
+                "bLengthChange": false
+            });
                 $('#TablaRes').DataTable({
                     "fnDrawCallback": function (oSettings) {
                         $('div.dataTables_filter input').attr('placeholder', 'Filtro por Campo...');
                     },
                     "bLengthChange": false
                 });
-
             });
-
             
             $(":button").click(function () {
                 var idhabitacion = $(this).attr("id");
-                console.log(idhabitacion);
-                $("#ContentPlaceHolder1_IdHidden").val(idhabitacion);
-                $("#ContentPlaceHolder1_reservar").trigger("click");
+                var reserva = $(this).data("res");
+                console.log(reserva);
+                if(reserva == "reserva"){
+                    $("#ContentPlaceHolder1_IdHidden").val(idhabitacion);
+                    $("#ContentPlaceHolder1_reservar").trigger("click");
+                }
             });
-           
+            $(":button").click(function () {
+                var idborrar = $(this).attr("id");
+                var reserva = $(this).data("tai");
+                console.log(reserva);
+                if (reserva == "BorraReserva") {
+                    $("#ContentPlaceHolder1_IdHidden2").val(idborrar);
+                    $("#ContentPlaceHolder1_BorraReserva").trigger("click");
+                }
+            });
 
         </script>
 </asp:Content>
