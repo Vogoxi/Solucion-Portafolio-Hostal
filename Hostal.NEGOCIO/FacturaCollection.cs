@@ -35,7 +35,7 @@ namespace Hostal.NEGOCIO
 
         public List<NEGOCIO.Factura> ReadAll()
         {
-            var reconversions = CommonBC.Modelo.FACTURA;
+            var reconversions = CommonBC.Modelo.FACTURA.OrderBy(f => f.ID);
             return GenerarListado(reconversions.ToList());
         }
     }

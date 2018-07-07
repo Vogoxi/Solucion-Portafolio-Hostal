@@ -18,8 +18,27 @@ namespace Hostal.NEGOCIO
             IdEmpleado = 0;
             IdProveedor = "";
             FechaEmision = DateTime.Today;
-            //FechaEntrega = DateTime.Today;
+            FechaEntrega = DateTime.Today;
         }
+
+        public string FechaEstadoEntrega
+        {
+            get
+            {
+                if (this.FechaEntrega < this.FechaEmision)
+                {
+                    return "Sin Procesar";
+                }
+                else if (this.FechaEntrega.ToShortDateString() == "31/12/9999")
+                {
+                    return "Rechazado";
+                }
+                {
+                    return this.FechaEntrega.ToString();
+                }
+            }
+        }
+
         public int NPedido
         {
             get

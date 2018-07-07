@@ -25,7 +25,7 @@ $(document).ready(function() {
         }else{
             if (user.trim() != "") {
                 $.ajax({
-                    url: 'SignUp.aspx/VerificarUser',
+                    url: 'Registro.aspx/VerificarUser',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     type: 'POST',
@@ -51,7 +51,7 @@ $(document).ready(function() {
         
         if (rut.trim() != "") {
             $.ajax({
-                url: 'SignUp.aspx/VerificarRut',
+                url: 'Registro.aspx/VerificarRut',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 type: 'POST',

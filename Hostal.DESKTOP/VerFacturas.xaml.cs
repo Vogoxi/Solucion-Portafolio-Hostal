@@ -35,7 +35,6 @@ namespace Hostal.DESKTOP
             List<NEGOCIO.Factura> facturas = new List<NEGOCIO.Factura>();
             NEGOCIO.FacturaCollection colection = new NEGOCIO.FacturaCollection();
             facturas = colection.ReadAll();
-            facturas.OrderBy(f => f.Id); //Por alguna razón no esta ordenandose.
             dta_Facturas.ItemsSource = facturas;
 
             dta_Detalle.CanUserAddRows = false;

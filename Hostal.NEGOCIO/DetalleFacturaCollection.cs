@@ -67,13 +67,13 @@ namespace Hostal.NEGOCIO
 
         public List<NEGOCIO.DetalleFactura> ReadAll()
         {
-            var reconversions = CommonBC.Modelo.DETALLE_FACTURA;
+            var reconversions = CommonBC.Modelo.DETALLE_FACTURA.OrderBy(d => d.ID);
             return GenerarListado(reconversions.ToList());
         }
 
         public List<NEGOCIO.DetalleFactura> ReadById(int id)
         {
-            var reconversions = CommonBC.Modelo.DETALLE_FACTURA;
+            var reconversions = CommonBC.Modelo.DETALLE_FACTURA.OrderBy(d => d.ID);
             return GenerarListado(reconversions.ToList(),id);
         }
 

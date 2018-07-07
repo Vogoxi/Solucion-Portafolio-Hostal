@@ -34,28 +34,28 @@
                                             <label class="col-lg-3 col-form-label form-control-label">Usuario</label>
                                             <div class="col-lg-9">                               
                                                 <asp:TextBox ID="txtUsuario"  class="form-control" runat="server"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="rfv_usuario" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtUsuario"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="rfv_usuario" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtUsuario" ForeColor="Red"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Contraseña</label>
                                             <div class="col-lg-9">
                                                     <asp:TextBox type="password" ID="txtPassword" class="form-control" runat="server" ControlToCompare="txtPassword"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="rfv_contrasenia" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="rfv_contrasenia" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtPassword" ForeColor="Red"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Repetir Contraseña</label>
                                             <div class="col-lg-9">
                                                     <asp:TextBox type="password" ID="txtRepPassword" class="form-control" runat="server"></asp:TextBox>
-                                                <asp:CompareValidator ID="cv_RepPass" runat="server" ErrorMessage="*Las contraseñas deben ser iguales" ControlToCompare="txtPassword" ControlToValidate="txtRepPassword"></asp:CompareValidator>
+                                                <asp:CompareValidator ID="cv_RepPass" runat="server" ErrorMessage="*Las contraseñas deben ser iguales" ControlToCompare="txtPassword" ControlToValidate="txtRepPassword" ForeColor="Red"></asp:CompareValidator>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Rut</label>
                                             <div class="col-lg-9">
                                                     <asp:TextBox ID="txtRut" class="form-control" runat="server" MaxLength="10"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="rfv_rut" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtRut"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="rfv_rut" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtRut" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     <small id="txtRutHelp" class="form-text text-muted">Sin puntos y con guión</small>
                                             </div>
                                         </div>
@@ -63,7 +63,7 @@
                                                 <label class="col-lg-3 col-form-label form-control-label">Razón Social</label>
                                                 <div class="col-lg-9">
                                                         <asp:TextBox ID="txtRazonSocial" class="form-control" runat="server"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="rfv_razonSocial" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtRazonSocial"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="rfv_razonSocial" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtRazonSocial" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
                                         <div class="form-group row">
@@ -77,14 +77,14 @@
                                                     <label class="col-lg-3 col-form-label form-control-label">Dirección</label>
                                                     <div class="col-lg-9">
                                                             <asp:TextBox ID="txtDireccion" class="form-control" runat="server"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="rfv_direccion" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtDireccion"></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator ID="rfv_direccion" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtDireccion" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
                                         <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">Teléfono</label>
                                                 <div class="col-lg-9">
                                                         <asp:TextBox ID="txtTelefono" class="form-control" runat="server" MaxLength="9" placeholder="Ej: 912345678" onKeyPress="return soloNumeros(event)"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="rfv_telefono" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtTelefono"></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator ID="rfv_telefono" runat="server" ErrorMessage="*Obligatorio" ControlToValidate="txtTelefono" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

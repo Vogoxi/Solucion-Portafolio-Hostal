@@ -39,5 +39,11 @@ namespace Hostal.NEGOCIO
             var reconversions = CommonBC.Modelo.DETALLE_PEDIDO;
             return GenerarListado(reconversions.ToList());
         }
+
+        public List<NEGOCIO.DetallePedido> ReadById(int id)
+        {
+            var reconversions = CommonBC.Modelo.DETALLE_PEDIDO.Where(d => d.ID_PEDIDO == id).OrderBy(d => d.ID);
+            return GenerarListado(reconversions.ToList());
+        }
     }
 }
