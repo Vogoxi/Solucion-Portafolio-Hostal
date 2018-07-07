@@ -1,66 +1,73 @@
 $(document).ready(function() {
-    $("#ContentPlaceHolder1_txtRepPassword").change(function(){
-        var original = $("#ContentPlaceHolder1_txtPassword").val();
+    $("#txtRepPassword").focusout(function(){
+        var original = $("#txtPassword").val();
         var verif = $(this).val();
         if (verif.trim() != "") {
             if (original != verif) {
                 alert("Las contraseñas deben ser iguales");
                 $(this).css("borderColor","red");
-                $("#ContentPlaceHolder1_txtPassword").css("borderColor","red");
+                $("#txtPassword").css("borderColor","red");
             }else{
                 $(this).css("borderColor","green");
-                $("#ContentPlaceHolder1_txtPassword").css("borderColor","green");
+                $("#txtPassword").css("borderColor","green");
             }    
         }else{
             $(this).css("borderColor","#d8dde2");
         }    
     });
 
-    $("#ContentPlaceHolder1_txtUsuario").focusout(function(){
+    $("#txtUsuario").focusout(function(){
         var user = $(this).val();
-        
-        if (user.trim() != "") {
-            $.ajax({
-                url: 'SignUp.aspx/VerificarUser',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                type: 'POST',
-                data:JSON.stringify({ "user": user}),
-                success: function(response){
-                    if (response.d != 1) {
-                        $("#ContentPlaceHolder1_txtUsuario").css("borderColor","green");
-                    }else{
-                        alert("El nombre de usuario ya existe");
-                        $("#ContentPlaceHolder1_txtUsuario").css("borderColor","red");
-                    }
-                }
-            });
+        user = user.trim();
+        if (/\s/.test(user)) {
+            alert("El nombre de usuario no puede tener espacios");
+            $("#txtUsuario").css("borderColor","red");
         }else{
-            $("#ContentPlaceHolder1_txtUsuario").css("borderColor","#d8dde2");
-        }
+            if (user.trim() != "") {
+                $.ajax({
+                    url: 'Registro.aspx/VerificarUser',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    type: 'POST',
+                    /* Se implementa "JSON.stringify" ya que sin eso, el string del usuario viene con caracteres extraños */ 
+                    data:JSON.stringify({ "user": user}),
+                    success: function(response){
+                        if (response.d != 1) {
+                            $("#txtUsuario").css("borderColor","green");
+                        }else{
+                            alert("El nombre de usuario ya existe");
+                            $("#txtUsuario").css("borderColor","red");
+                        }
+                    }
+                });
+            }else{
+                $("#txtUsuario").css("borderColor","#d8dde2");
+            }
+        }        
     });
 
-    $("#ContentPlaceHolder1_txtRut").focusout(function(){
+    $("#txtRut").focusout(function(){
         var rut = $(this).val();
         
         if (rut.trim() != "") {
             $.ajax({
-                url: 'SignUp.aspx/VerificarRut',
+                url: 'Registro.aspx/VerificarRut',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 type: 'POST',
+                /* Se implementa "JSON.stringify" ya que sin eso, el string del rut viene con caracteres extraños */ 
                 data:JSON.stringify({ "rut": rut}),
                 success: function(response){
                     if (response.d != 1) {
-                        $("#ContentPlaceHolder1_txtRut").css("borderColor","green");
+                        $("#txtRut").css("borderColor","green");
                     }else{
                         alert("El rut ingresado ya existe");
-                        $("#ContentPlaceHolder1_txtRut").css("borderColor","red");
+                        $("#txtRut").css("borderColor","red");
                     }
                 }
             });
         }else{
-            $("#ContentPlaceHolder1_txtRut").css("borderColor","#d8dde2");
+            $("#txtRut").css("borderColor","#d8dde2");
         }
     });
 

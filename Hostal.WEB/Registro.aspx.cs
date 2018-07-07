@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Services;
 
 namespace Hostal.WEB
 {
-    public partial class SignUp : System.Web.UI.Page
+    public partial class Registro : System.Web.UI.Page
     {
-        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,6 +19,8 @@ namespace Hostal.WEB
         public static string VerificarUser(string user)
         {
             NEGOCIO.Usuario usuario = new NEGOCIO.Usuario();
+            user.Trim();
+            
             if (usuario.getUsuarioIdByName(user.ToLower()) != 0)
             {
                 return "1";
@@ -49,7 +50,7 @@ namespace Hostal.WEB
             NEGOCIO.Usuario usuario = new NEGOCIO.Usuario();
             usuario.User = txtUsuario.Text.ToLower();
             usuario.Contrasena = txtPassword.Text;
-            usuario.TipoUsuario = "Empresa";
+            usuario.TipoUsuario = "empresa";
 
             if (usuario.agregarUsuario(txtUsuario.Text))
             {

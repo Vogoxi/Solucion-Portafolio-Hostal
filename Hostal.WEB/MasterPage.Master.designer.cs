@@ -31,6 +31,9 @@ namespace Hostal.WEB {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+
+        /// Button1 control.
+
         /// Control menu.
         /// </summary>
         /// <remarks>
@@ -50,6 +53,7 @@ namespace Hostal.WEB {
         
         /// <summary>
         /// Control usuariomenu.
+      
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.

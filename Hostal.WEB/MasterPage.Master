@@ -39,7 +39,6 @@
                       <asp:Button ID="Button1" class="btn btn-danger" runat="server" Text="Cerrar Sesión" ValidationGroup="novalidation" CausesValidation="False" OnClick="Button1_Click" />
                     </div>
                 </nav>            
-        
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
         </asp:ContentPlaceHolder>

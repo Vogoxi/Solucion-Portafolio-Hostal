@@ -12,6 +12,57 @@ namespace Hostal.NEGOCIO
         private DateTime _fechaIngreso, _fechaSalida;
         private string _idHuesped;
 
+        public string NomHuesped
+        {
+            get
+            {
+                DALC.HUESPED HUESPED = CommonBC.Modelo.HUESPED.FirstOrDefault(e => e.RUT == this.IdHuesped);
+
+                return Auxiliar.UppercaseWords(String.Format("{0} {1}",HUESPED.NOMBRE,HUESPED.APELLIDO));
+            }
+
+        }
+
+        public string RutHuesped
+        {
+            get
+            {
+                DALC.HUESPED HUESPED = CommonBC.Modelo.HUESPED.FirstOrDefault(e => e.RUT == this.IdHuesped);
+
+                return HUESPED.RUT;
+            }
+
+        }
+
+        public long NHabitacion
+        {
+            get
+            {
+                DALC.HABITACION HABITACION = CommonBC.Modelo.HABITACION.FirstOrDefault(e => e.NUMERO == this.IdHabitacion);
+
+                return HABITACION.NUMERO;
+            }
+
+        }
+
+        public string ShortIngreso
+        {
+            get
+            {
+                return _fechaIngreso.ToShortDateString();
+            }
+        }
+
+        public string ShortSalida
+        {
+            get
+            {
+                return _fechaSalida.ToShortDateString();
+            }
+
+        }
+
+
         public int Id
         {
             get
@@ -63,6 +114,7 @@ namespace Hostal.NEGOCIO
                 _idServicio = value;
             }
         }
+
 
         public DateTime FechaIngreso
         {
