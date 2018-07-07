@@ -9,7 +9,7 @@ namespace Hostal.NEGOCIO
     public class Factura
     {
         private int _id, _total;
-        private string _idEmpresa,_nomEmpresa;
+        private string _idEmpresa;
         private DateTime _fechaFacturacion;
 
         public string NomEmpresa
@@ -97,13 +97,40 @@ namespace Hostal.NEGOCIO
             this._fechaFacturacion = DateTime.Today;
         }
 
+        public int getPrecioById(int id)
+        {
+            DALC.SERVICIO serv = CommonBC.Modelo.SERVICIO.FirstOrDefault(r => r.ID == id);
+
+            return (int)serv.PRECIO;
+        }
+
+        public int getPrecioHabById(int id)
+        {
+            DALC.HABITACION serv = CommonBC.Modelo.HABITACION.FirstOrDefault(r => r.NUMERO == id);
+
+            return (int)serv.PRECIO;
+        }
+        
+
+        public int getFacturaMaxId()
+        {
+            try
+            {
+                int user = (int)CommonBC.Modelo.FACTURA.Max(us => us.ID);
+                return user;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
         public bool AgregarFactura()
         {
             DALC.FACTURA factura = new DALC.FACTURA();
 
             try
             {
-                //SE ASUME QUE ACA EL ID SE GENERA EN BASE DE DATOS CON UN TRIGGER.
+                factura.ID = getFacturaMaxId() + 1;
                 factura.ID_EMPRESA = this.IdEmpresa;
                 factura.TOTAL = this.Total;
                 factura.FECHA_FACTURACION = this.FechaFacturacion;

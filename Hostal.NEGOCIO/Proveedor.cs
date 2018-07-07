@@ -98,6 +98,30 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public Proveedor getProveedorByUserId(Usuario usuario)
+        {
+            try
+            {
+                Hostal.DALC.PROVEEDOR proveedor = CommonBC.Modelo.PROVEEDOR.FirstOrDefault(us => us.USUARIO_ID == usuario.Id);
+
+                Proveedor prov = new Proveedor();
+
+                prov.Rut = proveedor.RUT;
+                prov.Nombre = proveedor.NOMBRE;
+                prov.Rubro = proveedor.RUBRO;
+                prov.UsuarioId = (int)proveedor.USUARIO_ID;
+
+                
+                return prov;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return null;
+            }
+        }
+
         public bool agregarProveedor()
         {
             try

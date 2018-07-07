@@ -111,6 +111,27 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public Empleado getEmpleadoByUserId(Usuario usuario)
+        {
+            try
+            {
+                Hostal.DALC.EMPLEADO empleado = CommonBC.Modelo.EMPLEADO.FirstOrDefault(us => us.USUARIO_ID == usuario.Id);
+
+                Empleado emp = new Empleado();
+                emp.Id = (int)empleado.ID;
+                emp.Nombre = empleado.NOMBRE;
+                emp.Apellido = empleado.APELLIDO;
+                emp.UsuarioId = (int)empleado.USUARIO_ID;
+                return emp;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message);
+                return null;
+            }
+        }
+
         public int getEmpleadoIdByName(string nombre)
         {
             try

@@ -57,13 +57,27 @@ namespace Hostal.NEGOCIO
             }
         }
 
+
+        public int getServicioMaxId()
+        {
+            try
+            {
+                int user = (int)CommonBC.Modelo.SERVICIO.Max(us => us.ID);
+                return user;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
         public bool AgregarServicio()
         {
             DALC.SERVICIO servicio = new DALC.SERVICIO();
 
             try
             {
-                // ID por trigger
+                servicio.ID = getServicioMaxId()+1;
                 servicio.NOMBRE = this.Nombre;
                 servicio.PRECIO = this.Precio;
 
