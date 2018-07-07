@@ -50,29 +50,38 @@
 
                                     <div class="form-group row col-lg-10">
                                         <div class="col-lg-3">
-                                            <label>Inicio</label>
+                                            <h6><label>Llegada</label></h6>
                                         </div>
                                         <div class="col-lg-4"></div>
                                         <div class="col-lg-3">
-                                            <label>Termino</label>
+                                            <h6><label>Salida</label></h6>
                                         </div>
                                         <div class="col-lg-1"></div>
                                         <br />
                                         <div class="col-lg-3">
-                                            <input id="TxtFechaInicio" runat="server" type="date"  />
+                                            <input id="TxtFechaInicio" runat="server" class="" type="date"  />
                                         </div>
                                         <div class="col-lg-4"></div>
                                         <div class="col-lg-3">
-                                            <input id="TxtFechaFinal" runat="server" type="date" />
+                                            <input id="TxtFechaFinal" runat="server" class="" type="date" />
                                         </div>
                                         <div class="col-lg-1"></div>
                                     </div>
-                                    <div class="form-group row col-lg-12">
+                                    <div class="form-group row col-lg-10 align-content-center">
 
-                                        <div class="col-lg-5"></div>
-                                        <asp:Button ID="Consultar" runat="server" Text="Consultar" class='btn btn-lg' style='background-color: #4286f4; color: white;' OnClick="Consultar_Click"/>
-
+                                        <div class="">
+                                            <asp:Button ID="Consultar" runat="server" Text="Consultar" class='btn btn-lg' style='background-color: #4286f4; color: white;' OnClick="Consultar_Click"/>
+                                        </div>
                                     </div>
+                                    <div class="form-group row col-lg-10 align-content-center">
+
+                                        <div></div>
+                                        <h6><label id="mensaje1" runat="server"></label></h6>
+                                        <br />
+                                        
+                                    </div>
+                                    
+
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                      <ContentTemplate>
 
@@ -80,7 +89,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label"></label>
                                             <div class="col-lg-9">
-                                                   <asp:DropDownList ID="ddlHuespedes" runat="server"></asp:DropDownList>
+                                                   <asp:DropDownList ID="ddlHuespedes" CssClass="btn btn-primary" runat="server"></asp:DropDownList>
                                             </div>
                                         </div>
 
@@ -110,32 +119,39 @@
 
                                               
                                         
-                                        <div class="table-responsive" id="tablaHtmlRes" runat="server">
+                                             <div class="table-responsive" id="tablaHtmlRes" runat="server">
 
-                                              </div>
+                                             </div>
                                         
                                        
                                     </ContentTemplate>
                                     </asp:UpdatePanel>
 
-                                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                                    <ContentTemplate>
 
-                                         
-                                            
-
-                                      </ContentTemplate>
-                                    </asp:UpdatePanel>
                               <div class="form-group row col-lg-12">
                                      <asp:Button ID="BtnFactura"  runat="server" Text="Hacer Reservación" class="btn btn-lg" style="background-color: #4286f4; color: white;" OnClick="GenerarFactura_Click"/>
-                             </div>
+                                     <div class="col-lg-2"></div>
+                                     <h4><label id="txtPrecio" runat="server"></label></h4>
+                              </div>
                                 </div>
                                 
                                 </div>
+
+                    <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Reserva</h4>
+                                </div>
+                                <div class="card-body">
+                                   
+                                    <h5>Seleccione Fecha de su estadia</h5>
+                                    </div>
+
+
+
                             </div>
 
                    </div> <!-- /form user info -->
-        
+        </div>
     </asp:Panel>
 
     <script src="../js/Datatables/jquery.dataTables.min.js"></script>
@@ -175,6 +191,24 @@
                     $("#ContentPlaceHolder1_BorraReserva").trigger("click");
                 }
             });
+            $(".cambio").change(function () {
+                var id = $(this).val();
+                var num = $(this).attr("id");
+                num = num.replace("Select","");
+                console.log(num);
+                $.ajax({
+                    url: 'Arriendo.aspx/ActualizarAjax',
+                    contentType:"application/json; charset=utf-8",
+                    dataType:"json",
+                    type:'POST',
+                    data:JSON.stringify({"id":id,"num":num}),
+                    success:function(response){
+
+                    }
+                });
+
+            });
+
 
         </script>
 </asp:Content>

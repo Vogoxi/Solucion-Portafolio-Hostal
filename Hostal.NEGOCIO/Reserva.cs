@@ -86,5 +86,19 @@ namespace Hostal.NEGOCIO
                 _servicio = value;
             }
         }
+
+        public int getValorSerById(int id)
+        {
+            DALC.SERVICIO serv = CommonBC.Modelo.SERVICIO.FirstOrDefault(r => r.ID == id);
+
+            return (int)serv.PRECIO;
+        }
+
+        public int getValorHabById(int id)
+        {
+            DALC.HABITACION serv = CommonBC.Modelo.HABITACION.FirstOrDefault(r => r.NUMERO == id);
+
+            return (int)serv.PRECIO;
+        }
     }
 }

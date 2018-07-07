@@ -27,10 +27,6 @@ namespace Hostal.WEB
                 {
                     NEGOCIO.Empresa empresa = new NEGOCIO.Empresa();
                     Session["empresa"] = empresa.getEmpresaByUserId(usuario);
-                }else if (usuario.TipoUsuario == "administrador")
-                {
-                    NEGOCIO.Empleado empleado = new NEGOCIO.Empleado();
-                    Session["empleado"] = empleado.getEmpleadoByUserId(usuario);
                 }
                 else if(usuario.TipoUsuario == "proveedor")
                 {

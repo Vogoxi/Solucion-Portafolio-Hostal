@@ -23,15 +23,6 @@ namespace Hostal.WEB
             }else if(usuario.TipoUsuario == "proveedor")
             {
 
-            }else if(usuario.TipoUsuario == "empleado")
-            {
-
-            }else if(usuario.TipoUsuario == "administrador")
-            {
-
-            }else
-            {
-
             }
 
         }
