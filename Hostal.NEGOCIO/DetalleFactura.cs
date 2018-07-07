@@ -123,7 +123,7 @@ namespace Hostal.NEGOCIO
         {
             try
             {
-                int user = (int)CommonBC.Modelo.SERVICIO.Max(us => us.ID);
+                int user = (int)CommonBC.Modelo.DETALLE_FACTURA.Max(us => us.ID);
                 return user;
             }
             catch (Exception)

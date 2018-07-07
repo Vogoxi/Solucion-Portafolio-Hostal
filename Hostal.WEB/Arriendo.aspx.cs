@@ -18,8 +18,6 @@ namespace Hostal.WEB
         
             if (!IsPostBack)
             {
-                DateTime fecha = DateTime.Today;
-                TxtFechaInicio.Value = DateTime.Today.ToString();
                 CargarHuesped();
             }
 
@@ -128,34 +126,47 @@ namespace Hostal.WEB
 
                         int.TryParse(idHabitacion, out id);
 
-                        reserva.Numero = id;
-                        reserva.Rut = idhuesped;
-                        reserva.FechaInicio = Convert.ToDateTime(TxtFechaInicio.Value);
-                        reserva.FechaTermino = Convert.ToDateTime(TxtFechaFinal.Value);
+                        bool estado = false;
 
-                        Reserva.Add(reserva);
+                        foreach (var item in Reserva)
+                        {
+                            if (item.Numero == id)
+                            {
+                                estado = true;
+                            }
+                        }
 
-                        Session["Reserva"] = Reserva;
+                       
+                            reserva.Numero = id;
+                            reserva.Rut = idhuesped;
+                            reserva.FechaInicio = Convert.ToDateTime(TxtFechaInicio.Value);
+                            reserva.FechaTermino = Convert.ToDateTime(TxtFechaFinal.Value);
 
-                        GuardarComida(Reserva);
+                        if (estado == false)
+                        {
+                            Reserva.Add(reserva);
+                            Session["Reserva"] = Reserva;
+                        }
 
-                        txtPrecio.InnerText = ActualizarPrecio(Reserva).ToString("C0");
+                            GuardarComida(Reserva);
 
-                        CargarHuesped();
+                            txtPrecio.Text = ActualizarPrecio(Reserva).ToString("C0");
 
-                        HabitacionCollection habitacion = new HabitacionCollection();
-                        DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
-                        DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
+                            CargarHuesped();
 
-                        List<Habitacion> habitaciones = new List<Habitacion>();
+                            HabitacionCollection habitacion = new HabitacionCollection();
+                            DateTime llegada = Convert.ToDateTime(TxtFechaInicio.Value);
+                            DateTime salida = Convert.ToDateTime(TxtFechaFinal.Value);
 
-                        habitaciones = habitacion.HabitacionesDisponibles(llegada, salida, Reserva);
+                            List<Habitacion> habitaciones = new List<Habitacion>();
 
-                        CreaTabla(habitaciones);
+                            habitaciones = habitacion.HabitacionesDisponibles(llegada, salida, Reserva);
 
-                        CreaTablaRes(Reserva);
+                            CreaTabla(habitaciones);
 
-                        string script = @"$(document).ready(function(){
+                            CreaTablaRes(Reserva);
+
+                            string script = @"$(document).ready(function(){
                                     $('#Tabla').DataTable({
                                      ""fnDrawCallback"": function(oSettings) {
                                      $('div.dataTables_filter input').attr('placeholder','Filtro por Campo...');
@@ -188,10 +199,10 @@ namespace Hostal.WEB
                                      }
                                      });";
 
-                        ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
-                        ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", script, true);
-                    }else
-                    {
+                            ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", "tablaInit();", true);
+                            ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test", script, true);
+
+                        mensaje2.InnerText = "";
 
                     }
             
@@ -206,7 +217,7 @@ namespace Hostal.WEB
 
             }else
             {
-                //ALERTA DEBE ELEGIR VALOR
+                mensaje2.InnerText = "Debe Elegir Huesped";
             }
 
 
@@ -237,6 +248,14 @@ namespace Hostal.WEB
 
 
                 Reserva = (List<Reserva>)Session["Reserva"];
+
+                if (Reserva.Count>0)
+                {
+                    btnHidden.Visible = true;
+                }else
+                {
+                    btnHidden.Visible = false;
+                }
                 
 
             }
@@ -266,17 +285,17 @@ namespace Hostal.WEB
                 
                 tabla = tabla + "<td style='text-align: center;'> <select runat='server' class='cambio' name='Select" + item.Numero + "' id='Select" + item.Numero + "'>";
                 
-                tabla = tabla + "<option>Seleccione Servicio</option>";
+                tabla = tabla + "<option value='0'>Seleccione Servicio</option>";
 
                 foreach (var food in servicios.ReadAll())
                 {
                     if(item.Servicio == food.Id)
                     {
-                        tabla = tabla + "<option value='" + food.Id + "' selected>" + food.Nombre + "</option>";
+                        tabla = tabla + "<option value='" + food.Id + "' selected>" + food.Nombre+" "+ food.Precio.ToString("C0") + "</option>";
                         
                     }else
                     {
-                        tabla = tabla + "<option value='" + food.Id + "'>" + food.Nombre + "</option>";
+                        tabla = tabla + "<option value='" + food.Id + "'>" + food.Nombre + " " + food.Precio.ToString("C0") + "</option>";
                     }
                     
                     
@@ -322,6 +341,8 @@ namespace Hostal.WEB
                     CreaTabla(habitacion.HabitacionesDisponibles(llegada, salida, Reserva));
 
                     mensaje1.InnerText = "";
+
+                    ddlHidden.Visible = true;
                 }
             }else
             {
@@ -351,14 +372,14 @@ namespace Hostal.WEB
                 factura.FechaFacturacion = DateTime.Today;
                 factura.IdEmpresa = emp.Rut;
                 factura.Total = 0;
-                bool estado = true;
+                bool borrarFactura = false;
 
                 if (factura.AgregarFactura())
                 {
 
                     factura.Id = factura.getFacturaMaxId();
 
-                    bool borrarFactura = false;
+                    
 
                     foreach(var item in Reserva)
                     {
@@ -366,13 +387,9 @@ namespace Hostal.WEB
                         {
                             borrarFactura = true;
                         }
-                        else
-                        {
-                            //mensaje tiene Servicios sin elegir.
-                        }
                     }
 
-                    if (borrarFactura)
+                    if (borrarFactura == true)
                     {
                         factura.BorrarFactura();
                     }
@@ -395,22 +412,22 @@ namespace Hostal.WEB
                     }
                 }
 
-                if (estado)
+                if (borrarFactura == false)
                 {
                     factura.Total = ActualizarPrecio(Reserva);
 
                     factura.ActualizarFactura();
-                    //generarcupon
+
+                    Session["Reserva"] = null;
+
+                    Response.Redirect("index.aspx");
                 }
                 else
                 {
-                    //Error
+                    mensaje3.InnerText = "Tiene Huespedes sin Servicio de comedor elegido";
                 }
             }
-            else
-            {
-                //Error
-            }
+        
 
 
         }
@@ -433,26 +450,58 @@ namespace Hostal.WEB
             }
         }
 
-        [WebMethod]
-        private void ActualizarAjax(int id, int num)
+        
+        [WebMethod(EnableSession = true)]
+        public static string ActualizarAjax(int id, int num)
         {
-            if (Session["Reserva"] != null)
-            {
-                Reserva = (List<Reserva>)Session["Reserva"];
+            int precio = 0;
+            int valorHab = 0;
+            int valorSer = 0;
 
-                foreach (var item in Reserva)
+            if (HttpContext.Current.Session["Reserva"] != null)
+            {
+                List<Reserva> res = new List<Reserva>();
+                List<Reserva> res2 = new List<Reserva>();
+
+                res = (List<Reserva>)HttpContext.Current.Session["Reserva"];
+
+                foreach (var item in res)
                 {
                     if (item.Numero == num)
                     {
-                        item.Servicio = num;
+                        item.Servicio = id;
                     }
-                    
+
+                    res2.Add(item);
                 }
 
-                Session["Reserva"] = Reserva;
 
-                txtPrecio.InnerHtml = ActualizarPrecio(Reserva).ToString("C0");
+                foreach (var item in res2)
+                {
+                    Reserva reservita = new Reserva();
+                    reservita.Numero = item.Numero;
+                    valorHab = reservita.getValorHabById(reservita.Numero);
+
+                    if (item.Servicio != 0)
+                    {
+                        reservita.Servicio = item.Servicio;
+                        valorSer = reservita.getValorSerById(reservita.Servicio);
+                    }else
+                    {
+                        valorSer = 0;
+                    }
+
+                    int resultado = (int)item.FechaTermino.Subtract(item.FechaInicio).TotalDays;
+
+                    precio = precio + (valorHab + valorSer) * resultado;
+
+                    HttpContext.Current.Session["Reserva"] = res2;
+                }
+                  
             }
+            
+    
+            return precio.ToString("C0");
         }
 
         private int ActualizarPrecio(List<Reserva> reserva)
@@ -477,6 +526,10 @@ namespace Hostal.WEB
                         valorSer = reservita.getValorSerById(reservita.Servicio);
 
                     }
+                    else
+                    {
+                        valorSer = 0;
+                    }
 
                     int resultado = (int)item.FechaTermino.Subtract(item.FechaInicio).TotalDays;
 
@@ -488,7 +541,7 @@ namespace Hostal.WEB
                 precio = 0;
             }
 
-            txtPrecio.InnerText = precio.ToString("C0");
+            txtPrecio.Text = precio.ToString("C0");
 
             return precio;
         }
@@ -514,10 +567,17 @@ namespace Hostal.WEB
                 }
 
                 Session["Reserva"] = Reserva;
-
                 GuardarComida(Reserva);
 
-                txtPrecio.InnerText = ActualizarPrecio(Reserva).ToString("C0");
+                if (Reserva.Count>0)
+                {
+                    btnHidden.Visible = true;
+                }else
+                {
+                    btnHidden.Visible = false;
+                }
+
+                txtPrecio.Text = ActualizarPrecio(Reserva).ToString("C0");
 
                 CargarHuesped();
 
@@ -575,6 +635,8 @@ namespace Hostal.WEB
 
                 ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test1", "tablaInit();", true);
                 ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "test2", script, true);
+                ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "test3", "tablaInit();", true);
+                ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "test4", script, true);
 
             }
             catch (Exception ex)
