@@ -23,6 +23,15 @@ namespace Hostal.NEGOCIO
 
         }
 
+        public string Precio
+        {
+            get
+            {
+                return _total.ToString("C0");
+            }
+
+        }
+
         public int Id
         {
             get

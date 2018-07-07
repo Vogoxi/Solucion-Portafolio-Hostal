@@ -11,15 +11,16 @@
                 <DataGridTextColumn Header="N° Factura"  Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Empresa"  Binding="{Binding NomEmpresa}"/>
                 <DataGridTextColumn Header="Fecha de Facturación"  Binding="{Binding FechaFacturacion}"/>
-                <DataGridTextColumn Header="Total"  Binding="{Binding Total}"/>
+                <DataGridTextColumn Header="Total"  Binding="{Binding Precio}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="dta_Detalle" HorizontalAlignment="Left" Background="White" Foreground="#DD000000" Margin="518,150,0,0" BorderBrush="Black" VerticalAlignment="Top" Height="194" Width="415" BorderThickness="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="dta_Detalle" HorizontalAlignment="Left" Background="White" Foreground="#DD000000" Margin="518,150,0,0" BorderBrush="Black" VerticalAlignment="Top" Height="194" Width="450" BorderThickness="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Huesped"  Binding="{Binding Nombre}"/>
-                <DataGridTextColumn Header="N° Habitación"  Binding="{Binding Nombre}"/>
-                <DataGridTextColumn Header="Ingreso"  Binding="{Binding Nombre}"/>
-                <DataGridTextColumn Header="Salida"  Binding="{Binding Nombre}"/>
+                <DataGridTextColumn Header="Huesped"  Binding="{Binding NomHuesped}"/>
+                <DataGridTextColumn Header="Rut"  Binding="{Binding RutHuesped}"/>
+                <DataGridTextColumn Header="N° Habitación"  Binding="{Binding NHabitacion}"/>
+                <DataGridTextColumn Header="Ingreso"  Binding="{Binding ShortIngreso}"/>
+                <DataGridTextColumn Header="Salida"  Binding="{Binding ShortSalida}"/>
                 <DataGridTextColumn Header="Servicio"  Binding="{Binding Cantidad}"/>
             </DataGrid.Columns>
         </DataGrid>

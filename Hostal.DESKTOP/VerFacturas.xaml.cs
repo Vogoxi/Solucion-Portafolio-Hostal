@@ -35,15 +35,11 @@ namespace Hostal.DESKTOP
             List<NEGOCIO.Factura> facturas = new List<NEGOCIO.Factura>();
             NEGOCIO.FacturaCollection colection = new NEGOCIO.FacturaCollection();
             facturas = colection.ReadAll();
-            facturas.OrderBy(f => f.Id);
+            facturas.OrderBy(f => f.Id); //Por alguna razón no esta ordenandose.
             dta_Facturas.ItemsSource = facturas;
 
             dta_Detalle.CanUserAddRows = false;
             dta_Facturas.CanUserAddRows = false;
-
-            //dta_Facturas.Columns[0].Header = "N° Factura";
-            //dta_Facturas.Columns[1].Header = "Empresa";
-            //dta_Facturas.Columns[1].Header = "Empresa";
         }
 
         private void dta_Facturas_SelectionChanged(object sender, SelectionChangedEventArgs e)

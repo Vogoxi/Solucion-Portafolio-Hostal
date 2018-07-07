@@ -50,7 +50,7 @@
                                                             <td align="right">
                                                                 <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Ingresar" ValidationGroup="LoginPanel" />
                                                             </br>
-                                                                <center><a href="SignUp.aspx">Registrarse</a></center>
+                                                                <center><a href="Registro.aspx">Registrarse</a></center>
                                                             </td>
                                                         </tr>
                                                     </table>
