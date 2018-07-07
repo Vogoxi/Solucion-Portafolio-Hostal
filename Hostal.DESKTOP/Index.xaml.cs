@@ -15,13 +15,69 @@ using System.Windows.Shapes;
 namespace Hostal.DESKTOP
 {
     /// <summary>
-    /// Lógica de interacción para Index.xaml
+    /// Interaction logic for Index.xaml
     /// </summary>
     public partial class Index : Window
     {
-        public Index()
+        
+        public Index(NEGOCIO.Usuario user)
         {
+            User.Id = user.Id;
             InitializeComponent();
+            CargarPerfil(user);
+        }
+
+        private void CargarPerfil(NEGOCIO.Usuario user)
+        {
+            txt_usuario.Text = String.Format("Bienvenido: {0}", user.User.ToUpper());
+        }
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserControl usc = null;
+            GridMain.Children.Clear();
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "ItemPedidos":
+                    usc = new Pedidos();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "ItemFacturas":
+                    usc = new Facturas();
+                    GridMain.Children.Add(usc);
+                    break;
+                    //case "ItemCreate":
+                    //    usc = new UserControlCreate();
+                    //    GridMain.Children.Add(usc);
+                    //    break;
+                    //default:
+                    //    break;
+            }
+        }
+
+        private void btn_salir_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btn_cerrar_sesion_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            MainWindow login = new MainWindow();
+            login.Show();
         }
     }
 }

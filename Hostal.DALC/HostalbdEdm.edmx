@@ -10,39 +10,49 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="FACTURA_ID" Type="number" Precision="11" Scale="0" />
-          <Property Name="HUESPED_ID" Type="varchar2" MaxLength="20" />
-          <Property Name="HABITACION_ID" Type="number" Precision="11" Scale="0" />
+          <Property Name="FACTURA_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="HUESPED_ID" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="HABITACION_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="FECHA_INGRESO" Type="date" />
           <Property Name="FECHA_SALIDA" Type="date" />
+          <Property Name="SERVICIO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETALLE_PEDIDO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO" Type="varchar2" MaxLength="30" />
+          <Property Name="CANTIDAD" Type="number" Precision="11" Scale="0" />
+          <Property Name="ID_PEDIDO" Type="number" Precision="11" Scale="0" />
         </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
           <Property Name="APELLIDO" Type="varchar2" MaxLength="20" />
-          <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="EMPRESA">
           <Key>
             <PropertyRef Name="RUT" />
           </Key>
-          <Property Name="RUT" Type="varchar2" MaxLength="20" Nullable="false" />
-          <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="20" />
-          <Property Name="GIRO" Type="varchar2" MaxLength="20" />
+          <Property Name="RUT" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="30" />
+          <Property Name="GIRO" Type="varchar2" MaxLength="30" />
           <Property Name="DIRECCION" Type="varchar2" MaxLength="50" />
-          <Property Name="TELEFONO" Type="varchar2" MaxLength="12" />
-          <Property Name="USUARIO_ID" Type="number" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="11" />
+          <Property Name="USUARIO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="FACTURA">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="TOTAL" Type="varchar2" MaxLength="20" />
-          <Property Name="ID_EMPRESA" Type="varchar2" MaxLength="20" />
+          <Property Name="TOTAL" Type="number" Precision="11" Scale="0" />
+          <Property Name="ID_EMPRESA" Type="varchar2" MaxLength="12" Nullable="false" />
           <Property Name="FECHA_FACTURACION" Type="date" />
         </EntityType>
         <EntityType Name="HABITACION">
@@ -51,39 +61,66 @@
           </Key>
           <Property Name="NUMERO" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="TIPO" Type="varchar2" MaxLength="20" />
-          <Property Name="CAMAS" Type="number" Precision="11" Scale="0" />
+          <Property Name="TIPO_CAMA" Type="varchar2" MaxLength="20" />
           <Property Name="PRECIO" Type="number" Precision="11" Scale="0" />
+          <Property Name="MANTENCION" Type="number" Precision="11" Scale="0" />
         </EntityType>
         <EntityType Name="HUESPED">
           <Key>
             <PropertyRef Name="RUT" />
           </Key>
-          <Property Name="RUT" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" />
+          <Property Name="APELLIDO" Type="varchar2" MaxLength="30" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="12" />
+          <Property Name="EMPRESA_RUT" Type="varchar2" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="N_PEDIDO" />
+          </Key>
+          <Property Name="N_PEDIDO" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="FECHA_EMISION" Type="date" />
+          <Property Name="FECHA_ENTREGA" Type="date" />
+          <Property Name="ID_EMPLEADO" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="ID_PROVEEDOR" Type="varchar2" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLATO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
-          <Property Name="APELLIDO" Type="varchar2" MaxLength="20" />
-          <Property Name="TELEFONO" Type="varchar2" MaxLength="10" />
-          <Property Name="EMPRESA_RUT" Type="varchar2" MaxLength="20" />
+          <Property Name="ID_SERVICIO" Type="number" Precision="11" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
             <PropertyRef Name="RUT" />
           </Key>
-          <Property Name="RUT" Type="varchar2" MaxLength="10" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="10" />
-          <Property Name="RUBRO" Type="varchar2" MaxLength="10" />
-          <Property Name="USUARIO_ID" Type="number" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" />
+          <Property Name="RUBRO" Type="varchar2" MaxLength="50" />
+          <Property Name="USUARIO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
+          <Property Name="PRECIO" Type="number" Precision="11" Scale="0" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="USUARIO" Type="varchar2" MaxLength="20" />
-          <Property Name="CONTRASENA" Type="varchar2" MaxLength="20" />
-          <Property Name="TIPO_USUARIO" Type="varchar2" MaxLength="10" />
+          <Property Name="ID" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="CONTRASENA" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="TIPO_USUARIO" Type="varchar2" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="DETALLE_FACTURA_FK">
-          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="1" />
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HABITACION">
@@ -95,7 +132,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK1">
-          <End Role="HUESPED" Type="Self.HUESPED" Multiplicity="0..1" />
+          <End Role="HUESPED" Type="Self.HUESPED" Multiplicity="1" />
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HUESPED">
@@ -107,7 +144,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK2">
-          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="0..1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1" />
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FACTURA">
@@ -143,7 +180,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FACTURA_FK">
-          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
           <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -154,8 +191,68 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__DETALLE_SERVICIO">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="SERVICIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO">
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
+          <End Role="DETALLE_PEDIDO" Type="Self.DETALLE_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="N_PEDIDO" />
+            </Principal>
+            <Dependent Role="DETALLE_PEDIDO">
+              <PropertyRef Name="ID_PEDIDO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVEEDOR">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="RUT" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIO">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="PLATO" Type="Self.PLATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PLATO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="HUESPED_FK">
-          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
           <End Role="HUESPED" Type="Self.HUESPED" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -180,12 +277,16 @@
         </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="DETALLE_FACTURA" EntityType="Self.DETALLE_FACTURA" Schema="HOSTAL_BD" store:Type="Tables" />
+          <EntitySet Name="DETALLE_PEDIDO" EntityType="Self.DETALLE_PEDIDO" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="HABITACION" EntityType="Self.HABITACION" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="HUESPED" EntityType="Self.HUESPED" Schema="HOSTAL_BD" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="HOSTAL_BD" store:Type="Tables" />
+          <EntitySet Name="PLATO" EntityType="Self.PLATO" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="HOSTAL_BD" store:Type="Tables" />
+          <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" Schema="HOSTAL_BD" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="HOSTAL_BD" store:Type="Tables" />
           <AssociationSet Name="DETALLE_FACTURA_FK" Association="Self.DETALLE_FACTURA_FK">
             <End Role="HABITACION" EntitySet="HABITACION" />
@@ -211,6 +312,26 @@
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
+          <AssociationSet Name="FK__DETALLE_SERVICIO" Association="Self.FK__DETALLE_SERVICIO">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO" Association="Self.FK_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO" Association="Self.FK_PEDIDO">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="DETALLE_PEDIDO" EntitySet="DETALLE_PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVEEDOR" Association="Self.FK_PROVEEDOR">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIO" Association="Self.FK_SERVICIO">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="PLATO" EntitySet="PLATO" />
+          </AssociationSet>
           <AssociationSet Name="HUESPED_FK" Association="Self.HUESPED_FK">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="HUESPED" EntitySet="HUESPED" />
@@ -226,12 +347,16 @@
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DETALLE_FACTURA" EntityType="Model.DETALLE_FACTURA" />
+          <EntitySet Name="DETALLE_PEDIDO" EntityType="Model.DETALLE_PEDIDO" />
           <EntitySet Name="EMPLEADO" EntityType="Model.EMPLEADO" />
           <EntitySet Name="EMPRESA" EntityType="Model.EMPRESA" />
           <EntitySet Name="FACTURA" EntityType="Model.FACTURA" />
           <EntitySet Name="HABITACION" EntityType="Model.HABITACION" />
           <EntitySet Name="HUESPED" EntityType="Model.HUESPED" />
+          <EntitySet Name="PEDIDO" EntityType="Model.PEDIDO" />
+          <EntitySet Name="PLATO" EntityType="Model.PLATO" />
           <EntitySet Name="PROVEEDOR" EntityType="Model.PROVEEDOR" />
+          <EntitySet Name="SERVICIO" EntityType="Model.SERVICIO" />
           <EntitySet Name="USUARIO" EntityType="Model.USUARIO" />
           <AssociationSet Name="DETALLE_FACTURA_FK" Association="Model.DETALLE_FACTURA_FK">
             <End Role="HABITACION" EntitySet="HABITACION" />
@@ -245,9 +370,21 @@
             <End Role="FACTURA" EntitySet="FACTURA" />
             <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
           </AssociationSet>
+          <AssociationSet Name="FK__DETALLE_SERVICIO" Association="Model.FK__DETALLE_SERVICIO">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO" Association="Model.FK_PEDIDO">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="DETALLE_PEDIDO" EntitySet="DETALLE_PEDIDO" />
+          </AssociationSet>
           <AssociationSet Name="EMPLEADO_FK" Association="Model.EMPLEADO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO" Association="Model.FK_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
           <AssociationSet Name="EMPRESA_FK" Association="Model.EMPRESA_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
@@ -261,6 +398,14 @@
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="HUESPED" EntitySet="HUESPED" />
           </AssociationSet>
+          <AssociationSet Name="FK_PROVEEDOR" Association="Model.FK_PROVEEDOR">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIO" Association="Model.FK_SERVICIO">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="PLATO" EntitySet="PLATO" />
+          </AssociationSet>
           <AssociationSet Name="PROVEEDOR_FK" Association="Model.PROVEEDOR_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
@@ -271,35 +416,48 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="FACTURA_ID" Type="Int64" />
-          <Property Name="HUESPED_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="HABITACION_ID" Type="Int64" />
+          <Property Name="FACTURA_ID" Type="Int64" Nullable="false" />
+          <Property Name="HUESPED_ID" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="HABITACION_ID" Type="Int64" Nullable="false" />
           <Property Name="FECHA_INGRESO" Type="DateTime" />
           <Property Name="FECHA_SALIDA" Type="DateTime" />
+          <Property Name="SERVICIO_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="HABITACION" Relationship="Model.DETALLE_FACTURA_FK" FromRole="DETALLE_FACTURA" ToRole="HABITACION" />
           <NavigationProperty Name="HUESPED" Relationship="Model.DETALLE_FACTURA_FK1" FromRole="DETALLE_FACTURA" ToRole="HUESPED" />
           <NavigationProperty Name="FACTURA" Relationship="Model.DETALLE_FACTURA_FK2" FromRole="DETALLE_FACTURA" ToRole="FACTURA" />
+          <NavigationProperty Name="SERVICIO" Relationship="Model.FK__DETALLE_SERVICIO" FromRole="DETALLE_FACTURA" ToRole="SERVICIO" />
+        </EntityType>
+        <EntityType Name="DETALLE_PEDIDO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="PRODUCTO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD" Type="Int64" />
+          <Property Name="ID_PEDIDO" Type="Int64" />
+          <NavigationProperty Name="PEDIDO" Relationship="Model.FK_PEDIDO" FromRole="DETALLE_PEDIDO" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ID" Type="Int64" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="APELLIDO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="USUARIO_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="USUARIO" Relationship="Model.EMPLEADO_FK" FromRole="EMPLEADO" ToRole="USUARIO" />
+          <NavigationProperty Name="PEDIDO" Relationship="Model.FK_EMPLEADO" FromRole="EMPLEADO" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="EMPRESA">
           <Key>
             <PropertyRef Name="RUT" />
           </Key>
-          <Property Name="RUT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="GIRO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RUT" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="GIRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_ID" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="TELEFONO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="USUARIO" Relationship="Model.EMPRESA_FK" FromRole="EMPRESA" ToRole="USUARIO" />
           <NavigationProperty Name="FACTURA" Relationship="Model.FACTURA_FK" FromRole="EMPRESA" ToRole="FACTURA" />
           <NavigationProperty Name="HUESPED" Relationship="Model.HUESPED_FK" FromRole="EMPRESA" ToRole="HUESPED" />
@@ -309,8 +467,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="TOTAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ID_EMPRESA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TOTAL" Type="Int64" />
+          <Property Name="ID_EMPRESA" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_FACTURACION" Type="DateTime" />
           <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.DETALLE_FACTURA_FK2" FromRole="FACTURA" ToRole="DETALLE_FACTURA" />
           <NavigationProperty Name="EMPRESA" Relationship="Model.FACTURA_FK" FromRole="FACTURA" ToRole="EMPRESA" />
@@ -321,46 +479,80 @@
           </Key>
           <Property Name="NUMERO" Type="Int64" Nullable="false" />
           <Property Name="TIPO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CAMAS" Type="Int64" />
+          <Property Name="TIPO_CAMA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="PRECIO" Type="Int64" />
+          <Property Name="MANTENCION" Type="Int64" />
           <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.DETALLE_FACTURA_FK" FromRole="HABITACION" ToRole="DETALLE_FACTURA" />
         </EntityType>
         <EntityType Name="HUESPED">
           <Key>
             <PropertyRef Name="RUT" />
           </Key>
-          <Property Name="RUT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="APELLIDO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="EMPRESA_RUT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RUT" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="EMPRESA_RUT" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.DETALLE_FACTURA_FK1" FromRole="HUESPED" ToRole="DETALLE_FACTURA" />
           <NavigationProperty Name="EMPRESA" Relationship="Model.HUESPED_FK" FromRole="HUESPED" ToRole="EMPRESA" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="N_PEDIDO" />
+          </Key>
+          <Property Name="N_PEDIDO" Type="Int64" Nullable="false" />
+          <Property Name="FECHA_EMISION" Type="DateTime" />
+          <Property Name="FECHA_ENTREGA" Type="DateTime" />
+          <Property Name="ID_EMPLEADO" Type="Int64" Nullable="false" />
+          <Property Name="ID_PROVEEDOR" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DETALLE_PEDIDO" Relationship="Model.FK_PEDIDO" FromRole="PEDIDO" ToRole="DETALLE_PEDIDO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Model.FK_EMPLEADO" FromRole="PEDIDO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Model.FK_PROVEEDOR" FromRole="PEDIDO" ToRole="PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="PLATO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ID_SERVICIO" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="SERVICIO" Relationship="Model.FK_SERVICIO" FromRole="PLATO" ToRole="SERVICIO" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
             <PropertyRef Name="RUT" />
           </Key>
-          <Property Name="RUT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="RUBRO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_ID" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="RUT" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RUBRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_ID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="Model.FK_PROVEEDOR" FromRole="PROVEEDOR" ToRole="PEDIDO" />
           <NavigationProperty Name="USUARIO" Relationship="Model.PROVEEDOR_FK" FromRole="PROVEEDOR" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="SERVICIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO" Type="Int64" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Model.FK__DETALLE_SERVICIO" FromRole="SERVICIO" ToRole="DETALLE_FACTURA" />
+          <NavigationProperty Name="PLATO" Relationship="Model.FK_SERVICIO" FromRole="SERVICIO" ToRole="PLATO" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
-          <Property Name="USUARIO1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CONTRASENA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="TIPO_USUARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="USUARIO1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CONTRASENA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_USUARIO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EMPLEADO" Relationship="Model.EMPLEADO_FK" FromRole="USUARIO" ToRole="EMPLEADO" />
           <NavigationProperty Name="EMPRESA" Relationship="Model.EMPRESA_FK" FromRole="USUARIO" ToRole="EMPRESA" />
           <NavigationProperty Name="PROVEEDOR" Relationship="Model.PROVEEDOR_FK" FromRole="USUARIO" ToRole="PROVEEDOR" />
         </EntityType>
         <Association Name="DETALLE_FACTURA_FK">
-          <End Type="Model.HABITACION" Role="HABITACION" Multiplicity="0..1" />
+          <End Type="Model.HABITACION" Role="HABITACION" Multiplicity="1" />
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HABITACION">
@@ -372,7 +564,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK1">
-          <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="0..1" />
+          <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="1" />
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HUESPED">
@@ -384,7 +576,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK2">
-          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="0..1" />
+          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="1" />
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FACTURA">
@@ -392,6 +584,30 @@
             </Principal>
             <Dependent Role="DETALLE_FACTURA">
               <PropertyRef Name="FACTURA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETALLE_SERVICIO">
+          <End Type="Model.SERVICIO" Role="SERVICIO" Multiplicity="1" />
+          <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="SERVICIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO">
+          <End Type="Model.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
+          <End Type="Model.DETALLE_PEDIDO" Role="DETALLE_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="N_PEDIDO" />
+            </Principal>
+            <Dependent Role="DETALLE_PEDIDO">
+              <PropertyRef Name="ID_PEDIDO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -404,6 +620,18 @@
             </Principal>
             <Dependent Role="EMPLEADO">
               <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO">
+          <End Type="Model.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
+          <End Type="Model.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_EMPLEADO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -420,7 +648,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FACTURA_FK">
-          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
+          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="1" />
           <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -432,7 +660,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HUESPED_FK">
-          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
+          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="1" />
           <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -440,6 +668,30 @@
             </Principal>
             <Dependent Role="HUESPED">
               <PropertyRef Name="EMPRESA_RUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVEEDOR">
+          <End Type="Model.PROVEEDOR" Role="PROVEEDOR" Multiplicity="1" />
+          <End Type="Model.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="RUT" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIO">
+          <End Type="Model.SERVICIO" Role="SERVICIO" Multiplicity="1" />
+          <End Type="Model.PLATO" Role="PLATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PLATO">
+              <PropertyRef Name="ID_SERVICIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -464,11 +716,22 @@
           <EntitySetMapping Name="DETALLE_FACTURA">
             <EntityTypeMapping TypeName="Model.DETALLE_FACTURA">
               <MappingFragment StoreEntitySet="DETALLE_FACTURA">
+                <ScalarProperty Name="SERVICIO_ID" ColumnName="SERVICIO_ID" />
                 <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
                 <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
                 <ScalarProperty Name="HABITACION_ID" ColumnName="HABITACION_ID" />
                 <ScalarProperty Name="HUESPED_ID" ColumnName="HUESPED_ID" />
                 <ScalarProperty Name="FACTURA_ID" ColumnName="FACTURA_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_PEDIDO">
+            <EntityTypeMapping TypeName="Model.DETALLE_PEDIDO">
+              <MappingFragment StoreEntitySet="DETALLE_PEDIDO">
+                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -508,8 +771,9 @@
           <EntitySetMapping Name="HABITACION">
             <EntityTypeMapping TypeName="Model.HABITACION">
               <MappingFragment StoreEntitySet="HABITACION">
+                <ScalarProperty Name="MANTENCION" ColumnName="MANTENCION" />
                 <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
-                <ScalarProperty Name="CAMAS" ColumnName="CAMAS" />
+                <ScalarProperty Name="TIPO_CAMA" ColumnName="TIPO_CAMA" />
                 <ScalarProperty Name="TIPO" ColumnName="TIPO" />
                 <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
               </MappingFragment>
@@ -526,6 +790,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO">
+            <EntityTypeMapping TypeName="Model.PEDIDO">
+              <MappingFragment StoreEntitySet="PEDIDO">
+                <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+                <ScalarProperty Name="FECHA_EMISION" ColumnName="FECHA_EMISION" />
+                <ScalarProperty Name="N_PEDIDO" ColumnName="N_PEDIDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLATO">
+            <EntityTypeMapping TypeName="Model.PLATO">
+              <MappingFragment StoreEntitySet="PLATO">
+                <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PROVEEDOR">
             <EntityTypeMapping TypeName="Model.PROVEEDOR">
               <MappingFragment StoreEntitySet="PROVEEDOR">
@@ -533,6 +817,15 @@
                 <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="RUT" ColumnName="RUT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIO">
+            <EntityTypeMapping TypeName="Model.SERVICIO">
+              <MappingFragment StoreEntitySet="SERVICIO">
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

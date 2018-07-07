@@ -1,0 +1,63 @@
+@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfRegion xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <Region>
+    <Id>1</Id>
+    <Nombre>Arica y Parinacota</Nombre>
+  </Region>
+  <Region>
+    <Id>2</Id>
+    <Nombre>Tarapacá</Nombre>
+  </Region>
+  <Region>
+    <Id>3</Id>
+    <Nombre>Antofagasta</Nombre>
+  </Region>
+  <Region>
+    <Id>4</Id>
+    <Nombre>Atacama</Nombre>
+  </Region>
+  <Region>
+    <Id>5</Id>
+    <Nombre>Coquimbo</Nombre>
+  </Region>
+  <Region>
+    <Id>6</Id>
+    <Nombre>Valparaiso</Nombre>
+  </Region>
+  <Region>
+    <Id>7</Id>
+    <Nombre>Metropolitana de Santiago</Nombre>
+  </Region>
+  <Region>
+    <Id>8</Id>
+    <Nombre>Libertador General Bernardo O'Higgins</Nombre>
+  </Region>
+  <Region>
+    <Id>9</Id>
+    <Nombre>Maule</Nombre>
+  </Region>
+  <Region>
+    <Id>10</Id>
+    <Nombre>Biobío</Nombre>
+  </Region>
+  <Region>
+    <Id>11</Id>
+    <Nombre>La Araucanía</Nombre>
+  </Region>
+  <Region>
+    <Id>12</Id>
+    <Nombre>Los Ríos</Nombre>
+  </Region>
+  <Region>
+    <Id>13</Id>
+    <Nombre>Los Lagos</Nombre>
+  </Region>
+  <Region>
+    <Id>14</Id>
+    <Nombre>Aisén del General Carlos Ibáñez del Campo</Nombre>
+  </Region>
+  <Region>
+    <Id>15</Id>
+    <Nombre>Magallanes y de la Antártica Chilena</Nombre>
+  </Region>
+</ArrayOfRegion>"

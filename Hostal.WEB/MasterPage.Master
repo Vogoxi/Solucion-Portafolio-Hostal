@@ -6,6 +6,9 @@
 <head runat="server">
     <title></title>
     <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
         
     </asp:ContentPlaceHolder>
@@ -13,7 +16,30 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        F1 / F2 / F3
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                    <a class="navbar-brand" href="Index.aspx">Inicio</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbars">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
+                            <div id="menu" runat="server" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="perfilmenu" runat="server" class="dropdown-item" href="Perfil.aspx">Perfil</a>
+                                <a id="usuariomenu" runat="server" class="dropdown-item" href="DatosUsuario.aspx">Datos Usuarios</a>
+                                <a id="huespedmenu" runat="server" class="dropdown-item" href="AgregarHuesped.aspx">Agregar Huesped</a>
+                                <a id="arrendarmenu" runat="server" class="dropdown-item" href="Arriendo.aspx">Arrendar</a>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#"></a>
+                        </li>
+                      </ul>
+                      <asp:Button ID="Button1" class="btn btn-danger" runat="server" Text="Cerrar Sesión" ValidationGroup="novalidation" CausesValidation="False" OnClick="Button1_Click" />
+                    </div>
+                </nav>            
+        
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
         </asp:ContentPlaceHolder>
