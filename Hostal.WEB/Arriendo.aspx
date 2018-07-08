@@ -71,7 +71,7 @@
                                 
                                 </div>
 
-                    <div class="card">
+                                <div class="card">
                                 <div class="card-header">
                                     <h4 class="mb-0">Habitaciones Disponibles</h4>
                                 </div>

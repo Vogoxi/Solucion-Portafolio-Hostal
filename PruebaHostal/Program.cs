@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hostal.NEGOCIO;
+using System.IO;
 
 namespace PruebaHostal
 {
@@ -101,6 +102,30 @@ namespace PruebaHostal
 
             var resultado = hola;
             */
+
+            Cupon cupon = new Cupon();
+
+            Empresa empresa = new Empresa();
+            empresa.Rut = "77987654-1";
+            empresa = empresa.getEmpresa();
+
+            Factura factura = new Factura();
+            factura.Id = 1;
+            factura = factura.GetFactura();
+
+            DetalleFacturaCollection detFact = new DetalleFacturaCollection();
+
+            
+
+            cupon.Empresa = empresa;
+            cupon.Factura = factura;
+            cupon.ListaDet = detFact.ReadByIdFactura(factura.Id);
+
+            var bytes = cupon.GenerarCupon();
+
+            var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pdf");
+
+            System.IO.File.WriteAllBytes(testFile, bytes);
 
 
         }

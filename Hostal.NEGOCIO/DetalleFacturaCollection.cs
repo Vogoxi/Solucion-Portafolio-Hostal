@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hostal.NEGOCIO
 {
-    public class DetalleFacturaCollection
+    public class DetalleFacturaCollection : List<DetalleFactura>
     {
         public DetalleFacturaCollection()
         {
@@ -75,6 +75,12 @@ namespace Hostal.NEGOCIO
         {
             var reconversions = CommonBC.Modelo.DETALLE_FACTURA.OrderBy(d => d.ID);
             return GenerarListado(reconversions.ToList(),id);
+        }
+
+        public List<NEGOCIO.DetalleFactura> ReadByIdFactura(int id)
+        {
+            var reconversion = CommonBC.Modelo.DETALLE_FACTURA.Where(r => r.FACTURA_ID == id).ToList();
+            return GenerarListado(reconversion);
         }
 
 
