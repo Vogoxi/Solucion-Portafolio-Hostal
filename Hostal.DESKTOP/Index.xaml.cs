@@ -52,7 +52,7 @@ namespace Hostal.DESKTOP
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemPedidos":
-                    usc = new Pedidos();
+                    usc = new VentanaPedidos();
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemFacturas":

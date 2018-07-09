@@ -34,13 +34,13 @@ namespace Hostal.NEGOCIO
 
         }
 
-        public long NHabitacion
+        public string NHabitacion
         {
             get
             {
                 DALC.HABITACION HABITACION = CommonBC.Modelo.HABITACION.FirstOrDefault(e => e.NUMERO == this.IdHabitacion);
 
-                return HABITACION.NUMERO;
+                return String.Format("N°{0} - {1}", HABITACION.NUMERO,Auxiliar.UppercaseWords(HABITACION.TIPO));
             }
 
         }
@@ -58,6 +58,16 @@ namespace Hostal.NEGOCIO
             get
             {
                 return _fechaSalida.ToShortDateString();
+            }
+
+        }
+
+        public string NomServicio
+        {
+            get
+            {
+                DALC.SERVICIO SERVICIO = CommonBC.Modelo.SERVICIO.FirstOrDefault(e => e.ID == this.IdServicio);
+                return Auxiliar.UppercaseWords(SERVICIO.NOMBRE);
             }
 
         }

@@ -39,6 +39,25 @@ namespace Hostal.NEGOCIO
             }
         }
 
+        public string Proveedor
+        {
+            get
+            {
+                DALC.PROVEEDOR PROVEEDOR = CommonBC.Modelo.PROVEEDOR.FirstOrDefault(e => e.RUT == this.IdProveedor);
+
+                return Auxiliar.UppercaseWords(PROVEEDOR.NOMBRE);
+            }
+        }
+
+        public string Empleado
+        {
+            get
+            {
+                DALC.EMPLEADO EMPLEADO = CommonBC.Modelo.EMPLEADO.FirstOrDefault(e => e.ID == this.IdEmpleado);
+                return Auxiliar.UppercaseWords(String.Format("{0} {1}", EMPLEADO.NOMBRE,EMPLEADO.APELLIDO));
+            }
+        }
+
         public int NPedido
         {
             get

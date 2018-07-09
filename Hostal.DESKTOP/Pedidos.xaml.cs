@@ -79,6 +79,7 @@ namespace Hostal.DESKTOP
         {
             NEGOCIO.Pedido pedido = new NEGOCIO.Pedido();
             NEGOCIO.Proveedor proveedor = (NEGOCIO.Proveedor)cmb_proveedores.SelectedItem;
+            pedido.FechaEntrega = DateTime.MinValue;
             pedido.IdProveedor = proveedor.Rut;
             pedido.IdEmpleado = User.Id;
             if (pedido.AgregarPedido())

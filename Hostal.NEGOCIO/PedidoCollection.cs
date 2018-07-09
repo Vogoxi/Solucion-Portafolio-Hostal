@@ -23,7 +23,7 @@ namespace Hostal.NEGOCIO
             {
                 NEGOCIO.Pedido PedTemp = new NEGOCIO.Pedido();
                 PedTemp.NPedido = (int)item.N_PEDIDO;
-                PedTemp.IdEmpleado = (int)item.N_PEDIDO;
+                PedTemp.IdEmpleado = (int)item.ID_EMPLEADO;
                 PedTemp.IdProveedor = item.ID_PROVEEDOR;
                 PedTemp.FechaEmision = (DateTime)item.FECHA_EMISION;
                 PedTemp.FechaEntrega = (DateTime)item.FECHA_ENTREGA;

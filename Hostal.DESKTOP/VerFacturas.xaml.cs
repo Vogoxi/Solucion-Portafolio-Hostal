@@ -43,16 +43,38 @@ namespace Hostal.DESKTOP
 
         private void dta_Facturas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (dta_Facturas.SelectedIndex != -1)
+            {
+                btn_anular.IsEnabled = true;
+                NEGOCIO.Factura factura = dta_Facturas.SelectedItem as NEGOCIO.Factura;
+
+                List<NEGOCIO.DetalleFactura> detalles = new List<NEGOCIO.DetalleFactura>();
+                NEGOCIO.DetalleFacturaCollection colection = new NEGOCIO.DetalleFacturaCollection();
+
+                detalles = colection.ReadById(factura.Id);
+                detalles.OrderBy(d => d.Id);
+
+                dta_Detalle.ItemsSource = detalles;
+            }           
+        }
+
+        private void btn_anular_Click(object sender, RoutedEventArgs e)
+        {
             NEGOCIO.Factura factura = dta_Facturas.SelectedItem as NEGOCIO.Factura;
-
-            List<NEGOCIO.DetalleFactura> detalles = new List<NEGOCIO.DetalleFactura>();
-            List<NEGOCIO.DetalleFactura> detallesGrid = new List<NEGOCIO.DetalleFactura>();
-            NEGOCIO.DetalleFacturaCollection colection = new NEGOCIO.DetalleFacturaCollection();
-
-            detalles = colection.ReadById(factura.Id);
-            detalles.OrderBy(d => d.Id);
-
-            dta_Detalle.ItemsSource = detalles;
+            MessageBoxResult resultado = MessageBox.Show(String.Format("¿Esta seguro que desea eliminar la factura N°{0}? \rEsta acción no se puede deshacer.",factura.Id), "Anulación", MessageBoxButton.YesNo,MessageBoxImage.Warning);
+            switch (resultado)
+            {
+                case MessageBoxResult.Yes:       
+                    List<NEGOCIO.DetalleFactura> detalles = (List<NEGOCIO.DetalleFactura>)dta_Detalle.Items.SourceCollection;
+                    foreach (NEGOCIO.DetalleFactura detalle in detalles)
+                    {
+                        detalle.BorrarDetalleFactura();
+                    }
+                    factura.BorrarFactura();
+                    MessageBox.Show("Factura Anulada", "Anulación",MessageBoxButton.OK,MessageBoxImage.Information);
+                    CargarGrid();
+                    break;
+            }
         }
     }
 }
