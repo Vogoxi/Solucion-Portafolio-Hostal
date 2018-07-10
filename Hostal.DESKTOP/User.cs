@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Utilizado para guardar los datos el id del Usuario que ingresa a la aplicacion y poder utilizarlo en todas las ventanas necesarias
+
 namespace Hostal.DESKTOP
 {
     public static class User

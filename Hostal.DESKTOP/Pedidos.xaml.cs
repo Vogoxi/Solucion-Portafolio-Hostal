@@ -47,6 +47,8 @@ namespace Hostal.DESKTOP
 
                 cmb_proveedores.Items.Add(proveedor);
             }
+
+            btn_hacer_pedido.IsEnabled = false;
         }
 
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
@@ -66,12 +68,11 @@ namespace Hostal.DESKTOP
                 }
                 else
                 {
-                    lbl_error.Content = "La cantidad debe ser un numero";
-                    txt_cantidad.Text = String.Empty;
+                    MessageBox.Show("La cantidad debe ser un numero", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }else
             {
-                lbl_error.Content = "Falta por ingresar datos del producto";
+                MessageBox.Show("Falta por ingresar datos del producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }          
         }
 

@@ -46,6 +46,8 @@ namespace Hostal.DESKTOP
                 btn_anular.IsEnabled = true;
                 btn_eliminar.IsEnabled = true;
                 btn_modificar.IsEnabled = true;
+                txt_cantidad.IsEnabled = true;
+                txt_producto.IsEnabled = true;
             }
             else
             {
@@ -53,6 +55,8 @@ namespace Hostal.DESKTOP
                 btn_anular.IsEnabled = false;
                 btn_eliminar.IsEnabled = false;
                 btn_modificar.IsEnabled = false;
+                txt_cantidad.IsEnabled = false;
+                txt_producto.IsEnabled = false;
             }           
         }
 

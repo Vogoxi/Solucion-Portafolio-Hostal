@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hostal.DESKTOP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" IsTabStop="True" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
-        <TextBox x:Name="txt_user" HorizontalAlignment="Left" Height="23" Margin="238,77,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="120" BorderThickness="1"/>
-        <PasswordBox x:Name="txt_pass" HorizontalAlignment="Left" Height="23" Margin="238,115,0,0" VerticalAlignment="Top" Width="120" BorderThickness="1"/>
-        <Label Content="Usuario:" HorizontalAlignment="Left" Margin="141,77,0,0" VerticalAlignment="Top"/>
-        <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="141,115,0,0" VerticalAlignment="Top"/>
-        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="221,177,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
-        <Label x:Name="lbl_status" Content="" HorizontalAlignment="Left" Margin="210,146,0,0" VerticalAlignment="Top" Width="250" Foreground="#FFF90A0A"/>
-        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="221,177,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
+        <TextBox x:Name="txt_user" HorizontalAlignment="Left" Height="23" Margin="234,129,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="120" BorderThickness="1"/>
+        <PasswordBox x:Name="txt_pass" HorizontalAlignment="Left" Height="23" Margin="234,167,0,0" VerticalAlignment="Top" Width="120" BorderThickness="1"/>
+        <Label Content="Usuario:" HorizontalAlignment="Left" Margin="137,129,0,0" VerticalAlignment="Top"/>
+        <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="137,167,0,0" VerticalAlignment="Top"/>
+        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="217,229,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
+        <Label x:Name="lbl_status" Content="" HorizontalAlignment="Left" Margin="206,198,0,0" VerticalAlignment="Top" Width="250" Foreground="#FFF90A0A"/>
+        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="217,229,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
+        <Label Content="Panel de Administración" HorizontalAlignment="Left" Margin="174,77,0,0" VerticalAlignment="Top" FontSize="16"/>
 
     </Grid>
 </Window>

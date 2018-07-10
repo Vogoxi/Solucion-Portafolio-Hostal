@@ -120,7 +120,9 @@
           <Property Name="TIPO_USUARIO" Type="varchar2" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="DETALLE_FACTURA_FK">
-          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HABITACION">
@@ -132,7 +134,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK1">
-          <End Role="HUESPED" Type="Self.HUESPED" Multiplicity="1" />
+          <End Role="HUESPED" Type="Self.HUESPED" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HUESPED">
@@ -144,7 +148,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK2">
-          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FACTURA">
@@ -156,7 +162,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="EMPLEADO_FK">
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
@@ -168,7 +176,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="EMPRESA_FK">
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
@@ -180,7 +190,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FACTURA_FK">
-          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -192,7 +204,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DETALLE_SERVICIO">
-          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SERVICIO">
@@ -204,7 +218,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EMPLEADO">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPLEADO">
@@ -216,7 +232,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PEDIDO">
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DETALLE_PEDIDO" Type="Self.DETALLE_PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PEDIDO">
@@ -228,7 +246,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PROVEEDOR">
-          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PROVEEDOR">
@@ -240,7 +260,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SERVICIO">
-          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PLATO" Type="Self.PLATO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SERVICIO">
@@ -252,7 +274,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HUESPED_FK">
-          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HUESPED" Type="Self.HUESPED" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -264,7 +288,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PROVEEDOR_FK">
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
@@ -552,7 +578,9 @@
           <NavigationProperty Name="PROVEEDOR" Relationship="Model.PROVEEDOR_FK" FromRole="USUARIO" ToRole="PROVEEDOR" />
         </EntityType>
         <Association Name="DETALLE_FACTURA_FK">
-          <End Type="Model.HABITACION" Role="HABITACION" Multiplicity="1" />
+          <End Type="Model.HABITACION" Role="HABITACION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HABITACION">
@@ -564,7 +592,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK1">
-          <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="1" />
+          <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HUESPED">
@@ -576,7 +606,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DETALLE_FACTURA_FK2">
-          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="1" />
+          <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FACTURA">
@@ -588,7 +620,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DETALLE_SERVICIO">
-          <End Type="Model.SERVICIO" Role="SERVICIO" Multiplicity="1" />
+          <End Type="Model.SERVICIO" Role="SERVICIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.DETALLE_FACTURA" Role="DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SERVICIO">
@@ -600,7 +634,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PEDIDO">
-          <End Type="Model.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
+          <End Type="Model.PEDIDO" Role="PEDIDO" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.DETALLE_PEDIDO" Role="DETALLE_PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PEDIDO">
@@ -612,7 +648,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="EMPLEADO_FK">
-          <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
@@ -624,7 +662,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EMPLEADO">
-          <End Type="Model.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
+          <End Type="Model.EMPLEADO" Role="EMPLEADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.PEDIDO" Role="PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPLEADO">
@@ -636,7 +676,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="EMPRESA_FK">
-          <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
@@ -648,7 +690,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FACTURA_FK">
-          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="1" />
+          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.FACTURA" Role="FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -660,7 +704,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HUESPED_FK">
-          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="1" />
+          <End Type="Model.EMPRESA" Role="EMPRESA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.HUESPED" Role="HUESPED" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPRESA">
@@ -672,7 +718,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PROVEEDOR">
-          <End Type="Model.PROVEEDOR" Role="PROVEEDOR" Multiplicity="1" />
+          <End Type="Model.PROVEEDOR" Role="PROVEEDOR" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.PEDIDO" Role="PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PROVEEDOR">
@@ -684,7 +732,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SERVICIO">
-          <End Type="Model.SERVICIO" Role="SERVICIO" Multiplicity="1" />
+          <End Type="Model.SERVICIO" Role="SERVICIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.PLATO" Role="PLATO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SERVICIO">
@@ -696,7 +746,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PROVEEDOR_FK">
-          <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="Model.USUARIO" Role="USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.PROVEEDOR" Role="PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">

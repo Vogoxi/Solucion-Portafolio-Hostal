@@ -69,6 +69,12 @@
     <Compile Include="MantenedorPedidos.xaml.cs">
       <DependentUpon>MantenedorPedidos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MantenedorProveedores.xaml.cs">
+      <DependentUpon>MantenedorProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Registros.xaml.cs">
+      <DependentUpon>Registros.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="VentanaPedidos.xaml.cs">
       <DependentUpon>VentanaPedidos.xaml</DependentUpon>
@@ -103,7 +109,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MantenedorProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pedidos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Registros.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

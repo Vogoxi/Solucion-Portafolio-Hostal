@@ -11,6 +11,16 @@ namespace Hostal.NEGOCIO
         private string _rut, _nombre, _rubro;
         private int _usuarioId;
 
+        public string NomUsuario
+        {
+            get
+            {
+                Hostal.DALC.USUARIO usuario = CommonBC.Modelo.USUARIO.First(us => us.ID == this.UsuarioId);
+                return usuario.USUARIO1;
+            }
+
+        }
+
         public string Nombre
         {
             get

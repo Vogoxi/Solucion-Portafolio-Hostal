@@ -1,13 +1,14 @@
-﻿<UserControl x:Class="Hostal.DESKTOP.VentanaPedidos"
+﻿<UserControl x:Class="Hostal.DESKTOP.Registros"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hostal.DESKTOP"
              mc:Ignorable="d" 
-             >
+            >
     <Grid x:Name="GridMain" Height="540" Width="1020" Background="White">
-        <Button x:Name="btn_crear" Content="Crear Pedido" HorizontalAlignment="Left" Margin="454,170,0,0" VerticalAlignment="Top" Width="157" Click="btn_crear_Click"/>
-        <Button x:Name="btn_estado" Content="Pedidos realizados" HorizontalAlignment="Left" Margin="454,259,0,0" VerticalAlignment="Top" Width="157" Click="btn_estado_Click"/>
+        <Button Content="Comedor" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Habitaciones" HorizontalAlignment="Left" Margin="460,232,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button x:Name="btn_proveedores" Content="Proveedores" HorizontalAlignment="Left" Margin="460,127,0,0" VerticalAlignment="Top" Width="125" Click="btn_proveedores_Click"/>
     </Grid>
 </UserControl>
