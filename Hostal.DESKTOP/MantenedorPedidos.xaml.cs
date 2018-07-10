@@ -118,14 +118,11 @@ namespace Hostal.DESKTOP
             switch (resultado)
             {
                 case MessageBoxResult.Yes:
-                    List<NEGOCIO.DetallePedido> detalles = (List<NEGOCIO.DetallePedido>)dta_Detalle.Items.SourceCollection;
-                    foreach (NEGOCIO.DetallePedido detalle in detalles)
-                    {
-                        detalle.BorrarDetallePedido();
-                    }
                     pedido.BorrarPedido();
                     MessageBox.Show("Pedido Anulado", "Anulación", MessageBoxButton.OK, MessageBoxImage.Information);
                     CargarGrid();
+                    dta_Detalle.ItemsSource = null;
+                    dta_Detalle.Items.Refresh();
                     break;
             }
         }

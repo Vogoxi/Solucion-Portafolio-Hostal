@@ -64,7 +64,7 @@ namespace Hostal.DESKTOP
                     dataGrid.Items.Add(producto);
                     txt_producto.Text = String.Empty;
                     txt_cantidad.Text = String.Empty;
-                    lbl_error.Content = String.Empty;
+                    btn_hacer_pedido.IsEnabled = true;
                 }
                 else
                 {
@@ -78,23 +78,43 @@ namespace Hostal.DESKTOP
 
         private void btn_hacer_pedido_Click(object sender, RoutedEventArgs e)
         {
-            NEGOCIO.Pedido pedido = new NEGOCIO.Pedido();
-            NEGOCIO.Proveedor proveedor = (NEGOCIO.Proveedor)cmb_proveedores.SelectedItem;
-            pedido.FechaEntrega = DateTime.MinValue;
-            pedido.IdProveedor = proveedor.Rut;
-            pedido.IdEmpleado = User.Id;
-            if (pedido.AgregarPedido())
+
+            MessageBoxResult resultado = MessageBox.Show(String.Format("¿Esta seguro que desea generar el pedido?"), "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            switch (resultado)
             {
-                foreach (Producto producto in dataGrid.Items)
+                case MessageBoxResult.Yes:
+                    NEGOCIO.Pedido pedido = new NEGOCIO.Pedido();
+                    NEGOCIO.Proveedor proveedor = (NEGOCIO.Proveedor)cmb_proveedores.SelectedItem;
+                    pedido.FechaEntrega = DateTime.MinValue;
+                    pedido.IdProveedor = proveedor.Rut;
+                    pedido.IdEmpleado = User.Id;
+                    if (pedido.AgregarPedido())
+                    {
+                        foreach (Producto producto in dataGrid.Items)
+                        {
+                            NEGOCIO.DetallePedido detalle = new NEGOCIO.DetallePedido();
+                            detalle.Producto = producto.Nombre.ToLower();
+                            detalle.Cantidad = producto.Cantidad;
+                            detalle.Idpedido = pedido.NPedido;
+                            detalle.AgregarDetalle();
+                        }
+                        dataGrid.Items.Clear();
+                    }
+                    break;
+            }                 
+        }
+
+        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedIndex != -1)
+            {
+                dataGrid.Items.RemoveAt(dataGrid.SelectedIndex);
+                dataGrid.Items.Refresh();
+                if (dataGrid.Items.Count == 0)
                 {
-                    NEGOCIO.DetallePedido detalle = new NEGOCIO.DetallePedido();
-                    detalle.Producto = producto.Nombre.ToLower();
-                    detalle.Cantidad = producto.Cantidad;
-                    detalle.Idpedido = pedido.NPedido;
-                    detalle.AgregarDetalle();
+                    btn_hacer_pedido.IsEnabled = false;
                 }
-                dataGrid.Items.Clear();
-            }     
+            }
         }
     }
 }

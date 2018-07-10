@@ -65,13 +65,10 @@ namespace Hostal.DESKTOP
             switch (resultado)
             {
                 case MessageBoxResult.Yes:       
-                    List<NEGOCIO.DetalleFactura> detalles = (List<NEGOCIO.DetalleFactura>)dta_Detalle.Items.SourceCollection;
-                    foreach (NEGOCIO.DetalleFactura detalle in detalles)
-                    {
-                        detalle.BorrarDetalleFactura();
-                    }
                     factura.BorrarFactura();
                     MessageBox.Show("Factura Anulada", "Anulación",MessageBoxButton.OK,MessageBoxImage.Information);
+                    dta_Detalle.ItemsSource = null;
+                    dta_Detalle.Items.Refresh();
                     CargarGrid();
                     break;
             }
