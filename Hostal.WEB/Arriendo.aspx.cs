@@ -418,9 +418,22 @@ namespace Hostal.WEB
 
                     factura.ActualizarFactura();
 
+                    Cupon cupon = new Cupon();
+
+                    cupon.Empresa = (Empresa)Session["empresa"];
+                    cupon.Factura = factura;
+
+                    DetalleFacturaCollection det = new DetalleFacturaCollection();
+
+                    cupon.ListaDet = det.ReadByIdFactura(factura.Id);
+
                     Session["Reserva"] = null;
 
-                    Response.Redirect("index.aspx");
+                    string vercupon = Convert.ToBase64String(cupon.GenerarCupon());
+
+                    Session["Cupon"] = vercupon;
+
+                    Response.Redirect("CuponHostal.aspx");
                 }
                 else
                 {

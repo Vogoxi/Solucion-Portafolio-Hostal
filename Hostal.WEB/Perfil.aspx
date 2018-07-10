@@ -15,36 +15,42 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Rut</label>
                                         <div class="col-lg-9">
-                                                <asp:TextBox ID="txtRut" class="form-control" runat="server" disabled></asp:TextBox>                                                
+                                                <asp:TextBox ID="txtRut" class="form-control" runat="server" disabled></asp:TextBox>   
+                                                <br />                                             
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Razón Social</label>
                                             <div class="col-lg-9">
                                                     <asp:TextBox ID="txtRazonSocial" class="form-control" runat="server" disabled></asp:TextBox>
+                                                <br />
                                             </div>
                                         </div>
                                     <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Giro</label>
                                             <div class="col-lg-9">
-                                                    <asp:TextBox ID="txtGiro" class="form-control" runat="server" required></asp:TextBox>
+                                                    <asp:TextBox ID="txtGiro" class="form-control" runat="server" ></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="rfvGiro" runat="server" ControlToValidate="txtGiro" ErrorMessage="*Se requiere un Giro"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                     <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">Dirección</label>
                                                 <div class="col-lg-9">
-                                                        <asp:TextBox ID="txtDireccion" class="form-control" runat="server" required></asp:TextBox>
+                                                        <asp:TextBox ID="txtDireccion" class="form-control" runat="server" ></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="*Se requiere una Dirección"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
                                     <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Teléfono</label>
                                             <div class="col-lg-9">
-                                                    <asp:TextBox ID="txtTelefono" class="form-control" runat="server" MaxLength="9" placeholder="Ej: 912345678" onKeyPress="return soloNumeros(event)" required></asp:TextBox>
+                                                    <asp:TextBox ID="txtTelefono" class="form-control" runat="server" MaxLength="9" placeholder="Ej: 912345678" onKeyPress="return soloNumeros(event)"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ControlToValidate="txtTelefono"  ErrorMessage="*Se requiere un teléfono"></asp:RequiredFieldValidator>
                                             </div>
+                                        
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg-9">
-                                                    <asp:Label ID="lblStatus" runat="server" required></asp:Label>
+                                                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
                                             </div>     
                                         </div>
                                     <div class="form-group row">

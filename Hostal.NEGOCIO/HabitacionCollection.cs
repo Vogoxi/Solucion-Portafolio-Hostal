@@ -54,6 +54,27 @@ namespace Hostal.NEGOCIO
             
         }
 
+        public List<string> ReadAllTipos()
+        {
+            var reconversions = CommonBC.Modelo.HABITACION.Distinct().GroupBy(r => r.TIPO).ToList();
+
+            List<string> tipos = new List<string>();
+
+            foreach (var item in reconversions)
+            {
+                tipos.Add(item.Key);
+            }
+
+            return tipos;
+        }
+
+        public int DevulvePrecio(string tipo)
+        {
+            var query = CommonBC.Modelo.HABITACION.First(r => r.TIPO == tipo);
+
+            return (int)query.PRECIO;
+        }
+
 
         public List<Habitacion> HabitacionesDisponibles(DateTime ingreso, DateTime salida, List<Reserva> Reserva)
         {

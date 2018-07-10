@@ -14,16 +14,42 @@ namespace Hostal.WEB
         {
             Usuario usuario = new Usuario();
 
-            usuario = (Usuario)Session["usuario"];
-
-            if(usuario.TipoUsuario == "empresa")
+            if (Session["usuario"] == null)
             {
-
-
-            }else if(usuario.TipoUsuario == "proveedor")
+                Response.Redirect("Login.aspx");
+            }else
             {
+                usuario = (Usuario)Session["usuario"];
 
+                if (usuario.TipoUsuario == "empresa")
+                {
+                    perfilmenu.Visible = true;
+                    usuariomenu.Visible = true;
+                    huespedmenu.Visible = true;
+                    arrendarmenu.Visible = true;
+                    menuproveedor.Visible = false;
+                    ordenpmenu.Visible = false;
+                    navbarDropdown.Visible = true;
+                    navbarDropdown1.Visible = true;
+                    navbarDropdown2.Visible = false;
+                    
+
+                }
+                else if (usuario.TipoUsuario == "proveedor")
+                {
+                    perfilmenu.Visible = false;
+                    usuariomenu.Visible =false;
+                    huespedmenu.Visible = false;
+                    arrendarmenu.Visible = false;
+                    menuproveedor.Visible = true;
+                    ordenpmenu.Visible = true;
+                    navbarDropdown.Visible = false;
+                    navbarDropdown1.Visible = false;
+                    navbarDropdown2.Visible = true;
+                }
             }
+
+            
 
         }
 

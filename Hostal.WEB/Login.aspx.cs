@@ -36,6 +36,9 @@ namespace Hostal.WEB
                 {
                     NEGOCIO.Proveedor proveedor = new NEGOCIO.Proveedor();
                     Session["proveedor"] = proveedor.getProveedorByUserId(usuario);
+                }else
+                {
+                    Response.Redirect("Login.aspx");
                 }
 
                 

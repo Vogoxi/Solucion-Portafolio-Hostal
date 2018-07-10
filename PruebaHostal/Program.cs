@@ -102,7 +102,7 @@ namespace PruebaHostal
 
             var resultado = hola;
             */
-
+            
             Cupon cupon = new Cupon();
 
             Empresa empresa = new Empresa();
@@ -126,7 +126,7 @@ namespace PruebaHostal
             var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pdf");
 
             System.IO.File.WriteAllBytes(testFile, bytes);
-
+            
 
         }
     }

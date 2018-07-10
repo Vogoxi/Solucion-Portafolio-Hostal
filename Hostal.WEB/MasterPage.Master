@@ -24,12 +24,23 @@
                     <div class="collapse navbar-collapse" id="navbars">
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
-                            <div id="menu" runat="server" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link dropdown-toggle" href="#" runat="server" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datos Empresa</a>
+                            <div id="menuempresa" runat="server" class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a id="perfilmenu" runat="server" class="dropdown-item" href="Perfil.aspx">Perfil</a>
                                 <a id="usuariomenu" runat="server" class="dropdown-item" href="DatosUsuario.aspx">Datos Usuarios</a>
+                            </div>
+                        </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" runat="server" id="navbarDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Arriendos</a>
+                            <div id="menuarriendo" runat="server" class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a id="huespedmenu" runat="server" class="dropdown-item" href="AgregarHuesped.aspx">Agregar Huesped</a>
                                 <a id="arrendarmenu" runat="server" class="dropdown-item" href="Arriendo.aspx">Arrendar</a>
+                            </div>
+                        </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" runat="server" id="navbarDropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedor</a>
+                            <div id="menuproveedor" runat="server" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="ordenpmenu" runat="server" class="dropdown-item" href="OrdenPedido.aspx">Orden de Pedido</a>
                             </div>
                         </li>
                         <li class="nav-item active">

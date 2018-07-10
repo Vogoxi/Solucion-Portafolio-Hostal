@@ -133,29 +133,57 @@ namespace Hostal.NEGOCIO
                 }
 
                 HabitacionCollection habitacion = new HabitacionCollection();
-                
-                
-                foreach (var item in habitacion.ReadAll())
-                {
-                    cantidad = 0;
+                List<string> listaTipos = habitacion.ReadAllTipos();
+                int[] arr = new int[listaTipos.Count];
 
-                    foreach (var det in ListaDet)
+                int contador = 0;
+
+                foreach (var item in listaTipos)
+                {
+                    arr[contador] = 0;
+                    contador++;
+                }
+
+                contador = 0;
+
+                foreach (var det in ListaDet)
+                {
+                    foreach (var item in habitacion.ReadAll())
                     {
                         if (item.Numero == det.IdHabitacion)
                         {
-                            cantidad++;
+                            contador = 0;
+                            foreach (var tipo in listaTipos)
+                            {
+                                if (item.Tipo == tipo)
+                                {
+                                    arr[contador] = arr[contador]+1;
+                                    
+                                }
+                                contador++;
+                            }
                         }
                     }
-                    if (cantidad > 0)
+                }
+
+                contador = 0;
+
+                foreach (var item in listaTipos)
+                {
+                    
+
+                    if (arr[contador] > 0)
                     {
                         cuponhtml = cuponhtml + @"<tr>
-                                                    <th>" + cantidad + @"</th>
+                                                    <th>" + arr[contador] + @"</th>
                                                     <th>Habitacion</th>
-                                                    <th>" + item.Tipo+ @"</th>
-                                                    <th>" + item.Precio.ToString("C0")+ @"</th>
+                                                    <th>" + item + @"</th>
+                                                    <th>" + habitacion.DevulvePrecio(item).ToString("C0") + @"</th>
                                                   </tr>";
                     }
+                    contador++;
                 }
+
 
                        cuponhtml = cuponhtml + @"<tr>
                                                     <th></th>

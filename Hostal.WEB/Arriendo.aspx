@@ -156,7 +156,7 @@
     </asp:Panel>
 
     <script src="../js/Datatables/jquery.dataTables.min.js"></script>
-    <script src="cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"></script>
+
 
     <script>
         $(document).ready(function () {

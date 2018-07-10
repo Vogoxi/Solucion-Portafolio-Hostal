@@ -102,6 +102,7 @@
     <Content Include="css\bootstrap-reboot.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="CuponHostal.aspx" />
     <Content Include="DatosUsuario.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="js\bootstrap.bundle.js" />
@@ -157,6 +158,13 @@
     </Compile>
     <Compile Include="Arriendo.aspx.designer.cs">
       <DependentUpon>Arriendo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuponHostal.aspx.cs">
+      <DependentUpon>CuponHostal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuponHostal.aspx.designer.cs">
+      <DependentUpon>CuponHostal.aspx</DependentUpon>
     </Compile>
     <Compile Include="DatosUsuario.aspx.cs">
       <DependentUpon>DatosUsuario.aspx</DependentUpon>
