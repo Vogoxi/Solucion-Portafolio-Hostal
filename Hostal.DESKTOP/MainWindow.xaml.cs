@@ -49,5 +49,10 @@ namespace Hostal.DESKTOP
                 lbl_status.Content = "Usuario o contraseña incorrectos";
             }
         }
+
+        private void btn_cerrar_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

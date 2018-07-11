@@ -150,7 +150,7 @@ namespace Hostal.DESKTOP
             if (dta_Proveedores.SelectedIndex != -1)
             {
                 NEGOCIO.Proveedor proveedor = dta_Proveedores.SelectedItem as NEGOCIO.Proveedor;
-                MessageBoxResult resultado = MessageBox.Show(String.Format("¿Esta seguro que desea eliminar el pedido N° ESO? \rEsta acción no se puede deshacer."), "Anulación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult resultado = MessageBox.Show(String.Format("¿Esta seguro que desea eliminar al proveedor seleccionado? \rEsta acción no se puede deshacer."), "Anulación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 switch (resultado)
                 {   
                     case MessageBoxResult.Yes:

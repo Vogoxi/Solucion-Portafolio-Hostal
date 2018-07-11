@@ -23,12 +23,12 @@
                 <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_anular" Content="Anular" HorizontalAlignment="Left" Margin="50,349,0,0" VerticalAlignment="Top" Width="75" Click="btn_anular_Click"/>
+        <Button x:Name="btn_anular" Content="Anular" HorizontalAlignment="Left" Margin="50,349,0,0" VerticalAlignment="Top" Width="75" Click="btn_anular_Click" Background="Red"/>
         <Label Content="Producto" HorizontalAlignment="Left" Margin="761,357,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Cantidad" HorizontalAlignment="Left" Margin="763,398,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="txt_producto" HorizontalAlignment="Left" Height="28" Margin="849,357,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Foreground="Black" BorderThickness="1" FontSize="14"/>
         <TextBox x:Name="txt_cantidad" HorizontalAlignment="Left" Height="28" Margin="849,398,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Foreground="Black" BorderThickness="1" FontSize="14"/>
-        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="656,445,0,0" VerticalAlignment="Top" Width="90" Click="btn_eliminar_Click"/>
+        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="656,445,0,0" VerticalAlignment="Top" Width="90" Click="btn_eliminar_Click" Background="Red"/>
         <Button x:Name="btn_modificar" Content="Modificar" HorizontalAlignment="Left" Margin="761,445,0,0" VerticalAlignment="Top" Width="100" Click="btn_modificar_Click"/>
         <Button x:Name="btn_agregar" Content="Agregar" HorizontalAlignment="Left" Margin="872,445,0,0" VerticalAlignment="Top" Width="100" Click="btn_agregar_Click"/>
     </Grid>

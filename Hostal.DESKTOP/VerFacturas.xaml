@@ -24,7 +24,7 @@
                 <DataGridTextColumn Header="Servicio"  Binding="{Binding NomServicio}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_anular" Content="Anular" HorizontalAlignment="Left" Margin="50,349,0,0" VerticalAlignment="Top" Width="75" Click="btn_anular_Click" IsEnabled="False"/>
+        <Button x:Name="btn_anular" Content="Anular" HorizontalAlignment="Left" Margin="50,349,0,0" VerticalAlignment="Top" Width="75" Click="btn_anular_Click" IsEnabled="False" Background="Red"/>
         <Label Content="Facturas Emitidas" HorizontalAlignment="Left" Margin="172,100,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Detalle" HorizontalAlignment="Left" Margin="708,100,0,0" VerticalAlignment="Top" FontSize="20"/>
     </Grid>
