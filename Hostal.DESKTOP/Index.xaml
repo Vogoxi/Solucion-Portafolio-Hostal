@@ -38,10 +38,6 @@
                 <TextBlock x:Name="txt_usuario"  VerticalAlignment="Center" FontSize="16"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
-                        <Button Content="Configuracion"/>
-                        <Button Content="Account"/>
-                        <Button Content="Help"/>
-                        <Separator/>
                         <Button x:Name="btn_cerrar_sesion" Content="Cerrar Sesión" Click="btn_cerrar_sesion_Click"/>
                         <Button x:Name="btn_salir" Content="Salir" Click="btn_salir_Click"/>
                     </StackPanel>
@@ -91,10 +87,10 @@
                             <TextBlock Text="Registros" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Message" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Messages" VerticalAlignment="Center"  Margin="20 10"/>
+                    <ListViewItem Height="60" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" IsEnabled="False">
+                            <materialDesign:PackIcon Kind="ChartBar" Height="25" Width="25" Margin="10" IsEnabled="False"/>
+                            <TextBlock Text="Informes" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

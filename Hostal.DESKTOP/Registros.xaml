@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
             >
     <Grid x:Name="GridMain" Height="540" Width="1020" Background="White">
-        <Button Content="Comedor" HorizontalAlignment="Left" Margin="460,402,0,0" VerticalAlignment="Top" Width="125"/>
-        <Button Content="Habitaciones" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Comedor" HorizontalAlignment="Left" Margin="460,402,0,0" VerticalAlignment="Top" Width="125" IsEnabled="False"/>
+        <Button Content="Habitaciones" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="125" IsEnabled="False"/>
         <Button x:Name="btn_proveedores" Content="Proveedores" HorizontalAlignment="Left" Margin="460,148,0,0" VerticalAlignment="Top" Width="125" Click="btn_proveedores_Click"/>
-        <Button Content="Empleados" HorizontalAlignment="Left" Margin="460,213,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Empleados" HorizontalAlignment="Left" Margin="460,213,0,0" VerticalAlignment="Top" Width="125" IsEnabled="False"/>
         <Label Content="Administracion Hostal" HorizontalAlignment="Left" Margin="404,297,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Label Content="Administración RRHH" HorizontalAlignment="Left" Margin="409,101,0,0" VerticalAlignment="Top" FontSize="24"/>
     </Grid>

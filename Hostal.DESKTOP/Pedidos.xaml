@@ -8,7 +8,7 @@
     <Grid Height="540" Width="1020" Background="White">
         <TextBlock Text="Lista de Proveedores" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Margin="693,145,126,365"/>
         <ComboBox x:Name="cmb_proveedores" HorizontalAlignment="Left" Margin="703,184,0,0" VerticalAlignment="Top" Width="180" Foreground="Black" BorderThickness="1" OpacityMask="Black" FontSize="17" SelectedIndex="0" />
-        <DataGrid x:Name="dataGrid" BorderThickness="1,0,1,1" BorderBrush="Black" Margin="345,206,375,90" Background="White" Foreground="#DD000000">
+        <DataGrid x:Name="dataGrid" BorderThickness="1,0,1,1" BorderBrush="Black" Margin="345,206,375,90" Background="White" Foreground="#DD000000" IsReadOnly="True">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="FontSize" Value="18"/>
