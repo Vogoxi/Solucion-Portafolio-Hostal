@@ -101,7 +101,7 @@ namespace PruebaHostal
             var hola = hab.HabitacionesDisponibles(ingreso, salida,);
 
             var resultado = hola;
-            */
+            
             
             Cupon cupon = new Cupon();
 
@@ -126,7 +126,24 @@ namespace PruebaHostal
             var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pdf");
 
             System.IO.File.WriteAllBytes(testFile, bytes);
+            */
+
+            Reportes reporte = new Reportes();
+            int[] tipos = new int[4];
+
+            tipos[0] = 1;
+            tipos[1] = 2;
+            tipos[2] = 3;
+            tipos[3] = 4;
+
+            var bytes = reporte.ReportePedidos(Convert.ToDateTime("01/06/2018"),tipos);
+
+            var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pdf");
+
+            System.IO.File.WriteAllBytes(testFile, bytes);
             
+
+
 
         }
     }

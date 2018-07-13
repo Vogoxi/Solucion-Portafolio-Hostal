@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliar.cs" />
+    <Compile Include="Reportes.cs" />
     <Compile Include="CommonBC.cs" />
     <Compile Include="Cupon.cs" />
     <Compile Include="DetalleFactura.cs" />

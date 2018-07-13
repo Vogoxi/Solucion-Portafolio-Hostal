@@ -47,5 +47,45 @@ namespace Hostal.NEGOCIO
             var reconversions = CommonBC.Modelo.PEDIDO.Where(p => p.ID_PROVEEDOR == rut).OrderBy(p => p.N_PEDIDO);
             return GenerarListado(reconversions.ToList());
         }
+
+
+        public int BuscarReporte(int mes, int year, int tipo)
+        {
+            int yearE = 0;
+
+            switch (tipo)
+            {
+                case 1:
+                    //Rechazado
+                    yearE = 9999;
+                    break;
+                case 2:
+                    //Sin Procesar
+                    yearE = 2001;
+                    break;
+                case 3:
+                    //Aprobados
+                var Pedido2 = CommonBC.Modelo.PEDIDO.Where(r => r.FECHA_EMISION.Value.Month == mes &&
+                                                           r.FECHA_EMISION.Value.Year == year && r.FECHA_ENTREGA > r.FECHA_EMISION 
+                                                           && r.FECHA_ENTREGA.Value.Year != 9999).ToList();
+                    return Pedido2.Count();
+                    break;
+                default:
+                    break;
+            }
+
+
+            var Pedido = CommonBC.Modelo.PEDIDO.Where(r => r.FECHA_EMISION.Value.Month == mes &&
+                                                      r.FECHA_EMISION.Value.Year == year && r.FECHA_ENTREGA.Value.Year == yearE).ToList();
+
+            return Pedido.Count();
+        }
+
+        public int BuscarReporteTotal(int mes, int year)
+        {
+            var Pedido = CommonBC.Modelo.PEDIDO.Where(r => r.FECHA_EMISION.Value.Month == mes && r.FECHA_EMISION.Value.Year == year).ToList();
+
+            return Pedido.Count();
+        }
     }
 }
