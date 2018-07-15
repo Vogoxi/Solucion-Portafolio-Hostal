@@ -87,9 +87,9 @@
                             <TextBlock Text="Registros" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" IsEnabled="False">
-                        <StackPanel Orientation="Horizontal" IsEnabled="False">
-                            <materialDesign:PackIcon Kind="ChartBar" Height="25" Width="25" Margin="10" IsEnabled="False"/>
+                    <ListViewItem x:Name="ItemReportes" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ChartBar" Height="25" Width="25" Margin="10" />
                             <TextBlock Text="Informes" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>

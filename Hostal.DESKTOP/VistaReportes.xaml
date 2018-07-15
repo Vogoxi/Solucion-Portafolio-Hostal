@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Hostal.DESKTOP.VistaReportes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hostal.DESKTOP"
+             mc:Ignorable="d" 
+             >
+    <Grid Height="540" Width="1020" Background="White">
+        <ComboBox x:Name="cmb_area" HorizontalAlignment="Left" Margin="201,134,0,0" VerticalAlignment="Top" Width="120" BorderThickness="1" Foreground="Black" SelectionChanged="cmb_area_SelectionChanged"/>
+        <CheckBox x:Name="chk_rechazados" Content="Rechazados" HorizontalAlignment="Left" Margin="439,173,0,0" VerticalAlignment="Top" Foreground="Black"/>
+        <CheckBox x:Name="chk_total" Content="Total" HorizontalAlignment="Left" Margin="439,134,0,0" VerticalAlignment="Top" Foreground="Black"/>
+        <CheckBox x:Name="chk_sinProcesar" Content="Sin Procesar" HorizontalAlignment="Left" Margin="439,253,0,0" VerticalAlignment="Top" Foreground="Black"/>
+        <CheckBox x:Name="chk_aprobados" Content="Aprobados" HorizontalAlignment="Left" Margin="439,213,0,0" VerticalAlignment="Top" Foreground="Black"/>
+        <Label Content="Área" HorizontalAlignment="Left" Margin="201,108,0,0" VerticalAlignment="Top"/>
+        <ComboBox  x:Name="cmb_mes" HorizontalAlignment="Left" Margin="201,198,0,0" VerticalAlignment="Top" Width="120" BorderThickness="1" Foreground="Black"/>
+        <ComboBox x:Name="cmb_anio" HorizontalAlignment="Left" Margin="201,261,0,0" VerticalAlignment="Top" Width="120" BorderThickness="1" Foreground="Black"/>
+        <Label Content="Mes" HorizontalAlignment="Left" Margin="201,176,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.44,3.18"/>
+        <Label Content="Año" HorizontalAlignment="Left" Margin="201,239,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_generar" Content="Obtener Reporte" HorizontalAlignment="Left" Margin="509,330,0,0" VerticalAlignment="Top" Width="142" Click="btn_generar_Click"/>
+
+    </Grid>
+</UserControl>

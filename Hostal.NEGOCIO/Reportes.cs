@@ -173,7 +173,7 @@ namespace Hostal.NEGOCIO
                                         <br />
                                         <br />
                                         <br />
-                                        <h3>Fecha Consultada: "+fecha.ToShortDateString()+ @"</h3>
+                                        <h3>Fecha Consultada: "+Auxiliar.UppercaseWords(fecha.ToString("MMMM"))+@" del "+año+ @"</h3>
                                         <br />
                                         <br />
                                     </div>

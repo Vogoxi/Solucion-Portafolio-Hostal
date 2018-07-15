@@ -82,6 +82,9 @@
     <Compile Include="VerFacturas.xaml.cs">
       <DependentUpon>VerFacturas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VistaReportes.xaml.cs">
+      <DependentUpon>VistaReportes.xaml</DependentUpon>
+    </Compile>
     <Page Include="Facturas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VerFacturas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistaReportes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
