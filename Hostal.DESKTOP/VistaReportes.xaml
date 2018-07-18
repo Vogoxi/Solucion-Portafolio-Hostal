@@ -18,6 +18,8 @@
         <Label Content="Mes" HorizontalAlignment="Left" Margin="201,176,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.44,3.18"/>
         <Label Content="Año" HorizontalAlignment="Left" Margin="201,239,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_generar" Content="Obtener Reporte" HorizontalAlignment="Left" Margin="509,330,0,0" VerticalAlignment="Top" Width="142" Click="btn_generar_Click"/>
+        <ComboBox x:Name="cmb_proveedor" HorizontalAlignment="Left" Margin="48,134,0,0" VerticalAlignment="Top" Width="120" BorderThickness="1" Foreground="Black" SelectionChanged="cmb_area_SelectionChanged"/>
+        <Label x:Name="lbl_prov" Content="Proveedores" HorizontalAlignment="Left" Margin="48,108,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

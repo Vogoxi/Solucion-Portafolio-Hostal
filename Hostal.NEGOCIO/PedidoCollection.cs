@@ -83,9 +83,50 @@ namespace Hostal.NEGOCIO
             return Pedido.Count();
         }
 
+        public int BuscarReporte(int mes, int year, int tipo, NEGOCIO.Proveedor proveedor)
+        {
+            int yearE = 0;
+
+            switch (tipo)
+            {
+                case 1:
+                    //Rechazado
+                    yearE = 9999;
+                    break;
+                case 2:
+                    List<NEGOCIO.Pedido> pedidos = ReadAll();
+                    int cant = pedidos.Where(p => p.FechaEntrega.Year == 0001 && p.FechaEmision.Year == year && p.FechaEmision.Month == mes && p.IdProveedor == proveedor.Rut).Count();
+                    yearE = 2001;
+                    return cant;
+                    break;
+                case 3:
+                    //Aprobados
+                    var Pedido2 = CommonBC.Modelo.PEDIDO.Where(r => r.FECHA_EMISION.Value.Month == mes &&
+                                                               r.FECHA_EMISION.Value.Year == year && r.FECHA_ENTREGA > r.FECHA_EMISION
+                                                               && r.FECHA_ENTREGA.Value.Year != 9999 && r.ID_PROVEEDOR == proveedor.Rut).ToList();
+                    return Pedido2.Count();
+                    break;
+                default:
+                    break;
+            }
+
+
+            var Pedido = CommonBC.Modelo.PEDIDO.Where(r => r.FECHA_EMISION.Value.Month == mes &&
+                                                      r.FECHA_EMISION.Value.Year == year && r.FECHA_ENTREGA.Value.Year == yearE && r.ID_PROVEEDOR == proveedor.Rut).ToList();
+
+            return Pedido.Count();
+        }
+
         public int BuscarReporteTotal(int mes, int year)
         {
             var Pedido = CommonBC.Modelo.PEDIDO.Where(r => r.FECHA_EMISION.Value.Month == mes && r.FECHA_EMISION.Value.Year == year).ToList();
+
+            return Pedido.Count();
+        }
+
+        public int BuscarReporteTotal(int mes, int year, NEGOCIO.Proveedor proveedor)
+        {
+            var Pedido = CommonBC.Modelo.PEDIDO.Where(r => r.FECHA_EMISION.Value.Month == mes && r.FECHA_EMISION.Value.Year == year && r.ID_PROVEEDOR == proveedor.Rut).ToList();
 
             return Pedido.Count();
         }

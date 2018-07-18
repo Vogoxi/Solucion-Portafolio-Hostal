@@ -232,6 +232,99 @@ namespace Hostal.NEGOCIO
             return bytes;
         }
 
+        public byte[] ReportePedidosProveedor(DateTime fecha, int[] tipos, NEGOCIO.Proveedor proveedor)
+        {
+            var mes = fecha.Month;
+            var año = fecha.Year;
+
+            PedidoCollection pedido = new PedidoCollection();
+            /*
+            pedido.BuscarReporte(mes,año);
+
+            int resultado = pedido.BuscarReporte(mes, año);
+            */
+            var bytes = new byte[0];
+
+            string cuponhtml = @"<html lang=""en"">
+                                  <head>
+                                  <metacontent =""text/html; charset=utf-8"" http-equiv=""Content-Type""/>
+                                  <title></title>
+                                  </head>
+                                  <body>
+                                         <div>
+                                            <h2>" + DateTime.Today.ToShortDateString() + @"</h2>
+                                            <img width=""200%""  src=""C:\\Uploads\\logo.jpg"" />
+                                            <br />
+                                            <br />
+                                            <br />
+                                        </div>
+                                    <div>
+                                        <h2>Reporte de Pedidos Hostal Doña Clarita</h2>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <h3>Fecha Consultada: " + Auxiliar.UppercaseWords(fecha.ToString("MMMM")) + @" del " + año + @"</h3>
+                                        <br />
+                                        <br />
+                                        <h3>Proveedor Consultado: " + Auxiliar.UppercaseWords(proveedor.Nombre) + @"</h3>
+                                        <br />
+                                        <br />
+                                    </div>
+                                    <div>";
+
+
+            foreach (var item in tipos)
+            {
+                switch (item)
+                {
+                    case 1:
+                        cuponhtml = cuponhtml + @"<h3>Pedidos Rechazados: " + pedido.BuscarReporte(mes, año, item, proveedor) + @"</h3><br /><br />";
+                        break;
+                    case 2:
+                        cuponhtml = cuponhtml + @"<h3>Pedidos Sin Procesar: " + pedido.BuscarReporte(mes, año, item, proveedor) + @"</h3><br /><br />";
+                        break;
+                    case 3:
+                        cuponhtml = cuponhtml + @"<h3>Pedidos Aprobados: " + pedido.BuscarReporte(mes, año, item, proveedor) + @"</h3><br /><br />";
+                        break;
+                    case 4:
+                        cuponhtml = cuponhtml + @"<h3>Pedidos Totales: " + pedido.BuscarReporteTotal(mes, año, proveedor) + @"</h3><br /><br />";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+
+            cuponhtml = cuponhtml + @"</div>
+                                  </body>
+                                  </html>
+                                    ";
+
+            string cuponcss = @"";
+
+            using (var memoryStream = new MemoryStream())
+            {
+                var document = new Document(PageSize.A4, 40, 30, 30, 30);
+                var writer = PdfWriter.GetInstance(document, memoryStream);
+                document.Open();
+
+                using (var cssMemoryStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cuponcss)))
+                {
+                    using (var htmlMemoryStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cuponhtml)))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, htmlMemoryStream, cssMemoryStream);
+                    }
+                }
+                document.Close();
+
+                bytes = memoryStream.ToArray();
+            }
+
+
+            return bytes;
+        }
+
         public byte[] ReporteArriendos(DateTime fecha)
         {
             FacturaCollection factura = new FacturaCollection();
@@ -274,6 +367,7 @@ namespace Hostal.NEGOCIO
                                      </div>
                                      </body>
                                      </html>";
+ 
             string cuponcss = @"";
 
 

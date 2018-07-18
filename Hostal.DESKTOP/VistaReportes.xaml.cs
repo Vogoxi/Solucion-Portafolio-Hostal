@@ -32,10 +32,36 @@ namespace Hostal.DESKTOP
             cmb_area.Items.Add("Pedidos");
             cmb_area.Items.Add("Facturas");
             cmb_anio.Items.Add("2018");
+            cmb_mes.IsEnabled = false;
+            cmb_anio.IsEnabled = false;
             for (int i = 1; i <= 12; i++)
             {
                 cmb_mes.Items.Add(i);
             }
+
+            CargarProveedores();
+        }
+
+        private void CargarProveedores()
+        {
+            NEGOCIO.ProveedorCollection CollectionProveedor = new NEGOCIO.ProveedorCollection();
+            List<NEGOCIO.Proveedor> listaProveedores = new List<NEGOCIO.Proveedor>();
+            NEGOCIO.Proveedor proveedor = new NEGOCIO.Proveedor();
+            listaProveedores.Add(proveedor);
+
+            cmb_proveedor.Items.Add("Todos");
+
+            foreach (NEGOCIO.Proveedor item in CollectionProveedor.ReadAll())
+            {
+                proveedor = new NEGOCIO.Proveedor();
+                proveedor.Rut = item.Rut;
+                proveedor.Nombre = item.Nombre;
+
+                cmb_proveedor.Items.Add(proveedor);
+            }
+
+            cmb_proveedor.Visibility = Visibility.Hidden;
+            lbl_prov.Visibility = Visibility.Hidden;
         }
 
         private void CheckStatus(int estado)
@@ -60,15 +86,21 @@ namespace Hostal.DESKTOP
         {
             if (cmb_area.SelectedIndex != -1)
             {
+                cmb_mes.IsEnabled = true;
+                cmb_anio.IsEnabled = true;
                 CheckStatus(0);
                 if (cmb_area.SelectedItem.ToString() == "Pedidos")
                 {
                     CheckStatus(1);
+                    cmb_proveedor.Visibility = Visibility.Visible;
+                    lbl_prov.Visibility = Visibility.Visible;
                 }
 
                 if (cmb_area.SelectedItem.ToString() == "Facturas")
                 {
                     CheckStatus(0);
+                    cmb_proveedor.Visibility = Visibility.Hidden;
+                    lbl_prov.Visibility = Visibility.Hidden;
                 }
             }
         }
@@ -99,23 +131,40 @@ namespace Hostal.DESKTOP
                 NEGOCIO.Reportes reporte = new NEGOCIO.Reportes();
 
                 DateTime fecha = new DateTime(int.Parse(cmb_anio.SelectedItem.ToString()),int.Parse(cmb_mes.SelectedItem.ToString()),1);
+
+                string tipoReporte = String.Empty;
+
                 try
                 {
                     byte[] bytes = new byte[0];
 
                     if (cmb_area.SelectedItem.ToString() == "Pedidos")
                     {
-                        bytes = reporte.ReportePedidos(fecha, datos);
+                        tipoReporte = "Pedidos";
+                        if (cmb_proveedor.SelectedItem.ToString() == "Todos")
+                        {
+                            bytes = reporte.ReportePedidos(fecha, datos);
+                        }else
+                        {
+                            
+                            NEGOCIO.Proveedor proveedor = (NEGOCIO.Proveedor)cmb_proveedor.SelectedItem;
+                            bytes = reporte.ReportePedidosProveedor(fecha, datos, proveedor);
+                            tipoReporte += NEGOCIO.Auxiliar.UppercaseWords(proveedor.Nombre);
+                        }
+                        
                     }
 
                     if (cmb_area.SelectedItem.ToString() == "Facturas")
                     {
+                        tipoReporte = "Facturas";
                         bytes = reporte.ReporteArriendos(fecha);
                     }
 
-                    
 
-                    var testFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), String.Format("{0}.pdf", "reporte"));
+
+                    Random numero = new Random(100);
+
+                    var testFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), String.Format("{0}{5}-{1}_{2}_{3}_{4}.pdf", "Reporte", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTime.Now.Millisecond,tipoReporte));
 
                     System.IO.File.WriteAllBytes(testFile, bytes);
 
