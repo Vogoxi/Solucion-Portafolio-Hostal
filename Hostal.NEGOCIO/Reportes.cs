@@ -232,5 +232,43 @@ namespace Hostal.NEGOCIO
             return bytes;
         }
 
+        public byte[] ReporteArriendos(DateTime fecha, int[] tipos)
+        {
+            FacturaCollection factura = new FacturaCollection();
+
+            var bytes = new byte[0];
+
+            string cuponhtml = @"<html lang=""en"">
+                                  <head>
+                                  <metacontent =""text/html; charset=utf-8"" http-equiv=""Content-Type""/>
+                                  <title></title>
+                                  </head>
+                                  <body>
+                                         <div>
+                                            <h2>" + DateTime.Today.ToShortDateString() + @"</h2>
+                                            <img width=""200%""  src=""C:\\Uploads\\logo.jpg"" />
+                                            <br />
+                                            <br />
+                                            <br />
+                                        </div>
+                                    <div>
+                                        <h2>Reporte de Arriendos Hostal Doña Clarita</h2>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <h3>Mes Consultado: " + Auxiliar.UppercaseWords(fecha.ToString("MMMM")) + @" " + @"del año " + fecha.Year + @"</h3>
+                                        <br />
+                                        <br />
+                                    </div>
+                                    <div>";
+
+            int cantFacturas = factura.FacturasMes(fecha);
+            int totalFactura = factura.FacturaTotalMes(fecha);
+
+            return bytes;
+
+
+        }
+
     }
 }

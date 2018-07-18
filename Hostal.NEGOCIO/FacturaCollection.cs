@@ -38,5 +38,26 @@ namespace Hostal.NEGOCIO
             var reconversions = CommonBC.Modelo.FACTURA.OrderBy(f => f.ID);
             return GenerarListado(reconversions.ToList());
         }
+
+        public int FacturasMes(DateTime date)
+        {
+            var factura = CommonBC.Modelo.FACTURA.Where(r => r.FECHA_FACTURACION.Value.Month == date.Month);
+
+            return factura.Count();
+        }
+
+        public int FacturaTotalMes(DateTime date)
+        {
+            var factura = CommonBC.Modelo.FACTURA.Where(r => r.FECHA_FACTURACION.Value.Month == date.Month);
+
+            int total = 0;
+
+            foreach (var item in factura)
+            {
+                total = total + (int)item.TOTAL;
+            }
+
+            return total;
+        }
     }
 }
