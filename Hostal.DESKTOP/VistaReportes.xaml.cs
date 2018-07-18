@@ -30,6 +30,7 @@ namespace Hostal.DESKTOP
         {
             CheckStatus(0);
             cmb_area.Items.Add("Pedidos");
+            cmb_area.Items.Add("Facturas");
             cmb_anio.Items.Add("2018");
             for (int i = 1; i <= 12; i++)
             {
@@ -64,6 +65,11 @@ namespace Hostal.DESKTOP
                 {
                     CheckStatus(1);
                 }
+
+                if (cmb_area.SelectedItem.ToString() == "Facturas")
+                {
+                    CheckStatus(0);
+                }
             }
         }
 
@@ -95,7 +101,19 @@ namespace Hostal.DESKTOP
                 DateTime fecha = new DateTime(int.Parse(cmb_anio.SelectedItem.ToString()),int.Parse(cmb_mes.SelectedItem.ToString()),1);
                 try
                 {
-                    var bytes = reporte.ReportePedidos(fecha, datos);
+                    byte[] bytes = new byte[0];
+
+                    if (cmb_area.SelectedItem.ToString() == "Pedidos")
+                    {
+                        bytes = reporte.ReportePedidos(fecha, datos);
+                    }
+
+                    if (cmb_area.SelectedItem.ToString() == "Facturas")
+                    {
+                        bytes = reporte.ReporteArriendos(fecha);
+                    }
+
+                    
 
                     var testFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), String.Format("{0}.pdf", "reporte"));
 

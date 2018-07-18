@@ -173,11 +173,7 @@ namespace Hostal.NEGOCIO
                                         <br />
                                         <br />
                                         <br />
-<<<<<<< HEAD
-                                        <h3>Mes Consultado: "+Auxiliar.UppercaseWords(fecha.ToString("MMMM"))+@" "+@"del año "+fecha.Year+ @"</h3>
-=======
                                         <h3>Fecha Consultada: "+Auxiliar.UppercaseWords(fecha.ToString("MMMM"))+@" del "+año+ @"</h3>
->>>>>>> 85262d16740731879aaeca75a5242af0871f53b5
                                         <br />
                                         <br />
                                     </div>
@@ -236,7 +232,7 @@ namespace Hostal.NEGOCIO
             return bytes;
         }
 
-        public byte[] ReporteArriendos(DateTime fecha, int[] tipos)
+        public byte[] ReporteArriendos(DateTime fecha)
         {
             FacturaCollection factura = new FacturaCollection();
 
@@ -256,25 +252,28 @@ namespace Hostal.NEGOCIO
                                             <br />
                                         </div>
                                     <div>
-                                        <h2>Reporte de Arriendos Hostal Doña Clarita</h2>
+                                        <h2>Reporte de arriendos Hostal Doña Clarita</h2>
                                         <br />
                                         <br />
                                         <br />
-                                        <h3>Mes Consultado: " + Auxiliar.UppercaseWords(fecha.ToString("MMMM")) + @" " + @"del año " + fecha.Year + @"</h3>
+                                        <h3>Mes consultado: " + Auxiliar.UppercaseWords(fecha.ToString("MMMM")) + @" " + @"del año " + fecha.Year + @"</h3>
                                         <br />
                                         <br />
                                     </div>
-                                    <div>";
+                                    ";
 
             int cantFacturas = factura.FacturasMes(fecha);
             int totalFactura = factura.FacturaTotalMes(fecha);
 
-            cuponhtml = cuponhtml + @"<h3>cantidad de facturas:"+cantFacturas + @"</h3>
+            cuponhtml = cuponhtml + @"
+                                    <div>
+                                     <h3>Cantidad de facturas: " + cantFacturas + @"</h3>
                                      <br />
                                      <br />
-                                     <h3>total dinero facturas:"+totalFactura + @"</h3>";
-
-
+                                     <h3>Total dinero facturas: " + totalFactura.ToString("C0") + @"</h3>
+                                     </div>
+                                     </body>
+                                     </html>";
             string cuponcss = @"";
 
 

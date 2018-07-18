@@ -61,7 +61,7 @@ namespace Hostal.NEGOCIO
                     break;
                 case 2:
                     List<NEGOCIO.Pedido> pedidos = ReadAll();
-                    int cant = pedidos.Where(p => p.FechaEntrega.Year == 0001).Count();
+                    int cant = pedidos.Where(p => p.FechaEntrega.Year == 0001 && p.FechaEmision.Year == year && p.FechaEmision.Month == mes).Count();
                     yearE = 2001;
                     return cant;
                     break;
