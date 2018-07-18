@@ -269,6 +269,32 @@ namespace Hostal.NEGOCIO
             int cantFacturas = factura.FacturasMes(fecha);
             int totalFactura = factura.FacturaTotalMes(fecha);
 
+            cuponhtml = cuponhtml + @"<h3>cantidad de facturas:"+cantFacturas + @"</h3>
+                                     <br />
+                                     <br />
+                                     <h3>total dinero facturas:"+totalFactura + @"</h3>";
+
+
+            string cuponcss = @"";
+
+
+            using (var memoryStream = new MemoryStream())
+            {
+                var document = new Document(PageSize.A4, 40, 30, 30, 30);
+                var writer = PdfWriter.GetInstance(document, memoryStream);
+                document.Open();
+
+                using (var cssMemoryStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cuponcss)))
+                {
+                    using (var htmlMemoryStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cuponhtml)))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, htmlMemoryStream, cssMemoryStream);
+                    }
+                }
+                document.Close();
+
+                bytes = memoryStream.ToArray();
+            }
             //cantidad
             return bytes;
 
