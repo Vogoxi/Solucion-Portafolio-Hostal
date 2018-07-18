@@ -63,6 +63,10 @@ namespace Hostal.DESKTOP
                     usc = new Registros();
                     GridMain.Children.Add(usc);
                     break;
+                case "ItemReportes":
+                    usc = new VistaReportes();
+                    GridMain.Children.Add(usc);
+                    break;
                     //default:
                     //    break;
             }

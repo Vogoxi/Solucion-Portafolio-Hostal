@@ -60,8 +60,10 @@ namespace Hostal.NEGOCIO
                     yearE = 9999;
                     break;
                 case 2:
-                    //Sin Procesar
+                    List<NEGOCIO.Pedido> pedidos = ReadAll();
+                    int cant = pedidos.Where(p => p.FechaEntrega.Year == 0001).Count();
                     yearE = 2001;
+                    return cant;
                     break;
                 case 3:
                     //Aprobados

@@ -126,21 +126,27 @@ namespace PruebaHostal
             var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pdf");
 
             System.IO.File.WriteAllBytes(testFile, bytes);
+
             */
 
-            Reportes reporte = new Reportes();
-            int[] tipos = new int[4];
+            PedidoCollection colection = new PedidoCollection();
+            List<Pedido> pedidos = new List<Pedido>();
+            pedidos = colection.ReadAll();
+            var a = "a";
 
-            tipos[0] = 1;
-            tipos[1] = 2;
-            tipos[2] = 3;
-            tipos[3] = 4;
+            //Reportes reporte = new Reportes();
+            //int[] tipos = new int[4];
 
-            var bytes = reporte.ReportePedidos(Convert.ToDateTime("01/06/2018"),tipos);
+            //tipos[0] = 1;
+            //tipos[1] = 2;
+            //tipos[2] = 3;
+            //tipos[3] = 4;
 
-            var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pdf");
+            //var bytes = reporte.ReportePedidos(Convert.ToDateTime("01/06/2018"),tipos);
 
-            System.IO.File.WriteAllBytes(testFile, bytes);
+            //var testFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pdf");
+
+            //System.IO.File.WriteAllBytes(testFile, bytes);
             
 
 

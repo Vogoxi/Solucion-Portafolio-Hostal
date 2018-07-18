@@ -98,6 +98,7 @@ namespace Hostal.DESKTOP
                             detalle.Idpedido = pedido.NPedido;
                             detalle.AgregarDetalle();
                         }
+                        MessageBox.Show("Su pedido a sido ingresado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                         dataGrid.Items.Clear();
                     }
                     break;

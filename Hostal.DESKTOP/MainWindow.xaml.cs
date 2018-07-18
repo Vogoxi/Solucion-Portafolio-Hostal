@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,8 @@ namespace Hostal.DESKTOP
 
         private void btn_cerrar_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            //Process.Start("http://www.yourwebaddress.com");
+            //Application.Current.Shutdown();
         }
     }
 }
