@@ -173,7 +173,11 @@ namespace Hostal.NEGOCIO
                                         <br />
                                         <br />
                                         <br />
+<<<<<<< HEAD
                                         <h3>Mes Consultado: "+Auxiliar.UppercaseWords(fecha.ToString("MMMM"))+@" "+@"del año "+fecha.Year+ @"</h3>
+=======
+                                        <h3>Fecha Consultada: "+Auxiliar.UppercaseWords(fecha.ToString("MMMM"))+@" del "+año+ @"</h3>
+>>>>>>> 85262d16740731879aaeca75a5242af0871f53b5
                                         <br />
                                         <br />
                                     </div>
@@ -265,6 +269,7 @@ namespace Hostal.NEGOCIO
             int cantFacturas = factura.FacturasMes(fecha);
             int totalFactura = factura.FacturaTotalMes(fecha);
 
+            //cantidad
             return bytes;
 
 
